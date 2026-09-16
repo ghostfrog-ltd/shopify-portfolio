@@ -1,1 +1,1 @@
-Shopify Portfolio
+Shopify Portfolio - Coming Soon
