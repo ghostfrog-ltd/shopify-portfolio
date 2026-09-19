@@ -9,138 +9,100 @@
  */
 {
   "sections": {
-    "main": {
-      "type": "main-page",
+    "portfolio_contact": {
+      "type": "portfolio-contact",
       "blocks": {
-        "title": {
-          "type": "text",
-          "name": "t:names.title",
+        "detail_email": {
+          "type": "contact_detail",
           "settings": {
-            "text": "<h1>{{ closest.page.title }}</h1>",
-            "width": "100%",
-            "max_width": "normal",
-            "alignment": "center",
-            "type_preset": "h2",
-            "font": "var(--font-body--family)",
-            "font_size": "",
-            "line_height": "normal",
-            "letter_spacing": "normal",
-            "case": "none",
-            "wrap": "pretty",
-            "background": false,
-            "background_color": "#00000026",
-            "corner_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {}
+            "icon": "email",
+            "heading": "Email",
+            "link_label": "hello@ghostfrog.co",
+            "link": "mailto:hello@ghostfrog.co",
+            "meta": "Usually replies within 1 business day"
+          }
         },
-        "content": {
-          "type": "text",
-          "name": "t:names.content",
+        "detail_phone": {
+          "type": "contact_detail",
           "settings": {
-            "text": "{{ closest.page.content }}",
-            "width": "100%",
-            "max_width": "narrow",
-            "alignment": "center",
-            "type_preset": "rte",
-            "font": "var(--font-body--family)",
-            "font_size": "",
-            "line_height": "normal",
-            "letter_spacing": "normal",
-            "case": "none",
-            "wrap": "pretty",
-            "background": false,
-            "background_color": "#00000026",
-            "corner_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {}
-        }
+            "icon": "phone",
+            "heading": "Phone (optional)",
+            "link_label": "+44 7700 900123",
+            "link": "tel:+447700900123",
+            "meta": "Available for existing clients"
+          }
+        },
+        "detail_location": {
+          "type": "contact_detail",
+          "settings": {
+            "icon": "location",
+            "heading": "Based in the UK",
+            "link_label": "Working with clients worldwide",
+            "link": "",
+            "meta": "Remote by default"
+          }
+        },
+        "detail_call": {
+          "type": "contact_detail",
+          "settings": {
+            "icon": "calendar",
+            "heading": "Book a call",
+            "link_label": "Book a 15 min call →",
+            "link": "mailto:hello@ghostfrog.co?subject=Book%20a%2015-minute%20call",
+            "meta": "Prefer to chat? Pick a time that works for you."
+          }
+        },
+        "next_1": { "type": "next_step", "settings": { "text": "I’ll review your message, usually within 1 business day." } },
+        "next_2": { "type": "next_step", "settings": { "text": "If it’s a good fit, we’ll arrange a brief call to discuss your goals." } },
+        "next_3": { "type": "next_step", "settings": { "text": "I’ll follow up with a clear recommendation and next steps." } },
+        "trust_shopify": { "type": "trust_item", "settings": { "icon": "code", "heading": "Shopify expertise", "text": "Themes. Apps. Integrations." } },
+        "trust_delivery": { "type": "trust_item", "settings": { "icon": "bolt", "heading": "Fast, reliable delivery", "text": "Clear communication from day one." } },
+        "trust_direct": { "type": "trust_item", "settings": { "icon": "chat", "heading": "Straight talking", "text": "No agency fluff. Just results." } }
       },
       "block_order": [
-        "title",
-        "content"
+        "detail_email",
+        "detail_phone",
+        "detail_location",
+        "detail_call",
+        "next_1",
+        "next_2",
+        "next_3",
+        "trust_shopify",
+        "trust_delivery",
+        "trust_direct"
       ],
       "settings": {
-        "content_direction": "column",
-        "gap": 32,
-        "padding-block-start": 40,
-        "padding-block-end": 0
-      }
-    },
-    "form": {
-      "type": "section",
-      "blocks": {
-        "contact_form_UwiCkQ": {
-          "type": "contact-form",
-          "settings": {
-            "width": "custom",
-            "custom_width": 50,
-            "width_mobile": "custom",
-            "custom_width_mobile": 100,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {
-            "submit-button": {
-              "type": "contact-form-submit-button",
-              "static": true,
-              "settings": {
-                "label": "Submit",
-                "style_class": "button",
-                "width": "fit-content",
-                "custom_width": 100,
-                "width_mobile": "fit-content",
-                "custom_width_mobile": 100
-              },
-              "blocks": {}
-            }
-          },
-          "block_order": []
-        }
-      },
-      "block_order": [
-        "contact_form_UwiCkQ"
-      ],
-      "name": "t:names.contact_form",
-      "settings": {
-        "content_direction": "column",
-        "vertical_on_mobile": true,
-        "horizontal_alignment": "flex-start",
-        "vertical_alignment": "center",
-        "align_baseline": false,
-        "horizontal_alignment_flex_direction_column": "center",
-        "vertical_alignment_flex_direction_column": "center",
-        "gap": 32,
-        "section_width": "page-width",
-        "section_height": "",
-        "section_height_custom": 50,
-        "background_media": "none",
-        "video_position": "cover",
-        "background_image_position": "cover",
-        "toggle_overlay": false,
-        "overlay_color": "#00000026",
-        "overlay_style": "solid",
-        "gradient_direction": "to top",
-        "border": "none",
-        "border_width": 1,
-        "border_opacity": 100,
-        "border_radius": 0,
-        "padding-block-start": 32,
-        "padding-block-end": 84
+        "eyebrow": "Contact",
+        "heading": "Let’s build what’s next.",
+        "intro": "<p>Have a project in mind, a technical challenge, or just want to pick my brain? Drop me a message and I’ll get back to you as soon as possible.</p>",
+        "side_note": "Better\ncommerce\nfurther",
+        "form_heading": "Send a message",
+        "form_intro": "Tell me a bit about your project and I’ll be in touch.",
+        "name_label": "Your name",
+        "name_placeholder": "John Smith",
+        "email_label": "Your email",
+        "email_placeholder": "you@company.com",
+        "company_label": "Company (optional)",
+        "company_placeholder": "Your company name",
+        "service_label": "What can I help with?",
+        "service_placeholder": "Select an option",
+        "service_option_1": "Shopify theme development",
+        "service_option_2": "Apps and integrations",
+        "service_option_3": "Magento to Shopify migration",
+        "service_option_4": "Performance and optimisation",
+        "service_option_5": "Ongoing development support",
+        "service_option_6": "Something else",
+        "message_label": "Your message",
+        "message_placeholder": "Tell me about your project, goals, timelines, or any questions…",
+        "submit_label": "Send message",
+        "response_note": "I typically respond within 1 business day.",
+        "spam_note": "No spam. No nonsense.",
+        "success_message": "Thanks — your message has been sent. I’ll be in touch shortly.",
+        "details_heading": "Get in touch directly",
+        "details_intro": "Prefer email or a quick call? Here are the details.",
+        "next_heading": "What happens next?"
       }
     }
   },
-  "order": [
-    "main",
-    "form"
-  ]
+  "order": ["portfolio_contact"]
 }
