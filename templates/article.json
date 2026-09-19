@@ -9,90 +9,32 @@
  */
 {
   "sections": {
-    "section": {
-      "type": "main-blog-post",
-      "blocks": {
-        "blog-post-title": {
-          "type": "text",
-          "name": "t:names.title",
-          "settings": {
-            "text": "<h1>{{ article.title }}</h1>",
-            "width": "100%",
-            "max_width": "normal",
-            "alignment": "center",
-            "type_preset": "h2",
-            "font": "var(--font-body--family)",
-            "font_size": "",
-            "line_height": "normal",
-            "letter_spacing": "normal",
-            "case": "none",
-            "wrap": "pretty",
-            "background": false,
-            "background_color": "#00000026",
-            "corner_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {}
-        },
-        "blog-post-details": {
-          "type": "_blog-post-info-text",
-          "name": "t:names.details",
-          "settings": {
-            "show_date": true,
-            "show_author": false,
-            "type_preset": "",
-            "alignment": "center",
-            "show_alignment": true,
-            "padding-block-start": 0,
-            "padding-block-end": 0
-          },
-          "blocks": {}
-        },
-        "blog-post-image": {
-          "type": "_blog-post-featured-image",
-          "name": "t:names.featured_image",
-          "settings": {
-            "image_ratio": "landscape",
-            "width": "fill",
-            "custom_width": 100,
-            "width_mobile": "fill",
-            "custom_width_mobile": 100,
-            "height": "fit",
-            "border": "none",
-            "border_width": 1,
-            "border_opacity": 100,
-            "border_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {}
-        },
-        "blog-post-content": {
-          "type": "_blog-post-content",
-          "settings": {},
-          "blocks": {}
-        }
-      },
-      "block_order": [
-        "blog-post-title",
-        "blog-post-details",
-        "blog-post-image",
-        "blog-post-content"
-      ],
+    "portfolio_article": {
+      "type": "portfolio-blog-post",
       "settings": {
-        "content_direction": "column",
-        "gap": 32,
-        "padding-block-start": 40,
-        "padding-block-end": 80
+        "show_contents": true,
+        "contents_heading": "In this article",
+        "share_heading": "Share this article",
+        "copy_label": "Copy link",
+        "copy_success": "Copied",
+        "sidebar_cta_eyebrow": "Need help with your Shopify project?",
+        "sidebar_cta_heading": "Let’s make your next move simple.",
+        "sidebar_cta_text": "Get expert help with planning, development, integrations and a smooth launch.",
+        "sidebar_cta_label": "Start a conversation",
+        "sidebar_cta_link": "/get-in-touch",
+        "topics_heading": "Related topics",
+        "show_related": true,
+        "related_heading": "Related articles",
+        "all_articles_label": "View all articles",
+        "footer_cta_eyebrow": "Ready to build?",
+        "footer_cta_heading": "Got a Shopify project in mind?",
+        "footer_cta_text": "Tell me what you’re trying to build, fix or migrate. I’ll tell you whether I can help.",
+        "footer_cta_label": "Start a conversation",
+        "footer_cta_link": "/get-in-touch",
+        "footer_secondary_label": "View services",
+        "footer_secondary_link": "/services"
       }
     }
   },
-  "order": [
-    "section"
-  ]
+  "order": ["portfolio_article"]
 }

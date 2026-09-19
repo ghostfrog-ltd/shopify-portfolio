@@ -1,0 +1,251 @@
+{{ 'portfolio-blog-post.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'portfolio-blog-post.js' | asset_url }}" defer></script>
+
+{% liquid
+  assign article_words = article.content | strip_html | split: ' ' | size
+  assign read_time = article_words | divided_by: 200 | plus: 1
+  assign article_category = article.tags.first | default: blog.title
+  assign article_summary = article.excerpt | default: article.content | strip_html | truncatewords: 34
+  assign hero_alt = article.image.alt | default: article.title
+  assign encoded_url = canonical_url | url_encode
+  assign encoded_title = article.title | url_encode
+%}
+
+<article class="portfolio-article" data-portfolio-article>
+  <header class="portfolio-article__hero">
+    <div class="portfolio-article__inner">
+      <nav class="portfolio-article__breadcrumbs" aria-label="Breadcrumb">
+        <a href="{{ routes.root_url }}">Home</a>
+        <span aria-hidden="true">›</span>
+        <a href="{{ blog.url }}">Blog</a>
+        <span aria-hidden="true">›</span>
+        <span aria-current="page">{{ article.title | escape }}</span>
+      </nav>
+
+      <div class="portfolio-article__hero-grid">
+        <div class="portfolio-article__hero-copy">
+          <p class="portfolio-article__eyebrow">{{ article_category | escape }}</p>
+          <h1>{{ article.title | escape }}</h1>
+          {% if article_summary != blank %}
+            <p class="portfolio-article__summary">{{ article_summary }}</p>
+          {% endif %}
+
+          <div class="portfolio-article__meta">
+            <span class="portfolio-article__avatar" aria-hidden="true">GF</span>
+            <span>
+              <strong>{{ article.author | default: shop.name | escape }}</strong>
+              <span>{{ article.published_at | time_tag: format: 'date' }} <i aria-hidden="true">·</i> {{ read_time }} min read</span>
+            </span>
+          </div>
+        </div>
+
+        <div class="portfolio-article__hero-media">
+          {% if article.image %}
+            {{
+              article.image
+              | image_url: width: 1800
+              | image_tag:
+                widths: '640, 960, 1280, 1800',
+                sizes: '(min-width: 990px) 48vw, 100vw',
+                loading: 'eager',
+                fetchpriority: 'high',
+                alt: hero_alt
+            }}
+          {% else %}
+            <img
+              src="{{ 'portfolio-blog-hero-mountains.webp' | asset_url }}"
+              alt="Dark mountain landscape"
+              width="1672"
+              height="941"
+              loading="eager"
+              fetchpriority="high"
+            >
+          {% endif %}
+          <span class="portfolio-article__hero-note" aria-hidden="true">Build clearer.<br>Go further.</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="portfolio-article__main portfolio-article__inner">
+    <div class="portfolio-article__content rte" data-article-content>
+      {{ article.content }}
+    </div>
+
+    <aside class="portfolio-article__sidebar" aria-label="Article tools">
+      {% if section.settings.show_contents %}
+        <div class="portfolio-article__panel" data-article-toc>
+          <h2>{{ section.settings.contents_heading | escape }}</h2>
+          <nav aria-label="On this page">
+            <ol data-article-toc-list></ol>
+          </nav>
+        </div>
+      {% endif %}
+
+      <div class="portfolio-article__panel">
+        <h2>{{ section.settings.share_heading | escape }}</h2>
+        <div class="portfolio-article__share">
+          <a
+            href="https://twitter.com/intent/tweet?url={{ encoded_url }}&text={{ encoded_title }}"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <span aria-hidden="true">𝕏</span> X
+          </a>
+          <a
+            href="https://www.linkedin.com/sharing/share-offsite/?url={{ encoded_url }}"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <span aria-hidden="true">in</span> LinkedIn
+          </a>
+          <button type="button" data-copy-link data-copy-label="{{ section.settings.copy_success | escape }}">
+            <span aria-hidden="true">↗</span> <span data-copy-text>{{ section.settings.copy_label | escape }}</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="portfolio-article__sidebar-cta">
+        <p class="portfolio-article__eyebrow">{{ section.settings.sidebar_cta_eyebrow | escape }}</p>
+        <h2>{{ section.settings.sidebar_cta_heading | escape }}</h2>
+        <p>{{ section.settings.sidebar_cta_text | escape }}</p>
+        <a class="portfolio-article__button" href="{{ section.settings.sidebar_cta_link }}">
+          {{ section.settings.sidebar_cta_label | escape }} <span aria-hidden="true">→</span>
+        </a>
+        <span class="portfolio-article__sidebar-note" aria-hidden="true">Less hassle.<br>More growth.</span>
+      </div>
+
+      {% if article.tags.size > 0 %}
+        <div class="portfolio-article__panel portfolio-article__topics">
+          <h2>{{ section.settings.topics_heading | escape }}</h2>
+          <div>
+            {% for tag in article.tags %}
+              {{ tag | link_to_tag: tag }}
+            {% endfor %}
+          </div>
+        </div>
+      {% endif %}
+    </aside>
+  </div>
+
+  {% if blog.comments_enabled? %}
+    <div class="portfolio-article__comments portfolio-article__inner">
+      <h2>{{ 'blogs.article.comments_heading' | t: count: article.comments_count }}</h2>
+      {% paginate article.comments by 10 %}
+        {% for comment in article.comments %}
+          <article class="portfolio-article__comment">
+            {{ comment.content }}
+            <p><strong>{{ comment.author | escape }}</strong> · {{ comment.created_at | time_tag: format: 'date' }}</p>
+          </article>
+        {% endfor %}
+        {{ paginate | default_pagination }}
+      {% endpaginate %}
+      {% render 'blog-comment-form', article: article, section_id: section.id %}
+    </div>
+  {% endif %}
+
+  {% if section.settings.show_related %}
+    <section class="portfolio-article__related" aria-labelledby="RelatedArticles-{{ section.id }}">
+      <div class="portfolio-article__inner">
+        <div class="portfolio-article__related-heading">
+          <p class="portfolio-article__eyebrow" id="RelatedArticles-{{ section.id }}">{{ section.settings.related_heading | escape }}</p>
+          <a href="{{ blog.url }}">{{ section.settings.all_articles_label | escape }} <span aria-hidden="true">→</span></a>
+        </div>
+        <div class="portfolio-article__related-grid">
+          {% assign related_count = 0 %}
+          {% for related_article in blog.articles %}
+            {% if related_article.id != article.id and related_count < 3 %}
+              {% assign related_alt = related_article.image.alt | default: related_article.title %}
+              {% assign related_words = related_article.content | strip_html | split: ' ' | size %}
+              {% assign related_minutes = related_words | divided_by: 200 | plus: 1 %}
+              <a class="portfolio-article__related-card" href="{{ related_article.url }}">
+                <span class="portfolio-article__related-media">
+                  {% if related_article.image %}
+                    {{
+                      related_article.image
+                      | image_url: width: 900
+                      | image_tag:
+                        widths: '360, 540, 720, 900',
+                        sizes: '(min-width: 990px) 33vw, 100vw',
+                        loading: 'lazy',
+                        alt: related_alt
+                    }}
+                  {% else %}
+                    <img
+                      src="{{ 'portfolio-blog-hero-mountains.webp' | asset_url }}"
+                      alt=""
+                      width="1672"
+                      height="941"
+                      loading="lazy"
+                    >
+                  {% endif %}
+                </span>
+                <span class="portfolio-article__related-copy">
+                  <small>{{ related_article.tags.first | default: blog.title | escape }}</small>
+                  <strong>{{ related_article.title | escape }}</strong>
+                  <span>{{ related_minutes }} min read <i aria-hidden="true">→</i></span>
+                </span>
+              </a>
+              {% assign related_count = related_count | plus: 1 %}
+            {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+    </section>
+  {% endif %}
+
+  <section class="portfolio-article__footer-cta" aria-labelledby="ArticleCta-{{ section.id }}">
+    <div class="portfolio-article__inner portfolio-article__footer-cta-inner">
+      <div>
+        <p class="portfolio-article__eyebrow">{{ section.settings.footer_cta_eyebrow | escape }}</p>
+        <h2 id="ArticleCta-{{ section.id }}">{{ section.settings.footer_cta_heading | escape }}</h2>
+        <p>{{ section.settings.footer_cta_text | escape }}</p>
+      </div>
+      <div class="portfolio-article__footer-actions">
+        <a class="portfolio-article__button" href="{{ section.settings.footer_cta_link }}">
+          {{ section.settings.footer_cta_label | escape }} <span aria-hidden="true">→</span>
+        </a>
+        <a class="portfolio-article__outline-button" href="{{ section.settings.footer_secondary_link }}">
+          {{ section.settings.footer_secondary_label | escape }}
+        </a>
+      </div>
+    </div>
+  </section>
+</article>
+
+<script type="application/ld+json">
+  {{ article | structured_data }}
+</script>
+
+{% schema %}
+{
+  "name": "Portfolio blog post",
+  "settings": [
+    { "type": "checkbox", "id": "show_contents", "label": "Show table of contents", "default": true },
+    { "type": "text", "id": "contents_heading", "label": "Contents heading", "default": "In this article" },
+    { "type": "text", "id": "share_heading", "label": "Share heading", "default": "Share this article" },
+    { "type": "text", "id": "copy_label", "label": "Copy link label", "default": "Copy link" },
+    { "type": "text", "id": "copy_success", "label": "Copied label", "default": "Copied" },
+    { "type": "header", "content": "Sidebar call to action" },
+    { "type": "text", "id": "sidebar_cta_eyebrow", "label": "Eyebrow", "default": "Need help with your Shopify project?" },
+    { "type": "text", "id": "sidebar_cta_heading", "label": "Heading", "default": "Let’s make your next move simple." },
+    { "type": "textarea", "id": "sidebar_cta_text", "label": "Text", "default": "Get expert help with planning, development, integrations and a smooth launch." },
+    { "type": "text", "id": "sidebar_cta_label", "label": "Button label", "default": "Start a conversation" },
+    { "type": "url", "id": "sidebar_cta_link", "label": "Button link" },
+    { "type": "text", "id": "topics_heading", "label": "Topics heading", "default": "Related topics" },
+    { "type": "header", "content": "Related articles" },
+    { "type": "checkbox", "id": "show_related", "label": "Show related articles", "default": true },
+    { "type": "text", "id": "related_heading", "label": "Heading", "default": "Related articles" },
+    { "type": "text", "id": "all_articles_label", "label": "All articles label", "default": "View all articles" },
+    { "type": "header", "content": "Bottom call to action" },
+    { "type": "text", "id": "footer_cta_eyebrow", "label": "Eyebrow", "default": "Ready to build?" },
+    { "type": "text", "id": "footer_cta_heading", "label": "Heading", "default": "Got a Shopify project in mind?" },
+    { "type": "textarea", "id": "footer_cta_text", "label": "Text", "default": "Tell me what you’re trying to build, fix or migrate. I’ll tell you whether I can help." },
+    { "type": "text", "id": "footer_cta_label", "label": "Primary button label", "default": "Start a conversation" },
+    { "type": "url", "id": "footer_cta_link", "label": "Primary button link" },
+    { "type": "text", "id": "footer_secondary_label", "label": "Secondary button label", "default": "View services" },
+    { "type": "url", "id": "footer_secondary_link", "label": "Secondary button link" }
+  ],
+  "presets": [{ "name": "Portfolio blog post" }]
+}
+{% endschema %}
