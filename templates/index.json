@@ -78,7 +78,7 @@
               "type": "button",
               "settings": {
                 "label": "Tell me about your project →",
-                "link": "/pages/get-in-touch",
+                "link": "/get-in-touch",
                 "open_in_new_tab": false,
                 "style_class": "button-custom",
                 "custom_button_background": "#A7FF62",
@@ -175,7 +175,7 @@
             "heading": "What I can help you with",
             "description": "<p>From custom themes to complex integrations, I provide end-to-end Shopify development tailored to your goals.</p>",
             "link_label": "View all services",
-            "link": "/pages/get-in-touch"
+            "link": "/services"
           },
           "blocks": {}
         },
@@ -186,7 +186,7 @@
             "title": "Shopify Development",
             "description": "<p>Custom themes, section development, Liquid, headless frontends and performance optimisation.</p>",
             "link_label": "Learn more",
-            "link": "/pages/get-in-touch"
+            "link": "/services"
           },
           "blocks": {}
         },
@@ -197,7 +197,7 @@
             "title": "Apps & Integrations",
             "description": "<p>Custom Shopify apps, Admin API, GraphQL, webhooks and third-party system integrations.</p>",
             "link_label": "Learn more",
-            "link": "/pages/get-in-touch"
+            "link": "/services"
           },
           "blocks": {}
         },
@@ -208,7 +208,7 @@
             "title": "Magento → Shopify",
             "description": "<p>Product, customer and order migration, data mapping, redirects and custom business logic.</p>",
             "link_label": "Learn more",
-            "link": "/pages/get-in-touch"
+            "link": "/services"
           },
           "blocks": {}
         },
@@ -219,7 +219,7 @@
             "title": "Ecommerce Engineering",
             "description": "<p>Complex requirements, subscriptions, custom pricing rules, checkout customisations and ongoing support.</p>",
             "link_label": "Learn more",
-            "link": "/pages/get-in-touch"
+            "link": "/services"
           },
           "blocks": {}
         }
@@ -255,7 +255,7 @@
             "title": "Cycling Store – Theme Build",
             "badge": "Concept project",
             "description": "<p>A high-performance Shopify theme with custom sections, advanced filtering, metafields and a conversion-focused product experience.</p>",
-            "link": "/pages/get-in-touch",
+            "link": "/get-in-touch",
             "open_in_new_tab": false
           },
           "blocks": {}
@@ -268,7 +268,7 @@
             "title": "Order Integration App",
             "badge": "Technical demo",
             "description": "<p>A custom app that receives Shopify orders via webhooks, transforms the data and pushes it to an external API.</p>",
-            "link": "/pages/get-in-touch",
+            "link": "/get-in-touch",
             "open_in_new_tab": false
           },
           "blocks": {}
@@ -281,7 +281,7 @@
             "title": "Magento → Shopify Migration",
             "badge": "Technical demo",
             "description": "<p>A demonstration of product, customer and order migration including data mapping, redirects and custom attribute handling.</p>",
-            "link": "/pages/get-in-touch",
+            "link": "/get-in-touch",
             "open_in_new_tab": false
           },
           "blocks": {}
@@ -448,7 +448,7 @@
               "type": "button",
               "settings": {
                 "label": "Let’s talk →",
-                "link": "/pages/get-in-touch",
+                "link": "/get-in-touch",
                 "open_in_new_tab": false,
                 "style_class": "button-custom",
                 "custom_button_background": "#F7F8F7",
@@ -559,7 +559,7 @@
               "type": "button",
               "settings": {
                 "label": "Start a conversation →",
-                "link": "/pages/get-in-touch",
+                "link": "/get-in-touch",
                 "open_in_new_tab": false,
                 "style_class": "button-custom",
                 "custom_button_background": "#A7FF62",
@@ -574,7 +574,7 @@
               "type": "button",
               "settings": {
                 "label": "View services",
-                "link": "#services",
+                "link": "/services",
                 "open_in_new_tab": false,
                 "style_class": "button-custom",
                 "custom_button_background": "#00000000",

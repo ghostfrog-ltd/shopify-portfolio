@@ -18,7 +18,7 @@
             "icon": "store",
             "heading": "Shopify Store Builds",
             "text": "Custom, conversion-focused stores designed to grow with your brand.",
-            "link": "/pages/get-in-touch"
+            "link": "/get-in-touch"
           }
         },
         "service_development": {
@@ -27,7 +27,7 @@
             "icon": "code",
             "heading": "Custom Development",
             "text": "Tailored features, custom themes and headless builds when you need more.",
-            "link": "/pages/get-in-touch"
+            "link": "/get-in-touch"
           }
         },
         "service_integrations": {
@@ -36,7 +36,7 @@
             "icon": "database",
             "heading": "Integrations & Automation",
             "text": "Connect your tools, streamline your operations, and save time.",
-            "link": "/pages/get-in-touch"
+            "link": "/get-in-touch"
           }
         },
         "service_migrations": {
@@ -45,7 +45,7 @@
             "icon": "migration",
             "heading": "Platform Migrations",
             "text": "Seamless migrations from Magento, WooCommerce and others to Shopify.",
-            "link": "/pages/get-in-touch"
+            "link": "/get-in-touch"
           }
         },
         "service_growth": {
@@ -54,7 +54,7 @@
             "icon": "growth",
             "heading": "Growth & Optimisation",
             "text": "Improve performance, increase conversion and unlock new revenue.",
-            "link": "/pages/get-in-touch"
+            "link": "/get-in-touch"
           }
         },
         "service_support": {
@@ -63,7 +63,7 @@
             "icon": "support",
             "heading": "Ongoing Support",
             "text": "Reliable, expert support to keep your store running and evolving.",
-            "link": "/pages/get-in-touch"
+            "link": "/get-in-touch"
           }
         },
         "process_discovery": {
@@ -115,7 +115,7 @@
         "hero_heading": "Shopify done properly",
         "hero_text": "<p>High-performance Shopify stores, custom development and integrations for brands that want more.</p>",
         "hero_primary_label": "Start a project",
-        "hero_primary_link": "/pages/get-in-touch",
+        "hero_primary_link": "/get-in-touch",
         "hero_secondary_label": "See our work",
         "hero_secondary_link": "/#projects",
         "services_eyebrow": "What we do",
@@ -131,7 +131,7 @@
         "cta_heading": "Ready to start your project?",
         "cta_text": "Tell us about your idea and we’ll get back to you shortly.",
         "cta_label": "Start a project",
-        "cta_link": "/pages/get-in-touch",
+        "cta_link": "/get-in-touch",
         "cta_note": "No obligation. Just a conversation."
       }
     }
