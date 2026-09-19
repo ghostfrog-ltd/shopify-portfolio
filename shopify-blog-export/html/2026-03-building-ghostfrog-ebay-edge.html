@@ -1,0 +1,126 @@
+<p>Most eBay tools focus on the obvious things:</p>
+<ul>
+<li>listing management</li>
+<li>inventory syncing</li>
+<li>order workflows</li>
+<li>pricing automation</li>
+</ul>
+<p>Those are useful, but they are not the problem we wanted to solve.</p>
+<p>Ghostfrog eBay Edge is being built for a different job.</p>
+<p>Its purpose is simple: help sellers understand what the best listings in a niche are doing well, what they are still missing, and what practical changes could create a real competitive edge.</p>
+<p>Not in a vague "optimize your listing" way, but in a specific, evidence-led way.</p>
+<p>The goal is to take a seller's input, look at a market on eBay, gather live evidence, analyse what matters, and return a clear report with actionable listing improvements.</p>
+<h2>What Ghostfrog eBay Edge Does</h2>
+<p>At its core, Ghostfrog eBay Edge is an intelligence product.</p>
+<p>A user starts a scan by entering a product niche or keyword, and can optionally sharpen that scan with an eBay category ID and a competitor store URL.</p>
+<p>From there, the system begins a structured workflow designed to answer one question:</p>
+<blockquote>
+<p>What are the current gaps in this eBay market, and how can this seller use them?</p>
+</blockquote>
+<p>The report is built around a few core outputs:</p>
+<ul>
+<li><strong>The Missing 3</strong>: three concrete things the seller should add or improve in their listing</li>
+<li><strong>Schema Audit</strong>: item specifics and structured fields that eBay recommends or expects, but that many top listings are still underusing</li>
+<li><strong>Voice of the Customer Insights</strong>: repeated reassurance points, buyer-friction signals, or unanswered questions that appear in competitor listings and descriptions</li>
+<li><strong>Actionable Implementation</strong>: practical steps the seller can use immediately to improve titles, item specifics, descriptions, and trust signals</li>
+</ul>
+<p>This is not meant to be another dashboard full of vanity metrics.</p>
+<p>It is designed to return focused, useful listing intelligence.</p>
+<h2>Why We're Building It</h2>
+<p>Selling on eBay is competitive, but a lot of listings still win or lose on very basic things:</p>
+<ul>
+<li>incomplete item specifics</li>
+<li>unclear compatibility details</li>
+<li>weak trust signals</li>
+<li>vague condition descriptions</li>
+<li>missing photos or overlooked attributes</li>
+<li>unanswered buyer concerns</li>
+</ul>
+<p>That creates opportunity.</p>
+<p>Ghostfrog eBay Edge exists to surface that opportunity quickly.</p>
+<p>Instead of manually reviewing dozens of listings and trying to guess what matters, the seller gets a structured report showing what is being missed and what is worth acting on.</p>
+<p>The bigger idea behind the product is also important.</p>
+<p>We are not trying to build a compliance platform, an accounting tool, or a full ecommerce operating system.</p>
+<p>We are keeping the scope narrow on purpose.</p>
+<p>This is a focused, subscription-based intelligence product built to help sellers win the listing race.</p>
+<h2>How It Works Behind the Scenes</h2>
+<p>The platform is being built with a split architecture.</p>
+<p>Laravel handles the product chassis:</p>
+<ul>
+<li>authentication</li>
+<li>teams and workspaces</li>
+<li>scan intake</li>
+<li>credits</li>
+<li>notifications</li>
+<li>admin tools</li>
+<li>PDF report delivery</li>
+<li>billing foundations</li>
+</ul>
+<p>Python handles the market analysis engine:</p>
+<ul>
+<li>scan orchestration</li>
+<li>evidence gathering</li>
+<li>category and schema analysis</li>
+<li>buyer-friction signal detection</li>
+<li>report generation</li>
+<li>LLM-assisted reasoning</li>
+</ul>
+<p>That separation has been intentional from day one.</p>
+<p>Laravel is excellent for the business application side of the product.</p>
+<p>Python is the right place for the agentic and analytical side.</p>
+<p>The scan pipeline currently follows four main stages:</p>
+<h3>1. Live listing evidence collection</h3>
+<p>The engine pulls relevant active eBay listings for the niche being scanned.</p>
+<h3>2. Schema audit</h3>
+<p>It checks those listings against eBay taxonomy and item-specific guidance to identify underused or missing structured fields.</p>
+<h3>3. Intelligence gathering</h3>
+<p>It looks for repeated buyer concerns, reassurance signals, and missing clarity inside competitor listing content.</p>
+<h3>4. Gap analysis</h3>
+<p>It synthesizes that evidence into "The Missing 3" and turns it into something a seller can actually use.</p>
+<h2>Technologies We've Used</h2>
+<p>Ghostfrog eBay Edge has been built with a modern but pragmatic stack:</p>
+<ul>
+<li>Laravel for the main application</li>
+<li>Jetstream with Teams for account and workspace management</li>
+<li>SQLite locally during development</li>
+<li>Tailwind CSS for the UI</li>
+<li>Laravel queues for async scan processing</li>
+<li>FastAPI for the Python engine bridge</li>
+<li>eBay APIs for category and listing evidence</li>
+<li>LLM integration for reasoning and report quality improvements</li>
+<li>Stripe / Laravel Cashier for subscription and top-up billing foundations</li>
+<li>PDF export for shareable scan reports</li>
+<li>on-site inbox and email notifications so users know when scans are ready</li>
+</ul>
+<p>The result is a product that already has the shape of a real SaaS platform, not just a prototype with a few disconnected screens.</p>
+<h2>What Makes It Different</h2>
+<p>A lot of AI products produce generic advice.</p>
+<p>That was something we wanted to avoid.</p>
+<p>Ghostfrog eBay Edge is being built around structured evidence first, then layered reasoning second.</p>
+<p>That means the report is not supposed to feel like a chatbot opinion.</p>
+<p>It is supposed to feel like a seller-focused intelligence brief with visible grounding in the market.</p>
+<p>That matters because trust matters.</p>
+<p>If we want a seller to act on a report, the report has to feel specific, credible, and useful.</p>
+<h2>What Comes Next</h2>
+<p>The core loop is now in place, but there is still important work ahead.</p>
+<p>The next stage is refining and maturing the engine:</p>
+<ul>
+<li>improving ranking and prioritisation</li>
+<li>tightening report quality</li>
+<li>adding feedback loops to score whether reports are genuinely useful</li>
+<li>expanding billing and pricing flows</li>
+<li>improving monitoring and operational visibility</li>
+<li>continuing to sharpen the evidence-to-action pipeline</li>
+</ul>
+<p>That is the exciting part now.</p>
+<p>The scaffolding is there.</p>
+<p>The product loop exists.</p>
+<p>The next step is making the intelligence better and better.</p>
+<h2>Final Thought</h2>
+<p>Ghostfrog eBay Edge is being built around a very simple idea:</p>
+<blockquote>
+<p>sellers do not just need more data, they need better signals.</p>
+</blockquote>
+<p>If we can show them what competitors are overlooking, what eBay structurally prefers, and what buyers still need to feel confident, then we are not just giving them another report.</p>
+<p>We are giving them a clearer path to better listings.</p>
+<p>And that is the product.</p>

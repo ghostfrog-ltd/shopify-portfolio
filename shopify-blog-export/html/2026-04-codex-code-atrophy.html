@@ -1,0 +1,83 @@
+<p>There is a real risk in modern AI-assisted development:</p>
+<p>Codex can make you faster while quietly making you less aware of how the system actually works.</p>
+<p>That is a dangerous trade.</p>
+<p>If a developer loses the "how," they also lose the ability to debug, optimize, review, and lead. The role slowly shifts from engineer to prompt operator.</p>
+<p>That might feel productive in the short term, but it is not a strong long-term position.</p>
+<p>If the goal is to move deeper into agentic systems, the output cannot be treated as a black box. The developer still has to understand the inner workings better than the model does, because the model will eventually produce something plausible that is also wrong: a race condition, a broken state transition, a weak security assumption, or a loop that quietly burns money.</p>
+<p>The point is not to stop using Codex.</p>
+<p>The point is to stop outsourcing understanding.</p>
+<h2>The Atrophy of the Senior Developer</h2>
+<p>If the workflow becomes "Codex, do this" followed by a quick paste and deploy, the Senior Developer standard starts to slip in three places.</p>
+<ul>
+<li><strong>Code review debt:</strong> Codex is effectively acting like a fast junior developer. If the output is not reviewed properly, the developer cannot confidently vouch for what has been shipped.</li>
+<li><strong>Architectural blindness:</strong> It is possible to see the feature working while missing the design pattern, state management tradeoff, complexity cost, or long-term maintenance issue underneath it.</li>
+<li><strong>The agentic paradox:</strong> Agentic systems are built from loops, state, tools, memory, and LLM calls. If the developer does not understand how the basic script handles state, they will struggle to build a multi-agent system that behaves safely and predictably.</li>
+</ul>
+<p>That is the trap.</p>
+<p>The code works, but the mental model fades.</p>
+<h2>The Lead Dev Protocol</h2>
+<p>The answer is not to go back to typing every character by hand.</p>
+<p>The answer is to re-engage with the parts of the work that actually preserve engineering judgement.</p>
+<h3>1. Ask for the reasoning</h3>
+<p>Never accept a non-trivial block of code from Codex without understanding the logic behind it.</p>
+<p>Why did it choose that algorithm?</p>
+<p>Where is the state held?</p>
+<p>What happens when the input is empty, slow, duplicated, malformed, or out of order?</p>
+<p>If the answer cannot be explained back clearly, the code should not be shipped yet.</p>
+<h3>2. Refactor part of the output manually</h3>
+<p>Once Codex produces a working block, touch the code.</p>
+<p>Refactor a small part of it manually:</p>
+<ul>
+<li>tighten the naming</li>
+<li>simplify the branching</li>
+<li>add a specific error handler</li>
+<li>remove a needless abstraction</li>
+<li>improve the boundary between two functions</li>
+</ul>
+<p>That manual contact keeps the project map alive in the developer's head.</p>
+<h3>3. Own the plumbing</h3>
+<p>Codex is useful for boilerplate:</p>
+<ul>
+<li>API endpoints</li>
+<li>CSS</li>
+<li>simple CRUD</li>
+<li>repetitive tests</li>
+<li>obvious wiring</li>
+</ul>
+<p>But the developer should still own the important plumbing:</p>
+<ul>
+<li>data flow</li>
+<li>state machines</li>
+<li>queue boundaries</li>
+<li>persistence rules</li>
+<li>retry behaviour</li>
+<li>failure modes</li>
+<li>observability</li>
+</ul>
+<p>In agentic systems, state is everything.</p>
+<p>If state is poorly understood, the system will eventually drift, loop, duplicate work, or make decisions from stale context.</p>
+<h2>The Counter-Perspective</h2>
+<p>Some people argue that coding is becoming less important and high-level orchestration is all that matters.</p>
+<p>That is only partly true.</p>
+<p>The most valuable AI engineers are not the ones who simply ask a model for code. They are the ones who can inspect model output and spot the hidden risk:</p>
+<ul>
+<li>a long-running agent loop that leaks memory</li>
+<li>a RAG pipeline that retrieves the wrong context</li>
+<li>a database query that looks fine locally but fails under load</li>
+<li>a tool call that retries without a sane backoff strategy</li>
+<li>a state transition that works once but breaks in parallel</li>
+</ul>
+<p>Those calls require technical understanding.</p>
+<p>They cannot be made from vibes alone.</p>
+<h2>The GhostFrog Test</h2>
+<p>A useful test is simple:</p>
+<p>Could the developer draw the data flow without opening the IDE?</p>
+<p>From the user's prompt, through the reasoning loop, into the tools, into the database, and back to the final output.</p>
+<p>If the answer is no, then the system is not fully understood yet.</p>
+<p>It may be working.</p>
+<p>But there is a difference between working code and understood code.</p>
+<h2>Final Thought</h2>
+<p>Codex should make a developer faster.</p>
+<p>It should not make them passive.</p>
+<p>The strongest position is not to reject AI coding tools, and it is not to blindly trust them either.</p>
+<p>The strongest position is to use them aggressively while still owning the architecture, the state, the data flow, and the final judgement.</p>

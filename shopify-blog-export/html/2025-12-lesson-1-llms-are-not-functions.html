@@ -1,0 +1,129 @@
+<p>I started this project assuming an LLM call worked like a normal function:</p>
+<pre><code>input → output
+</code></pre>
+<p>Same input, same output. Simple.</p>
+<p>That assumption lasted about half a day.</p>
+<p>What followed was my <strong>first real AI engineering lesson</strong> — not about prompts, but about <em>control</em>.</p>
+<hr>
+<h2>The mistake most people make</h2>
+<p>Most people (including me, initially) treat LLMs like this:</p>
+<ul>
+<li>write a prompt  </li>
+<li>call the API  </li>
+<li>parse the text  </li>
+<li>hope it behaves  </li>
+</ul>
+<p>That works… until it doesn’t.</p>
+<p>LLMs are <strong>not deterministic functions</strong>. They are <strong>probabilistic generators</strong>. If you don’t explicitly constrain them, they will:</p>
+<ul>
+<li>change answers  </li>
+<li>change structure  </li>
+<li>emit multiple outputs  </li>
+<li>break contracts  </li>
+<li>fail in ways that are hard to reproduce  </li>
+</ul>
+<p>I hit all of those in Lesson 1.</p>
+<hr>
+<h2>LLMs are not functions</h2>
+<p>A real function looks like this:</p>
+<pre><code>f(x) → y
+</code></pre>
+<p>An LLM call is closer to:</p>
+<pre><code>f(x, params, runtime_state) → {y₁, y₂, y₃, ...}
+</code></pre>
+<p>The model produces a <em>distribution of possible continuations</em>.<br>
+Your job as an engineer is to decide <strong>which ones you will accept</strong>.</p>
+<p>Until you do that, you don’t have a system — you have a demo.</p>
+<hr>
+<h2>Temperature is not creativity — it is risk</h2>
+<p>The first control knob I learned to respect was <strong>temperature</strong>.</p>
+<ul>
+<li>
+<p><code>temperature = 0</code><br>
+  → greedy decoding<br>
+  → pick the single most likely token every time  </p>
+</li>
+<li>
+<p>higher temperature<br>
+  → more exploration<br>
+  → more variation<br>
+  → more structural deviation  </p>
+</li>
+</ul>
+<p>At high temperature, I didn’t just get different answers — I got:</p>
+<ul>
+<li>extra text after JSON  </li>
+<li>multiple outputs in a single response  </li>
+<li>broken parsing  </li>
+<li>runtime crashes  </li>
+</ul>
+<p>That was the moment it clicked:</p>
+<blockquote>
+<p><strong>Randomness doesn’t just affect content.<br>
+It affects structure, control flow, and contracts.</strong></p>
+</blockquote>
+<hr>
+<h2>Why schema matters (and why it still isn’t magic)</h2>
+<p>I added a strict JSON schema to enforce output shape:</p>
+<ul>
+<li>exactly one key  </li>
+<li>enum-only values  </li>
+<li>no extra properties  </li>
+</ul>
+<p>That helped — but it didn’t make the system bulletproof.</p>
+<p>At high temperature, the model still managed to:</p>
+<ul>
+<li>emit multiple valid JSON objects  </li>
+<li>concatenate them into one string  </li>
+<li>break <code>json.loads()</code>  </li>
+</ul>
+<p>The fix wasn’t “better prompts”.<br>
+The fix was <strong>validation and assumptions</strong>.</p>
+<hr>
+<h2>The real abstraction</h2>
+<p>The correct abstraction is not:</p>
+<pre><code>LLM → answer
+</code></pre>
+<p>It is:</p>
+<pre><code>LLM → candidates → validation → selection → result
+</code></pre>
+<p>Only after validation does the system behave like a function.</p>
+<p>That wrapper — not the model — is the real unit of engineering.</p>
+<hr>
+<h2>Decision paths vs generative paths</h2>
+<p>This lesson led to a clean rule I now follow:</p>
+<ul>
+<li>
+<p><strong>Decision-making paths</strong><br>
+  (classification, routing, tool selection)<br>
+  → temperature = 0<br>
+  → strict schema<br>
+  → exactly one output  </p>
+</li>
+<li>
+<p><strong>Generative paths</strong><br>
+  (blog posts, summaries, ideas)<br>
+  → higher temperature<br>
+  → variation is a feature  </p>
+</li>
+</ul>
+<p>Writing a blog post should be creative.<br>
+Choosing the correct tool should not.</p>
+<hr>
+<h2>The takeaway</h2>
+<p>Lesson 1 wasn’t about prompt engineering.</p>
+<p>It was about this shift:</p>
+<blockquote>
+<p><strong>LLMs are unreliable by default.<br>
+Reliable systems wrap them until they behave like functions.</strong></p>
+</blockquote>
+<p>That means:
+- constraints<br>
+- contracts<br>
+- validation<br>
+- retries<br>
+- and explicit assumptions  </p>
+<p>Once you accept that, AI stops feeling magical — and starts feeling like engineering.</p>
+<p><a href="https://github.com/ghostfrog-ltd/ai-engineering-001">View On Github</a></p>
+<hr>
+<p><em>Lesson 2 will cover retries, voting, and how to design systems that stay reliable even when the model is uncertain.</em></p>

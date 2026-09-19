@@ -9,274 +9,602 @@
  */
 {
   "sections": {
-    "hero_jVaWmY": {
-      "type": "hero",
+    "portfolio_hero": {
+      "type": "portfolio-hero",
       "blocks": {
-        "text_YLPk4p": {
+        "hero_eyebrow": {
           "type": "text",
-          "name": "t:names.heading",
           "settings": {
-            "text": "<p>Browse our latest products</p>",
-            "width": "fit-content",
+            "text": "<p>FREELANCE SHOPIFY DEVELOPER</p>",
+            "width": "100%",
+            "max_width": "none",
+            "alignment": "left",
+            "type_preset": "custom",
+            "font": "var(--font-body--family)",
+            "font_size": "0.75rem",
+            "line_height": "normal",
+            "letter_spacing": "loose",
+            "case": "uppercase",
+            "wrap": "pretty",
+            "text_color": "#B8BFBC",
+            "padding-block-end": 2
+          },
+          "blocks": {}
+        },
+        "hero_heading": {
+          "type": "text",
+          "settings": {
+            "text": "<h1>Shopify development without the agency overhead.</h1>",
+            "width": "100%",
+            "max_width": "none",
+            "alignment": "left",
+            "type_preset": "h1",
+            "text_color": "#F7F8F7"
+          },
+          "blocks": {}
+        },
+        "hero_copy": {
+          "type": "text",
+          "settings": {
+            "text": "<p>I build, customise and integrate Shopify stores for businesses that need more than a page builder. Themes. Apps. Integrations. Migrations. Weird ecommerce problems.</p>",
+            "width": "100%",
             "max_width": "normal",
             "alignment": "left",
-            "type_preset": "h2",
-            "font": "var(--font-body--family)",
-            "font_size": "1rem",
-            "line_height": "normal",
-            "letter_spacing": "normal",
-            "case": "none",
-            "wrap": "pretty",
-            "text_color": "{{ settings.color_palette.background }}",
-            "background": false,
-            "background_color": "#00000026",
-            "corner_radius": 0,
+            "type_preset": "paragraph",
+            "text_color": "#C7CCCA"
+          },
+          "blocks": {}
+        },
+        "hero_actions": {
+          "type": "group",
+          "settings": {
+            "content_direction": "row",
+            "vertical_on_mobile": false,
+            "horizontal_alignment": "flex-start",
+            "vertical_alignment": "center",
+            "gap": 14,
+            "width": "fill",
+            "width_mobile": "fill",
+            "height": "fit",
+            "background_media": "none",
+            "border": "none",
             "padding-block-start": 0,
             "padding-block-end": 0,
             "padding-inline-start": 0,
             "padding-inline-end": 0
           },
+          "blocks": {
+            "hero_primary_button": {
+              "type": "button",
+              "settings": {
+                "label": "Tell me about your project →",
+                "link": "#contact",
+                "open_in_new_tab": false,
+                "style_class": "button-custom",
+                "custom_button_background": "#A7FF62",
+                "custom_button_text": "#071008",
+                "custom_button_border": "#A7FF62",
+                "width": "fit-content",
+                "width_mobile": "fit-content"
+              },
+              "blocks": {}
+            },
+            "hero_secondary_button": {
+              "type": "button",
+              "settings": {
+                "label": "View demo work",
+                "link": "#projects",
+                "open_in_new_tab": false,
+                "style_class": "button-custom",
+                "custom_button_background": "#00000000",
+                "custom_button_text": "#F7F8F7",
+                "custom_button_border": "#7B8480",
+                "width": "fit-content",
+                "width_mobile": "fit-content"
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "hero_primary_button",
+            "hero_secondary_button"
+          ]
+        }
+      },
+      "block_order": [
+        "hero_eyebrow",
+        "hero_heading",
+        "hero_copy",
+        "hero_actions"
+      ],
+      "settings": {
+        "image_alt": "Cyclist riding through a dramatic mountain landscape"
+      }
+    },
+    "portfolio_trust_strip": {
+      "type": "portfolio-trust-strip",
+      "blocks": {
+        "trust_shopify": {
+          "type": "portfolio-trust-item",
+          "settings": {
+            "icon": "shopify",
+            "label": "Shopify specialist"
+          },
           "blocks": {}
         },
-        "button_H9gpTf": {
-          "type": "button",
-          "name": "t:names.button",
+        "trust_code": {
+          "type": "portfolio-trust-item",
           "settings": {
-            "label": "Shop all",
-            "link": "shopify://collections/all",
-            "open_in_new_tab": false,
-            "style_class": "button-custom",
-            "custom_button_background": "rgba(0, 0, 0, 0)",
-            "custom_button_text": "{{ settings.color_palette.background }}",
-            "custom_button_border": "{{ settings.color_palette.background }}",
-            "width": "fit-content",
-            "custom_width": 100,
-            "width_mobile": "fit-content",
-            "custom_width_mobile": 100
+            "icon": "code",
+            "label": "Clean, scalable code"
+          },
+          "blocks": {}
+        },
+        "trust_delivery": {
+          "type": "portfolio-trust-item",
+          "settings": {
+            "icon": "delivery",
+            "label": "Fast, reliable delivery"
+          },
+          "blocks": {}
+        },
+        "trust_chat": {
+          "type": "portfolio-trust-item",
+          "settings": {
+            "icon": "chat",
+            "label": "Direct communication"
           },
           "blocks": {}
         }
       },
       "block_order": [
-        "text_YLPk4p",
-        "button_H9gpTf"
+        "trust_shopify",
+        "trust_code",
+        "trust_delivery",
+        "trust_chat"
       ],
-      "name": "t:names.hero",
-      "settings": {
-        "media_type_1": "image",
-        "media_type_2": "image",
-        "link": "",
-        "open_in_new_tab": false,
-        "content_direction": "column",
-        "vertical_on_mobile": true,
-        "horizontal_alignment": "space-between",
-        "vertical_alignment": "flex-end",
-        "align_baseline": true,
-        "horizontal_alignment_flex_direction_column": "center",
-        "vertical_alignment_flex_direction_column": "flex-end",
-        "gap": 24,
-        "section_width": "page-width",
-        "section_height": "medium",
-        "section_height_custom": 50,
-        "toggle_overlay": true,
-        "overlay_color": "#12121266",
-        "overlay_style": "solid",
-        "gradient_direction": "to bottom",
-        "blurred_reflection": false,
-        "reflection_opacity": 75,
-        "padding-block-start": 100,
-        "padding-block-end": 72
-      }
+      "settings": {}
     },
-    "product_list_fa6P9H": {
-      "type": "product-list",
+    "portfolio_services": {
+      "type": "portfolio-services",
       "blocks": {
-        "static-header": {
-          "type": "_product-list-content",
-          "name": "t:names.header",
-          "static": true,
+        "services_heading": {
+          "type": "portfolio-section-heading",
+          "settings": {
+            "eyebrow": "SERVICES",
+            "heading": "What I can help you with",
+            "description": "<p>From custom themes to complex integrations, I provide end-to-end Shopify development tailored to your goals.</p>",
+            "link_label": "View all services",
+            "link": "#contact"
+          },
+          "blocks": {}
+        },
+        "service_development": {
+          "type": "portfolio-service-card",
+          "settings": {
+            "icon": "development",
+            "title": "Shopify Development",
+            "description": "<p>Custom themes, section development, Liquid, headless frontends and performance optimisation.</p>",
+            "link_label": "Learn more",
+            "link": "#contact"
+          },
+          "blocks": {}
+        },
+        "service_integrations": {
+          "type": "portfolio-service-card",
+          "settings": {
+            "icon": "integrations",
+            "title": "Apps & Integrations",
+            "description": "<p>Custom Shopify apps, Admin API, GraphQL, webhooks and third-party system integrations.</p>",
+            "link_label": "Learn more",
+            "link": "#contact"
+          },
+          "blocks": {}
+        },
+        "service_migration": {
+          "type": "portfolio-service-card",
+          "settings": {
+            "icon": "migration",
+            "title": "Magento → Shopify",
+            "description": "<p>Product, customer and order migration, data mapping, redirects and custom business logic.</p>",
+            "link_label": "Learn more",
+            "link": "#contact"
+          },
+          "blocks": {}
+        },
+        "service_engineering": {
+          "type": "portfolio-service-card",
+          "settings": {
+            "icon": "engineering",
+            "title": "Ecommerce Engineering",
+            "description": "<p>Complex requirements, subscriptions, custom pricing rules, checkout customisations and ongoing support.</p>",
+            "link_label": "Learn more",
+            "link": "#contact"
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "services_heading",
+        "service_development",
+        "service_integrations",
+        "service_migration",
+        "service_engineering"
+      ],
+      "settings": {}
+    },
+    "portfolio_projects": {
+      "type": "portfolio-projects",
+      "blocks": {
+        "projects_heading": {
+          "type": "portfolio-section-heading",
+          "settings": {
+            "eyebrow": "DEMO PROJECTS",
+            "heading": "Real builds. No fluff.",
+            "description": "<p>A few example projects to show what’s possible. These are demo/concept builds, but they reflect the quality and scope of work I can deliver.</p>",
+            "link_label": "View all demos",
+            "link": "#projects"
+          },
+          "blocks": {}
+        },
+        "project_cycling": {
+          "type": "portfolio-project-card",
+          "settings": {
+            "fallback_image": "cycling",
+            "image_alt": "Cycling Shopify theme concept shown against a mountain landscape",
+            "title": "Cycling Store – Theme Build",
+            "badge": "Concept project",
+            "description": "<p>A high-performance Shopify theme with custom sections, advanced filtering, metafields and a conversion-focused product experience.</p>",
+            "link": "#contact",
+            "open_in_new_tab": false
+          },
+          "blocks": {}
+        },
+        "project_orders": {
+          "type": "portfolio-project-card",
+          "settings": {
+            "fallback_image": "orders",
+            "image_alt": "Dark order integration dashboard interface",
+            "title": "Order Integration App",
+            "badge": "Technical demo",
+            "description": "<p>A custom app that receives Shopify orders via webhooks, transforms the data and pushes it to an external API.</p>",
+            "link": "#contact",
+            "open_in_new_tab": false
+          },
+          "blocks": {}
+        },
+        "project_migration": {
+          "type": "portfolio-project-card",
+          "settings": {
+            "fallback_image": "migration",
+            "image_alt": "Magento to Shopify migration concept graphic",
+            "title": "Magento → Shopify Migration",
+            "badge": "Technical demo",
+            "description": "<p>A demonstration of product, customer and order migration including data mapping, redirects and custom attribute handling.</p>",
+            "link": "#contact",
+            "open_in_new_tab": false
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "projects_heading",
+        "project_cycling",
+        "project_orders",
+        "project_migration"
+      ],
+      "settings": {}
+    },
+    "portfolio_tech_stack": {
+      "type": "portfolio-tech-stack",
+      "blocks": {
+        "tech_heading": {
+          "type": "portfolio-section-heading",
+          "settings": {
+            "eyebrow": "TOOLS & TECHNOLOGIES",
+            "heading": "What I work with",
+            "description": "",
+            "link_label": ""
+          },
+          "blocks": {}
+        },
+        "tech_shopify": {
+          "type": "portfolio-tech-item",
+          "settings": { "icon": "shopify", "label": "Shopify" },
+          "blocks": {}
+        },
+        "tech_liquid": {
+          "type": "portfolio-tech-item",
+          "settings": { "icon": "liquid", "label": "Liquid" },
+          "blocks": {}
+        },
+        "tech_graphql": {
+          "type": "portfolio-tech-item",
+          "settings": { "icon": "graphql", "label": "GraphQL" },
+          "blocks": {}
+        },
+        "tech_node": {
+          "type": "portfolio-tech-item",
+          "settings": { "icon": "node", "label": "Node.js" },
+          "blocks": {}
+        },
+        "tech_react": {
+          "type": "portfolio-tech-item",
+          "settings": { "icon": "react", "label": "React" },
+          "blocks": {}
+        },
+        "tech_tailwind": {
+          "type": "portfolio-tech-item",
+          "settings": { "icon": "tailwind", "label": "Tailwind CSS" },
+          "blocks": {}
+        },
+        "tech_magento": {
+          "type": "portfolio-tech-item",
+          "settings": { "icon": "magento", "label": "Magento" },
+          "blocks": {}
+        },
+        "tech_mysql": {
+          "type": "portfolio-tech-item",
+          "settings": { "icon": "mysql", "label": "MySQL" },
+          "blocks": {}
+        },
+        "tech_git": {
+          "type": "portfolio-tech-item",
+          "settings": { "icon": "git", "label": "Git" },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "tech_heading",
+        "tech_shopify",
+        "tech_liquid",
+        "tech_graphql",
+        "tech_node",
+        "tech_react",
+        "tech_tailwind",
+        "tech_magento",
+        "tech_mysql",
+        "tech_git"
+      ],
+      "settings": {}
+    },
+    "portfolio_about": {
+      "type": "portfolio-about",
+      "blocks": {
+        "about_eyebrow": {
+          "type": "text",
+          "settings": {
+            "text": "<p>ABOUT</p>",
+            "width": "100%",
+            "max_width": "none",
+            "alignment": "left",
+            "type_preset": "custom",
+            "font": "var(--font-body--family)",
+            "font_size": "0.75rem",
+            "line_height": "normal",
+            "letter_spacing": "loose",
+            "case": "uppercase",
+            "wrap": "pretty",
+            "text_color": "#B8BFBC"
+          },
+          "blocks": {}
+        },
+        "about_heading": {
+          "type": "text",
+          "settings": {
+            "text": "<h2>Experienced in ecommerce.<br>New to freelancing on Shopify.</h2>",
+            "width": "100%",
+            "max_width": "none",
+            "alignment": "left",
+            "type_preset": "h2",
+            "text_color": "#F7F8F7"
+          },
+          "blocks": {}
+        },
+        "about_copy_one": {
+          "type": "text",
+          "settings": {
+            "text": "<p>I’ve spent years building and supporting production ecommerce systems, including Adobe Commerce (Magento), and I’m now taking on selected Shopify projects directly.</p>",
+            "width": "100%",
+            "max_width": "normal",
+            "alignment": "left",
+            "type_preset": "paragraph",
+            "text_color": "#BAC0BD"
+          },
+          "blocks": {}
+        },
+        "about_copy_two": {
+          "type": "text",
+          "settings": {
+            "text": "<p>You’ll work with me directly — no account managers, no bloated processes, just clear communication and solid engineering.</p>",
+            "width": "100%",
+            "max_width": "normal",
+            "alignment": "left",
+            "type_preset": "paragraph",
+            "text_color": "#BAC0BD"
+          },
+          "blocks": {}
+        },
+        "about_actions": {
+          "type": "group",
           "settings": {
             "content_direction": "row",
             "vertical_on_mobile": false,
-            "horizontal_alignment": "space-between",
-            "vertical_alignment": "flex-end",
-            "align_baseline": true,
-            "horizontal_alignment_flex_direction_column": "flex-start",
-            "vertical_alignment_flex_direction_column": "center",
-            "gap": 12,
+            "horizontal_alignment": "flex-start",
+            "vertical_alignment": "center",
+            "gap": 22,
             "width": "fill",
-            "custom_width": 100,
             "width_mobile": "fill",
-            "custom_width_mobile": 100,
             "height": "fit",
-            "custom_height": 100,
             "background_media": "none",
-            "video_position": "cover",
-            "background_image_position": "cover",
             "border": "none",
-            "border_width": 1,
-            "border_opacity": 100,
-            "border_radius": 0,
             "padding-block-start": 0,
             "padding-block-end": 0,
             "padding-inline-start": 0,
             "padding-inline-end": 0
           },
           "blocks": {
-            "product_list_text_YFtzcL": {
-              "type": "_product-list-text",
-              "name": "t:names.collection_title",
+            "about_button": {
+              "type": "button",
               "settings": {
-                "text": "<h3>{{ closest.collection.title }}</h3>",
-                "width": "fit-content",
-                "max_width": "normal",
-                "alignment": "left",
-                "type_preset": "h4",
-                "font": "var(--font-body--family)",
-                "font_size": "",
-                "line_height": "normal",
-                "letter_spacing": "normal",
-                "case": "none",
-                "wrap": "pretty",
-                "background": false,
-                "background_color": "#00000026",
-                "corner_radius": 0,
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {}
-            },
-            "product_list_button_MWeP9V": {
-              "type": "_product-list-button",
-              "name": "t:names.product_list_button",
-              "settings": {
-                "label": "View all",
+                "label": "Let’s talk →",
+                "link": "/pages/contact",
                 "open_in_new_tab": false,
-                "style_class": "button-unstyled",
+                "style_class": "button-custom",
+                "custom_button_background": "#F7F8F7",
+                "custom_button_text": "#071008",
+                "custom_button_border": "#F7F8F7",
                 "width": "fit-content",
-                "custom_width": 100,
-                "width_mobile": "fit-content",
-                "custom_width_mobile": 100
-              },
-              "blocks": {}
-            }
-          },
-          "block_order": [
-            "product_list_text_YFtzcL",
-            "product_list_button_MWeP9V"
-          ]
-        },
-        "static-product-card": {
-          "type": "_product-card",
-          "name": "t:names.product_card",
-          "static": true,
-          "settings": {
-            "product_card_gap": 4,
-            "border": "none",
-            "border_width": 1,
-            "border_opacity": 100,
-            "border_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {
-            "product_card_gallery_677WP3": {
-              "type": "_product-card-gallery",
-              "name": "t:names.product_card_media",
-              "settings": {
-                "image_ratio": "adapt",
-                "border": "none",
-                "border_width": 1,
-                "border_opacity": 100,
-                "border_radius": 0,
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
+                "width_mobile": "fit-content"
               },
               "blocks": {}
             },
-            "product_title_YXxMTj": {
-              "type": "product-title",
-              "name": "t:names.product_title",
+            "about_note": {
+              "type": "text",
               "settings": {
-                "width": "100%",
-                "max_width": "normal",
-                "alignment": "left",
-                "type_preset": "paragraph",
+                "text": "<p>Got a technical question?<br>I’m happy to chat.</p>",
+                "width": "fit-content",
+                "max_width": "none",
+                "type_preset": "custom",
                 "font": "var(--font-body--family)",
-                "font_size": "1rem",
+                "font_size": "0.75rem",
                 "line_height": "normal",
                 "letter_spacing": "normal",
                 "case": "none",
                 "wrap": "pretty",
-                "background": false,
-                "background_color": "#00000026",
-                "corner_radius": 0,
-                "padding-block-start": 4,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {}
-            },
-            "price_JQzVV4": {
-              "type": "price",
-              "name": "t:names.product_price",
-              "settings": {
-                "show_sale_price_first": true,
-                "show_installments": false,
-                "show_tax_info": false,
-                "type_preset": "h6",
-                "width": "100%",
-                "alignment": "left",
-                "font": "var(--font-body--family)",
-                "font_size": "1rem",
-                "line_height": "normal",
-                "letter_spacing": "normal",
-                "case": "none",
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
+                "text_color": "#B8BFBC"
               },
               "blocks": {}
             }
           },
-          "block_order": [
-            "product_card_gallery_677WP3",
-            "product_title_YXxMTj",
-            "price_JQzVV4"
-          ]
+          "block_order": ["about_button", "about_note"]
         }
       },
-      "name": "t:names.featured_collection",
+      "block_order": [
+        "about_eyebrow",
+        "about_heading",
+        "about_copy_one",
+        "about_copy_two",
+        "about_actions"
+      ],
       "settings": {
-        "collection": "all",
-        "layout_type": "grid",
-        "carousel_on_mobile": false,
-        "max_products": 8,
-        "columns": 4,
-        "mobile_columns": "2",
-        "mobile_card_size": "60cqw",
-        "columns_gap": 8,
-        "rows_gap": 24,
-        "icons_style": "arrow",
-        "icons_shape": "none",
-        "section_width": "page-width",
-        "horizontal_alignment": "flex-start",
-        "gap": 28,
-        "padding-block-start": 48,
-        "padding-block-end": 48
+        "image_alt": "Person overlooking a dramatic mountain landscape"
       }
+    },
+    "portfolio_cta": {
+      "type": "portfolio-cta",
+      "blocks": {
+        "cta_eyebrow": {
+          "type": "text",
+          "settings": {
+            "text": "<p>READY TO BUILD?</p>",
+            "width": "100%",
+            "max_width": "none",
+            "alignment": "left",
+            "type_preset": "custom",
+            "font": "var(--font-body--family)",
+            "font_size": "0.75rem",
+            "line_height": "normal",
+            "letter_spacing": "loose",
+            "case": "uppercase",
+            "wrap": "pretty",
+            "text_color": "#C3C9C6"
+          },
+          "blocks": {}
+        },
+        "cta_heading": {
+          "type": "text",
+          "settings": {
+            "text": "<h2>Got a Shopify problem?</h2>",
+            "width": "100%",
+            "max_width": "none",
+            "alignment": "left",
+            "type_preset": "h2",
+            "text_color": "#F7F8F7"
+          },
+          "blocks": {}
+        },
+        "cta_copy": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Tell me what you’re trying to build, fix or migrate.<br>I’ll tell you whether I can help.</p>",
+            "width": "100%",
+            "max_width": "normal",
+            "alignment": "left",
+            "type_preset": "paragraph",
+            "text_color": "#D1D6D3"
+          },
+          "blocks": {}
+        },
+        "cta_actions": {
+          "type": "group",
+          "settings": {
+            "content_direction": "row",
+            "vertical_on_mobile": false,
+            "horizontal_alignment": "flex-start",
+            "vertical_alignment": "center",
+            "gap": 14,
+            "width": "fill",
+            "width_mobile": "fill",
+            "height": "fit",
+            "background_media": "none",
+            "border": "none",
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "cta_primary_button": {
+              "type": "button",
+              "settings": {
+                "label": "Start a conversation →",
+                "link": "/pages/contact",
+                "open_in_new_tab": false,
+                "style_class": "button-custom",
+                "custom_button_background": "#A7FF62",
+                "custom_button_text": "#071008",
+                "custom_button_border": "#A7FF62",
+                "width": "fit-content",
+                "width_mobile": "fit-content"
+              },
+              "blocks": {}
+            },
+            "cta_secondary_button": {
+              "type": "button",
+              "settings": {
+                "label": "View services",
+                "link": "#services",
+                "open_in_new_tab": false,
+                "style_class": "button-custom",
+                "custom_button_background": "#00000000",
+                "custom_button_text": "#F7F8F7",
+                "custom_button_border": "#8A928E",
+                "width": "fit-content",
+                "width_mobile": "fit-content"
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": ["cta_primary_button", "cta_secondary_button"]
+        }
+      },
+      "block_order": [
+        "cta_eyebrow",
+        "cta_heading",
+        "cta_copy",
+        "cta_actions"
+      ],
+      "settings": {}
     }
   },
   "order": [
-    "hero_jVaWmY",
-    "product_list_fa6P9H"
+    "portfolio_hero",
+    "portfolio_trust_strip",
+    "portfolio_services",
+    "portfolio_projects",
+    "portfolio_tech_stack",
+    "portfolio_about",
+    "portfolio_cta"
   ]
 }

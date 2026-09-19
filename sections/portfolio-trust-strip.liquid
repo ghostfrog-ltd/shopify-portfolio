@@ -1,0 +1,20 @@
+{{ 'portfolio-trust-strip.css' | asset_url | stylesheet_tag }}
+
+<div class="portfolio-trust-strip">
+  <div class="portfolio-trust-strip__inner">
+    {% content_for 'blocks' %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Portfolio trust strip",
+  "class": "portfolio-section-wrapper",
+  "blocks": [
+    {
+      "type": "@theme"
+    }
+  ],
+  "presets": [{ "name": "Portfolio trust strip" }]
+}
+{% endschema %}

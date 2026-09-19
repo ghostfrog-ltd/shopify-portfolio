@@ -1,0 +1,37 @@
+.portfolio-tech-stack {
+  background: #070b0c;
+  color: #f7f8f7;
+}
+
+.portfolio-tech-stack__inner {
+  display: grid;
+  width: min(calc(100% - 80px), 1400px);
+  margin-inline: auto;
+  padding-block: clamp(56px, 7vw, 92px) clamp(72px, 8vw, 108px);
+  grid-template-columns: repeat(9, minmax(0, 1fr));
+  gap: 24px 14px;
+}
+
+.portfolio-tech-stack__inner > .portfolio-section-heading {
+  margin-bottom: 18px;
+  grid-column: 1 / -1;
+}
+
+.portfolio-tech-stack__inner .portfolio-section-heading__title {
+  font-size: clamp(2rem, 3vw, 2.85rem);
+}
+
+@media screen and (max-width: 999px) {
+  .portfolio-tech-stack__inner {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    row-gap: 34px;
+  }
+}
+
+@media screen and (max-width: 599px) {
+  .portfolio-tech-stack__inner {
+    width: min(calc(100% - 32px), 620px);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    row-gap: 32px;
+  }
+}

@@ -13,6 +13,8 @@
 
 {% render 'summary-icon-styles' %}
 
+{{ 'portfolio-menu-drawer.css' | asset_url | stylesheet_tag }}
+
 {% liquid
   assign block_settings = block.settings
   assign max_featured_items = 4
@@ -51,6 +53,7 @@
 
 <header-drawer
   class="header-drawer {{ class }}"
+  data-portfolio-enabled="{{ block_settings.portfolio_drawer_enabled }}"
   style="--menu-image-border-radius: {{ image_border_radius }}px; --resource-card-corner-radius: {{ image_border_radius }}px;"
 >
   <details
@@ -91,6 +94,9 @@
           {{- 'icon-close-menu.svg' | inline_asset_content -}}
         </span>
       </button>
+      {% if block_settings.portfolio_drawer_enabled %}
+        {% render 'portfolio-menu-drawer', settings: block_settings %}
+      {% else %}
       <nav
         class="menu-drawer__navigation"
         style="
@@ -775,6 +781,7 @@
             {% endif %}
           </ul>
         </div>
+      {% endif %}
       {% endif %}
     </div>
     <div

@@ -1,0 +1,64 @@
+{{ 'portfolio-cta.css' | asset_url | stylesheet_tag }}
+
+<div class="portfolio-cta" id="contact">
+  <div class="portfolio-cta__media" aria-hidden="true">
+    {% if section.settings.background_image != blank %}
+      {{
+        section.settings.background_image
+        | image_url: width: 2200
+        | image_tag:
+          widths: '750, 1100, 1500, 1900, 2200',
+          sizes: '100vw',
+          class: 'portfolio-cta__image',
+          loading: 'lazy',
+          alt: ''
+      }}
+    {% else %}
+      <img
+        src="{{ 'portfolio-cta-mountains.webp' | asset_url }}"
+        class="portfolio-cta__image"
+        width="1672"
+        height="941"
+        loading="lazy"
+        alt=""
+      >
+    {% endif %}
+  </div>
+  <div class="portfolio-cta__overlay" aria-hidden="true"></div>
+
+  <div class="portfolio-cta__inner">
+    <div class="portfolio-cta__content">
+      {% content_for 'blocks' %}
+    </div>
+
+    {% if section.settings.note != blank %}
+      <div class="portfolio-cta__note">{{ section.settings.note }}</div>
+    {% endif %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Portfolio CTA",
+  "class": "portfolio-section-wrapper",
+  "blocks": [
+    {
+      "type": "@theme"
+    }
+  ],
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Background image"
+    },
+    {
+      "type": "richtext",
+      "id": "note",
+      "label": "Side note",
+      "default": "<p>Good ideas<br>build great stores.</p>"
+    }
+  ],
+  "presets": [{ "name": "Portfolio CTA" }]
+}
+{% endschema %}

@@ -1,0 +1,106 @@
+{%- doc -%}
+  Renders the portfolio-specific contents for Horizon's accessible side drawer.
+
+  @param {object} settings - Header menu block settings.
+{%- enddoc -%}
+
+{% liquid
+  assign brand_name = settings.drawer_brand_name | default: 'ghostfrog'
+  assign brand_kicker = settings.drawer_brand_kicker | default: 'Shopify development'
+  assign eyebrow = settings.drawer_eyebrow | default: 'Independent Shopify developer'
+  assign pitch = settings.drawer_pitch | default: 'Shopify development without the agency overhead.'
+  assign cta_label = settings.drawer_cta_label | default: 'Start a conversation'
+  assign cta_link = settings.drawer_cta_link
+  if cta_link == blank
+    assign cta_link = routes.root_url | append: '#contact'
+  endif
+
+  assign email_link = settings.drawer_email_link | default: '/pages/contact'
+  assign github_link = settings.drawer_github_link | default: 'https://github.com/ghostfrog-ltd'
+  assign linkedin_link = settings.drawer_linkedin_link | default: 'https://www.linkedin.com'
+  assign copyright_name = settings.drawer_copyright_name | default: 'GhostFrog'
+  assign blog_url = blogs.news.url | default: '/blogs/news'
+%}
+
+<div class="portfolio-menu-drawer">
+  <div
+    class="portfolio-menu-drawer__brand menu-drawer__animated-element"
+    style="--menu-drawer-animation-index: 1;"
+  >
+    <a href="{{ routes.root_url }}" class="portfolio-menu-drawer__wordmark focus-inset">
+      <span aria-hidden="true">/</span>{{ brand_name | escape }}
+    </a>
+    <p>{{ brand_kicker | escape }}</p>
+  </div>
+
+  <nav class="portfolio-menu-drawer__navigation" aria-label="{{ 'accessibility.header_navigation_label' | t }}">
+    <ul role="list">
+      <li style="--menu-drawer-animation-index: 2;" class="menu-drawer__animated-element">
+        <a href="{{ routes.root_url }}"{% if request.page_type == 'index' %} class="is-active" aria-current="page"{% endif %}>
+          <span class="portfolio-menu-drawer__nav-icon">{% render 'portfolio-menu-icon', icon: 'home' %}</span>
+          <span>Home</span>
+        </a>
+      </li>
+      <li style="--menu-drawer-animation-index: 3;" class="menu-drawer__animated-element">
+        <a href="{{ routes.root_url }}#services">
+          <span class="portfolio-menu-drawer__nav-icon">{% render 'portfolio-menu-icon', icon: 'services' %}</span>
+          <span>Services</span>
+        </a>
+      </li>
+      <li style="--menu-drawer-animation-index: 4;" class="menu-drawer__animated-element">
+        <a href="{{ routes.root_url }}#projects">
+          <span class="portfolio-menu-drawer__nav-icon">{% render 'portfolio-menu-icon', icon: 'projects' %}</span>
+          <span>Demo Projects</span>
+        </a>
+      </li>
+      <li style="--menu-drawer-animation-index: 5;" class="menu-drawer__animated-element">
+        <a href="{{ blog_url }}"{% if request.page_type == 'blog' or request.page_type == 'article' %} class="is-active" aria-current="page"{% endif %}>
+          <span class="portfolio-menu-drawer__nav-icon">{% render 'portfolio-menu-icon', icon: 'blog' %}</span>
+          <span>Blog</span>
+        </a>
+      </li>
+      <li style="--menu-drawer-animation-index: 6;" class="menu-drawer__animated-element">
+        <a href="{{ routes.root_url }}#about">
+          <span class="portfolio-menu-drawer__nav-icon">{% render 'portfolio-menu-icon', icon: 'about' %}</span>
+          <span>About</span>
+        </a>
+      </li>
+      <li style="--menu-drawer-animation-index: 7;" class="menu-drawer__animated-element">
+        <a href="{{ routes.root_url }}#contact">
+          <span class="portfolio-menu-drawer__nav-icon">{% render 'portfolio-menu-icon', icon: 'contact' %}</span>
+          <span>Contact</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+
+  <div
+    class="portfolio-menu-drawer__cta menu-drawer__animated-element"
+    style="--menu-drawer-animation-index: 8;"
+  >
+    <p class="portfolio-menu-drawer__eyebrow">{{ eyebrow | escape }}</p>
+    <p class="portfolio-menu-drawer__pitch">{{ pitch | escape }}</p>
+    <a href="{{ cta_link }}" class="portfolio-menu-drawer__cta-link">
+      <span>{{ cta_label | escape }}</span>
+      <span aria-hidden="true">&rarr;</span>
+    </a>
+  </div>
+
+  <div
+    class="portfolio-menu-drawer__footer menu-drawer__animated-element"
+    style="--menu-drawer-animation-index: 9;"
+  >
+    <div class="portfolio-menu-drawer__socials" aria-label="Social links">
+      <a href="{{ email_link }}" aria-label="Contact {{ copyright_name | escape }}">
+        {% render 'portfolio-menu-icon', icon: 'contact' %}
+      </a>
+      <a href="{{ github_link }}" aria-label="GitHub" target="_blank" rel="noopener noreferrer">
+        {% render 'portfolio-menu-icon', icon: 'github' %}
+      </a>
+      <a href="{{ linkedin_link }}" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">
+        {% render 'portfolio-menu-icon', icon: 'linkedin' %}
+      </a>
+    </div>
+    <p>&copy; {{ 'now' | date: '%Y' }} {{ copyright_name | escape }}. All rights reserved.</p>
+  </div>
+</div>

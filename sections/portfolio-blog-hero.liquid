@@ -1,0 +1,176 @@
+{{ 'portfolio-blog-hero.css' | asset_url | stylesheet_tag }}
+
+<section
+  class="portfolio-blog-hero"
+  aria-labelledby="PortfolioBlogHero-{{ section.id }}"
+>
+  <div class="portfolio-blog-hero__media" aria-hidden="true">
+    {% if section.settings.background_image != blank %}
+      {{
+        section.settings.background_image
+        | image_url: width: 2400
+        | image_tag:
+          widths: '750, 1100, 1500, 1900, 2400',
+          sizes: '100vw',
+          class: 'portfolio-blog-hero__image',
+          loading: 'eager',
+          fetchpriority: 'high',
+          alt: ''
+      }}
+    {% else %}
+      <img
+        src="{{ 'portfolio-blog-hero-mountains.webp' | asset_url }}"
+        class="portfolio-blog-hero__image"
+        width="1672"
+        height="941"
+        loading="eager"
+        fetchpriority="high"
+        alt=""
+      >
+    {% endif %}
+  </div>
+  <div class="portfolio-blog-hero__overlay" aria-hidden="true"></div>
+
+  <div class="portfolio-blog-hero__inner">
+    <div class="portfolio-blog-hero__content">
+      {% if section.settings.eyebrow != blank %}
+        <p class="portfolio-blog-hero__eyebrow">{{ section.settings.eyebrow | escape }}</p>
+      {% endif %}
+
+      {% if section.settings.heading != blank %}
+        <h1 id="PortfolioBlogHero-{{ section.id }}" class="portfolio-blog-hero__heading">
+          {{ section.settings.heading }}
+        </h1>
+      {% endif %}
+
+      {% if section.settings.description != blank %}
+        <div class="portfolio-blog-hero__description rte">{{ section.settings.description }}</div>
+      {% endif %}
+
+      {% if section.settings.show_filters %}
+        <nav class="portfolio-blog-hero__filters" aria-label="{{ section.settings.filter_label | escape }}">
+          <a
+            class="portfolio-blog-hero__filter{% if current_tags == blank %} is-active{% endif %}"
+            href="{{ blog.url }}"
+            {% if current_tags == blank %}aria-current="page"{% endif %}
+          >
+            {{ section.settings.all_posts_label | escape }}
+          </a>
+
+          {% for block in section.blocks %}
+            {% if block.type == 'filter' and block.settings.tag != blank %}
+              {% assign filter_is_active = false %}
+              {% if current_tags contains block.settings.tag %}
+                {% assign filter_is_active = true %}
+              {% endif %}
+              <a
+                class="portfolio-blog-hero__filter{% if filter_is_active %} is-active{% endif %}"
+                href="{{ blog.url }}/tagged/{{ block.settings.tag | handle }}"
+                {% if filter_is_active %}aria-current="page"{% endif %}
+                {{ block.shopify_attributes }}
+              >
+                {{ block.settings.label | default: block.settings.tag | escape }}
+              </a>
+            {% endif %}
+          {% endfor %}
+        </nav>
+      {% endif %}
+    </div>
+
+    {% if section.settings.note != blank %}
+      <div class="portfolio-blog-hero__note" aria-hidden="true">{{ section.settings.note | escape }}</div>
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Portfolio blog hero",
+  "class": "portfolio-blog-hero-section",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Background image"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "INSIGHTS / BLOG"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Thoughts on Shopify development, migrations and ecommerce engineering."
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "Description",
+      "default": "<p>Practical guides, technical deep dives and real-world lessons from building high-performance Shopify stores for ambitious brands.</p>"
+    },
+    {
+      "type": "text",
+      "id": "note",
+      "label": "Side note",
+      "default": "Better stores. Brighter horizons."
+    },
+    {
+      "type": "header",
+      "content": "Filters"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_filters",
+      "label": "Show article filters",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "filter_label",
+      "label": "Accessible filter label",
+      "default": "Filter blog posts"
+    },
+    {
+      "type": "text",
+      "id": "all_posts_label",
+      "label": "All posts label",
+      "default": "All posts"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "filter",
+      "name": "Article filter",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label",
+          "default": "Development"
+        },
+        {
+          "type": "text",
+          "id": "tag",
+          "label": "Article tag",
+          "default": "Development"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Portfolio blog hero",
+      "blocks": [
+        { "type": "filter", "settings": { "label": "Development", "tag": "Development" } },
+        { "type": "filter", "settings": { "label": "Integrations", "tag": "Integrations" } },
+        { "type": "filter", "settings": { "label": "Migrations", "tag": "Migrations" } },
+        { "type": "filter", "settings": { "label": "Performance", "tag": "Performance" } },
+        { "type": "filter", "settings": { "label": "Strategy", "tag": "Strategy" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

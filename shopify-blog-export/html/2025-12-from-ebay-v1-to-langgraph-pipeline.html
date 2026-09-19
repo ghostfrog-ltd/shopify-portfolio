@@ -1,0 +1,116 @@
+<h2>eBay V1 Did Its Job --- and That's Exactly Why It Had to Go</h2>
+<p>The original eBay implementation (V1) was successful by the only metric
+that matters early on:</p>
+<blockquote>
+<p><strong>It proved the idea was viable.</strong></p>
+</blockquote>
+<p>Listings could be fetched.\
+Basic logic worked.\
+The data had value.</p>
+<p>But V1 was also what most early systems are: - tightly coupled scripts -
+implicit control flow - scheduling logic mixed with business logic -
+hard to visualise - harder to extend safely</p>
+<p>That's fine for validation.\
+It's not fine for building something that lasts.</p>
+<p>So instead of bolting more logic onto V1, I made a clean decision:</p>
+<p><strong>stop iterating --- start rebuilding properly.</strong></p>
+<hr>
+<h2>The Architectural Shift: Scripts → Pipelines</h2>
+<p>The key change in V2 is not "more AI".</p>
+<p>It's <strong>orchestration</strong>.</p>
+<p>Rather than one-off scripts, the system is now organised around
+<strong>pipelines</strong>: - named - inspectable - deterministic -
+single-responsibility</p>
+<p>Each pipeline: - runs once - mutates explicit state - exits cleanly -
+can be called by anything (CLI, cron, another pipeline)</p>
+<p>This is the foundation required before adding reasoning, agents, or
+automation.</p>
+<hr>
+<h2>Why LangGraph</h2>
+<p>LangGraph isn't being used here for hype or novelty.</p>
+<p>It solves a very specific problem:</p>
+<blockquote>
+<p>How do you express <em>controlled iteration, branching, and termination</em>
+in a way that remains debuggable?</p>
+</blockquote>
+<p>LangGraph gives me: - explicit nodes - explicit edges - visible stop
+conditions - a state object I can reason about - visualisation of the
+flow when needed</p>
+<p>Most importantly:\
+<strong>the control flow is no longer implicit in a loop.</strong></p>
+<hr>
+<h2>The First V2 Pipeline: Retrieve</h2>
+<p>The first rebuilt pipeline is intentionally boring:</p>
+<p><strong>Retrieve listings from multiple sources, safely.</strong></p>
+<p>What it does: 1. Iterates through a defined list of adapters (sources)
+2. Checks whether each source is allowed to run (time-gated) 3.
+Either: - skips it (with a reason and next allowed time), or - runs it
+and records the scrape 4. Stops once all sources are processed</p>
+<p>What it does <em>not</em> do: - no retries - no AI - no ranking - no
+notifications</p>
+<p>That restraint is deliberate.</p>
+<hr>
+<h2>Gating Lives Inside the Pipeline</h2>
+<p>One of the most important design decisions:</p>
+<p><strong>Scheduling is external.\
+Decision-making is internal.</strong></p>
+<p>Each adapter checks: - when it last ran - how frequently it is allowed
+to run - whether it is enabled</p>
+<p>Because this logic lives <em>inside</em> the pipeline: - the pipeline can be
+triggered frequently - APIs are never hammered - "no work to do" is a
+valid, clean outcome</p>
+<p>This enables a simple heartbeat to drive the system.</p>
+<hr>
+<h2>How the Pipeline Runs</h2>
+<p>The pipeline does not run by itself.</p>
+<p>It is invoked.</p>
+<p>Right now, that invocation is via CLI:</p>
+<pre><code class="language-bash">python3 -m pipelines.listing.retrieve
+</code></pre>
+<p>Internally, that simply calls:</p>
+<pre><code class="language-python">run(ebay_token=...)
+</code></pre>
+<p>Tomorrow, that caller could be: - a cron job - a long-running heartbeat
+process - another pipeline - an API endpoint</p>
+<p>The pipeline doesn't care --- and that's the point.</p>
+<hr>
+<h2>The Heartbeat Model</h2>
+<p>The correct mental model for V2 is:</p>
+<blockquote>
+<p>"Every N minutes, wake up and run the pipeline once."</p>
+</blockquote>
+<p>The heartbeat is dumb.\
+The pipeline is smart.</p>
+<p>If everything is gated, nothing happens.\
+If one source is ready, only that work runs.</p>
+<p>This is how reliable ingestion systems are built in practice.</p>
+<hr>
+<h2>This Is Still Not an Agent (On Purpose)</h2>
+<p>At this stage: - there is no planning - no autonomous reasoning - no LLM
+in the loop</p>
+<p>That comes later.</p>
+<p>Right now, the priority is <strong>structural correctness</strong>: - predictable
+execution - inspectable state - clean termination - safe iteration</p>
+<p>Agents built on top of shaky ingestion layers fail in uninteresting
+ways.</p>
+<p>This pipeline exists to make sure that doesn't happen.</p>
+<hr>
+<h2>What This Enables Next</h2>
+<p>With orchestration in place, the roadmap becomes straightforward:</p>
+<ol>
+<li><strong>Normalisation &amp; storage pipeline</strong></li>
+<li><strong>Assessment pipeline</strong> (LLM-assisted, confidence-gated)</li>
+<li><strong>Ranking &amp; filtering</strong></li>
+<li><strong>Notification / alerting</strong></li>
+<li><strong>Chained orchestration via a single heartbeat</strong></li>
+</ol>
+<p>Each pipeline will do one job, and do it well.</p>
+<hr>
+<h2>Closing Thought</h2>
+<p>eBay V1 wasn't a mistake.</p>
+<p>It was a prototype.</p>
+<p>V2 is about taking what worked, discarding what didn't, and rebuilding
+the system on foundations that can support: - automation - AI
+decision-making - and eventually, real users</p>
+<p>LangGraph isn't the product.</p>
+<p>It's the <strong>orchestrator</strong> that makes the product possible.</p>

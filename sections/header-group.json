@@ -17,13 +17,14 @@
         "announcement_BxgCk9": {
           "type": "_announcement",
           "settings": {
-            "text": "Welcome to our store",
-            "link": "",
+            "text": "Available for Shopify freelance & agency overflow work →",
+            "link": "#contact",
             "font": "var(--font-subheading--family)",
             "font_size": "0.75rem",
             "weight": "",
             "letter_spacing": "normal",
-            "case": "none"
+            "case": "none",
+            "text_color": "#FFFFFF"
           },
           "blocks": {}
         }
@@ -35,10 +36,10 @@
       "settings": {
         "speed": 5,
         "section_width": "page-width",
-        "divider_width": 1,
+        "background_color": "#070B0C",
+        "divider_width": 0,
         "padding-block-start": 15,
-        "padding-block-end": 15,
-        "divider_color": "{{ settings.color_palette.color3 }}"
+        "padding-block-end": 15
       }
     },
     "header_section": {
@@ -59,6 +60,17 @@
           "static": true,
           "settings": {
             "menu": "main-menu",
+            "portfolio_drawer_enabled": true,
+            "drawer_brand_name": "ghostfrog",
+            "drawer_brand_kicker": "Shopify development",
+            "drawer_eyebrow": "Independent Shopify developer",
+            "drawer_pitch": "Shopify development without the agency overhead.",
+            "drawer_cta_label": "Start a conversation",
+            "drawer_cta_link": "/#contact",
+            "drawer_email_link": "/pages/contact",
+            "drawer_github_link": "https://github.com/ghostfrog-ltd",
+            "drawer_linkedin_link": "https://www.linkedin.com",
+            "drawer_copyright_name": "GhostFrog",
             "type_font_primary_size": "0.875rem",
             "menu_font_style": "inverse",
             "type_font_primary_link": "body",

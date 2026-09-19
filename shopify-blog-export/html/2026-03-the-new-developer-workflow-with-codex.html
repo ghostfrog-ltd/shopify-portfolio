@@ -1,0 +1,256 @@
+<p>The developer workflow has changed fast.</p>
+<p>A year ago, most of us were still thinking in the old loop:</p>
+<ol>
+<li>open ticket</li>
+<li>read code</li>
+<li>write code manually</li>
+<li>test</li>
+<li>open PR</li>
+</ol>
+<p>That still exists.</p>
+<p>But now there is a new layer in the middle:</p>
+<p>the developer is increasingly managing an LLM-powered execution loop.</p>
+<p>That means tools like Codex are not replacing developers. They are changing what good developers actually spend their time doing.</p>
+<p>The highest leverage work is no longer just typing faster.</p>
+<p>It is:</p>
+<ul>
+<li>defining the problem clearly</li>
+<li>giving the right context</li>
+<li>constraining the scope</li>
+<li>asking for the right change</li>
+<li>reviewing the output properly</li>
+<li>turning successful fixes into repeatable workflow</li>
+</ul>
+<p>In other words: the job is becoming more architectural, more editorial, and more operational.</p>
+<h2>The new workflow starts before any code is written</h2>
+<p>The biggest mistake people make with coding LLMs is treating them like autocomplete with opinions.</p>
+<p>That is not where the real gains come from.</p>
+<p>The new workflow starts with issue design.</p>
+<p>A strong developer now writes an issue in a way that an LLM, an engineer, or a future teammate could all act on with minimal ambiguity.</p>
+<p>A weak issue says:</p>
+<blockquote>
+<p>Fix the broken checkout bug.</p>
+</blockquote>
+<p>A strong issue says:</p>
+<blockquote>
+<p>On mobile, the checkout submit button remains disabled after address autofill. Reproduce on Safari iOS width 390px. Expected behaviour: button enables once all required fields are populated. Suspected area: checkout form validation state and autofill event handling. Add a regression test.</p>
+</blockquote>
+<p>That difference matters because LLM tools perform much better when the task has:</p>
+<ul>
+<li>a clear outcome</li>
+<li>a known reproduction path</li>
+<li>a suspected area of the codebase</li>
+<li>constraints</li>
+<li>a definition of done</li>
+</ul>
+<p>This is why issue writing is becoming a first-class engineering skill again.</p>
+<p>Not because project management got fashionable, but because better task definition now directly improves implementation quality.</p>
+<h2>What developers do now, start to finish</h2>
+<p>Here is the practical end-to-end workflow that is becoming normal for AI-assisted engineering.</p>
+<h2>1. Reproduce and frame the problem</h2>
+<p>Before handing anything to a tool, the developer works out:</p>
+<ul>
+<li>what is actually broken</li>
+<li>how to reproduce it</li>
+<li>whether it is a bug, missing feature, or unclear requirement</li>
+<li>what "fixed" really means</li>
+</ul>
+<p>This part is still human-heavy.</p>
+<p>If you give an LLM a vague complaint, you get a vague patch.</p>
+<p>If you give it a properly framed engineering problem, you often get a useful first pass much faster than doing everything manually.</p>
+<h2>2. Write the issue for machine execution, not just human reading</h2>
+<p>This is one of the biggest shifts.</p>
+<p>An issue used to be mostly a communication tool between people.</p>
+<p>Now it is often also an execution brief for a coding agent.</p>
+<p>A good LLM-ready issue usually includes:</p>
+<ul>
+<li>the bug or feature in one sentence</li>
+<li>why it matters</li>
+<li>exact steps to reproduce</li>
+<li>the expected behaviour</li>
+<li>any logs, screenshots, or failing tests</li>
+<li>the files or subsystems likely involved</li>
+<li>constraints like "do not change API shape" or "preserve existing UI"</li>
+<li>verification steps</li>
+</ul>
+<p>That issue is no longer admin overhead.</p>
+<p>It is prompt engineering attached to the real codebase.</p>
+<h2>3. Let the tool explore the repository</h2>
+<p>This is where tools like Codex change the speed of the workflow.</p>
+<p>Instead of you manually opening twenty files first, the agent can:</p>
+<ul>
+<li>inspect the repo structure</li>
+<li>find relevant templates, routes, handlers, or components</li>
+<li>read existing tests</li>
+<li>identify similar patterns already used elsewhere</li>
+<li>propose where the change should live</li>
+</ul>
+<p>That does not remove the need for engineering judgement.</p>
+<p>It just compresses the discovery phase.</p>
+<p>The developer's role becomes:</p>
+<ul>
+<li>set direction</li>
+<li>validate assumptions</li>
+<li>stop the tool drifting into the wrong area</li>
+</ul>
+<p>This feels much closer to directing a capable junior-to-mid engineer than using a code generator.</p>
+<h2>4. Ask for a scoped implementation</h2>
+<p>The best results usually come from giving the tool a bounded task.</p>
+<p>For example:</p>
+<ul>
+<li>fix this bug and add one regression test</li>
+<li>create the blog post file but do not redesign the template</li>
+<li>refactor this parser without changing output shape</li>
+<li>trace where this value becomes null and patch the narrowest layer possible</li>
+</ul>
+<p>Scope matters because LLMs are excellent at local reasoning and much weaker when a task quietly sprawls across architecture, product, and business logic all at once.</p>
+<p>So the modern developer learns to break work into well-contained units.</p>
+<p>That is not a limitation.</p>
+<p>It is good engineering anyway.</p>
+<h2>5. Review the diff like a real code reviewer</h2>
+<p>This is where people get lazy, and where bugs get shipped.</p>
+<p>You cannot outsource judgement.</p>
+<p>Even if Codex writes 80% of the patch, the developer still needs to review:</p>
+<ul>
+<li>did it actually solve the reported problem</li>
+<li>did it change anything unrelated</li>
+<li>did it misunderstand the architecture</li>
+<li>did it add brittle logic</li>
+<li>did it duplicate existing helpers</li>
+<li>did it skip tests</li>
+<li>did it introduce hidden regressions</li>
+</ul>
+<p>The review stage matters even more with LLM-generated code because the output is often plausible-looking.</p>
+<p>Plausible-looking is not the same as correct.</p>
+<p>That means code review is becoming more important, not less.</p>
+<h2>6. Run the tests, then test the behaviour</h2>
+<p>Another mistake is assuming green tests mean the change is done.</p>
+<p>In AI-assisted workflows, you usually want both:</p>
+<ol>
+<li>automated verification</li>
+<li>behaviour verification</li>
+</ol>
+<p>The tool might update a unit test and still miss the user-facing bug.</p>
+<p>Or it might patch the UI while forgetting an edge case in the backend.</p>
+<p>The best workflow is:</p>
+<ol>
+<li>run the relevant tests</li>
+<li>reproduce the original issue again</li>
+<li>confirm the fix in the real interface or endpoint</li>
+<li>look for nearby regressions</li>
+</ol>
+<p>The human stays responsible for reality.</p>
+<h2>7. Tighten the issue if the first attempt is wrong</h2>
+<p>This is another big workflow change.</p>
+<p>When the first patch misses, the answer is often not "LLMs are useless".</p>
+<p>Usually the answer is:</p>
+<ul>
+<li>the issue was underspecified</li>
+<li>the context was incomplete</li>
+<li>the reproduction path was weak</li>
+<li>the scope was too broad</li>
+<li>the verification criteria were unclear</li>
+</ul>
+<p>So developers increasingly work in a loop:</p>
+<p>issue -&gt; attempt -&gt; review -&gt; sharper issue -&gt; better attempt</p>
+<p>That is a very different muscle from pure hand-coding.</p>
+<p>It rewards clarity of thought.</p>
+<h2>8. Merge the fix and capture the pattern</h2>
+<p>Once the task works, the smart move is not just to merge and forget it.</p>
+<p>The new workflow also includes harvesting reusable patterns:</p>
+<ul>
+<li>a stronger issue template</li>
+<li>a better prompt format</li>
+<li>a new regression test pattern</li>
+<li>a checklist for future bugs in the same area</li>
+<li>a team convention for how agents should be used</li>
+</ul>
+<p>This is how teams compound gains from LLM tooling.</p>
+<p>Not by treating every task as magic, but by building repeatable operating rules.</p>
+<h2>What a good LLM issue looks like</h2>
+<p>If I were writing an issue specifically for an LLM-enabled workflow, I would want it to look something like this:</p>
+<p>Title:</p>
+<p>Improve newsletter signup validation on mobile Safari</p>
+<p>Problem:</p>
+<p>Users can enter a valid email, but the submit button does not enable after iOS autofill.</p>
+<p>Impact:</p>
+<p>This blocks conversions on mobile and creates a false validation failure.</p>
+<p>Steps to reproduce:</p>
+<ol>
+<li>Open signup page on Safari iPhone width.</li>
+<li>Use email autofill.</li>
+<li>Observe submit button remains disabled.</li>
+</ol>
+<p>Expected behaviour:</p>
+<p>The button should enable as soon as the email field contains a valid value.</p>
+<p>Likely area:</p>
+<ul>
+<li>form validation hook</li>
+<li>input change handling</li>
+<li>autofill event support</li>
+</ul>
+<p>Constraints:</p>
+<ul>
+<li>do not redesign the component</li>
+<li>keep current API contracts</li>
+<li>add a regression test if test coverage exists in this area</li>
+</ul>
+<p>Verification:</p>
+<ul>
+<li>existing tests pass</li>
+<li>new regression test passes</li>
+<li>manual check confirms autofill enables submit button</li>
+</ul>
+<p>That is not overkill anymore.</p>
+<p>That is the input format for high-quality AI-assisted engineering.</p>
+<h2>What tools like Codex are really doing</h2>
+<p>The hype version says:</p>
+<p>"the AI writes the code now"</p>
+<p>The real version is more interesting.</p>
+<p>Tools like Codex help developers:</p>
+<ul>
+<li>inspect unfamiliar codebases faster</li>
+<li>move from issue to first patch faster</li>
+<li>draft tests and implementation together</li>
+<li>explain diffs and assumptions</li>
+<li>reduce the boring mechanical parts of coding</li>
+</ul>
+<p>But the human still provides:</p>
+<ul>
+<li>product judgement</li>
+<li>architecture judgement</li>
+<li>risk judgement</li>
+<li>prioritisation</li>
+<li>acceptance criteria</li>
+</ul>
+<p>So the workflow is not "developer versus AI".</p>
+<p>It is:</p>
+<p>developer as operator, reviewer, and system designer</p>
+<p>That is a meaningful shift in the craft.</p>
+<h2>The developers who benefit most</h2>
+<p>The people getting the most value out of this new workflow are usually not the ones writing the fanciest prompts.</p>
+<p>They are the ones who:</p>
+<ul>
+<li>understand the codebase</li>
+<li>can isolate a bug properly</li>
+<li>know how to constrain scope</li>
+<li>can recognise bad abstractions quickly</li>
+<li>insist on verification</li>
+</ul>
+<p>In short: strong engineers get amplified the most.</p>
+<p>That is why I do not think these tools remove the need for real engineering.</p>
+<p>I think they raise the premium on it.</p>
+<h2>Final thought</h2>
+<p>The old workflow centred on writing every line yourself.</p>
+<p>The new workflow centres on guiding a system from problem definition to tested outcome.</p>
+<p>That includes:</p>
+<ul>
+<li>writing better issues</li>
+<li>giving better context</li>
+<li>steering tools like Codex</li>
+<li>reviewing diffs carefully</li>
+<li>verifying behaviour in reality</li>
+<li>turning wins into repeatable team process</li>
+</ul>
+<p>That is the whole start-to-finish shift.</p>
+<p>And honestly, it is one of the most interesting changes software development has had in years.</p>

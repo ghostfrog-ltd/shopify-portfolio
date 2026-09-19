@@ -1,0 +1,160 @@
+<div class="portfolio-section-heading" {{ block.shopify_attributes }}>
+  <div class="portfolio-section-heading__title-group">
+    {% if block.settings.eyebrow != blank %}
+      <p class="portfolio-section-heading__eyebrow">{{ block.settings.eyebrow | escape }}</p>
+    {% endif %}
+
+    {% if block.settings.heading != blank %}
+      <h2 class="portfolio-section-heading__title">{{ block.settings.heading }}</h2>
+    {% endif %}
+  </div>
+
+  {% if block.settings.description != blank or block.settings.link_label != blank %}
+    <div class="portfolio-section-heading__aside">
+      {% if block.settings.description != blank %}
+        <div class="portfolio-section-heading__description rte">{{ block.settings.description }}</div>
+      {% endif %}
+
+      {% if block.settings.link_label != blank %}
+        <a
+          class="portfolio-section-heading__link"
+          {% if block.settings.link != blank %}
+            href="{{ block.settings.link }}"
+          {% else %}
+            role="link"
+            aria-disabled="true"
+          {% endif %}
+        >
+          {{ block.settings.link_label | escape }}
+          <span aria-hidden="true">→</span>
+        </a>
+      {% endif %}
+    </div>
+  {% endif %}
+</div>
+
+{% stylesheet %}
+  .portfolio-section-heading {
+    display: grid;
+    width: 100%;
+    grid-template-columns: minmax(0, 1fr) minmax(280px, 420px);
+    gap: clamp(32px, 7vw, 108px);
+    align-items: end;
+  }
+
+  .portfolio-section-heading__eyebrow {
+    margin: 0 0 14px;
+    color: #aeb5b2;
+    font-size: 0.7rem;
+    font-weight: 650;
+    letter-spacing: 0.28em;
+    line-height: 1;
+    text-transform: uppercase;
+  }
+
+  .portfolio-section-heading__title {
+    max-width: 18ch;
+    margin: 0;
+    color: #f7f8f7;
+    font-size: clamp(2rem, 3.25vw, 3.25rem);
+    font-weight: 700;
+    letter-spacing: -0.04em;
+    line-height: 1.02;
+    text-wrap: balance;
+  }
+
+  .portfolio-section-heading__aside {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: flex-start;
+  }
+
+  .portfolio-section-heading__description,
+  .portfolio-section-heading__description p {
+    margin: 0;
+    color: #b9bfbc;
+    font-size: 0.94rem;
+    line-height: 1.55;
+  }
+
+  .portfolio-section-heading__link {
+    display: inline-flex;
+    gap: 8px;
+    align-items: center;
+    color: #a7ff62;
+    font-size: 0.86rem;
+    font-weight: 650;
+    text-decoration: none;
+  }
+
+  .portfolio-section-heading__link span {
+    transition: transform 180ms ease;
+  }
+
+  .portfolio-section-heading__link:hover span {
+    transform: translateX(4px);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .portfolio-section-heading__link span {
+      transition: none;
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+    .portfolio-section-heading {
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+
+    .portfolio-section-heading__title {
+      max-width: 14ch;
+      font-size: clamp(2rem, 10vw, 2.75rem);
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Portfolio section header",
+  "tag": null,
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "SERVICES"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading",
+      "default": "What I can help you with"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "Description",
+      "default": "<p>From custom themes to complex integrations, I provide end-to-end Shopify development tailored to your goals.</p>"
+    },
+    {
+      "type": "text",
+      "id": "link_label",
+      "label": "Link label",
+      "default": "View all services"
+    },
+    {
+      "type": "url",
+      "id": "link",
+      "label": "Link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Portfolio section header",
+      "category": "Portfolio"
+    }
+  ]
+}
+{% endschema %}

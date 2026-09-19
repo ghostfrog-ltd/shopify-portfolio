@@ -1,0 +1,125 @@
+.portfolio-cta {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  min-height: 360px;
+  color: #f7f8f7;
+}
+
+.portfolio-cta__media,
+.portfolio-cta__overlay {
+  position: absolute;
+  inset: 0;
+}
+
+.portfolio-cta__media {
+  z-index: -2;
+}
+
+.portfolio-cta__image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.portfolio-cta__overlay {
+  z-index: -1;
+  background:
+    linear-gradient(90deg, rgb(5 12 11 / 96%) 0%, rgb(5 12 11 / 84%) 48%, rgb(5 12 11 / 45%) 100%),
+    linear-gradient(180deg, rgb(7 11 12 / 10%), rgb(7 11 12 / 58%));
+}
+
+.portfolio-cta__inner {
+  display: grid;
+  width: min(calc(100% - 80px), 1400px);
+  min-height: 360px;
+  margin-inline: auto;
+  padding-block: 64px;
+  grid-template-columns: minmax(0, 1fr) minmax(260px, 0.72fr);
+  gap: 56px;
+  align-items: center;
+}
+
+.portfolio-cta__content {
+  display: flex;
+  max-width: 640px;
+  flex-direction: column;
+  gap: 17px;
+}
+
+.portfolio-cta__content .h2 {
+  letter-spacing: -0.04em;
+}
+
+.portfolio-cta__content .h2 > * {
+  line-height: 1.02;
+}
+
+.portfolio-cta__content .paragraph {
+  color: #d1d6d3;
+}
+
+.portfolio-cta__content .group-block {
+  margin-top: 8px;
+}
+
+.portfolio-cta__content :is(.button, .button-secondary, .button-custom) {
+  min-height: 48px;
+  padding-inline: 24px;
+  border-radius: 999px;
+  font-weight: 700;
+}
+
+.portfolio-cta__note {
+  position: relative;
+  width: fit-content;
+  margin-inline: auto;
+  color: #f7f8f7;
+  font-family: var(--font-accent--family), cursive;
+  font-size: clamp(1.2rem, 2vw, 1.8rem);
+  font-style: italic;
+  font-weight: 600;
+  line-height: 1.25;
+  transform: rotate(-5deg);
+}
+
+.portfolio-cta__note p {
+  margin: 0;
+}
+
+.portfolio-cta__note::after {
+  display: block;
+  width: 76px;
+  height: 44px;
+  margin: 12px 0 0 -10px;
+  border-bottom: 2px solid currentColor;
+  border-left: 2px solid currentColor;
+  border-radius: 0 0 0 60px;
+  content: '';
+  transform: rotate(-18deg);
+}
+
+@media screen and (max-width: 749px) {
+  .portfolio-cta,
+  .portfolio-cta__inner {
+    min-height: 520px;
+  }
+
+  .portfolio-cta__overlay {
+    background: linear-gradient(180deg, rgb(5 12 11 / 96%) 0%, rgb(5 12 11 / 78%) 68%, rgb(5 12 11 / 60%) 100%);
+  }
+
+  .portfolio-cta__inner {
+    width: min(calc(100% - 32px), 620px);
+    padding-block: 64px;
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+
+  .portfolio-cta__note {
+    margin-inline: 0 auto;
+    font-size: 1.25rem;
+  }
+}

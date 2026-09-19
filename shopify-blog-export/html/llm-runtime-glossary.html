@@ -1,0 +1,255 @@
+<p>This glossary exists for one reason:<br>
+<strong>most AI resources skip the boring but critical layer.</strong></p>
+<p>These are the terms you keep bumping into once you stop doing demos and start shipping systems.</p>
+<p>Read this slowly. Revisit it often.</p>
+<hr>
+<h2>API &amp; INTERFACE LAYER</h2>
+<h3><code>/api/generate</code></h3>
+<p>A <strong>single-prompt → single-output</strong> endpoint.</p>
+<ul>
+<li>No roles (<code>system</code>, <code>user</code>, <code>assistant</code>)</li>
+<li>Lower overhead</li>
+<li>Easier to reason about</li>
+<li>Ideal for:</li>
+<li>classification</li>
+<li>scoring</li>
+<li>extraction</li>
+<li>routing decisions</li>
+</ul>
+<p><strong>Mental model:</strong>  </p>
+<blockquote>
+<p>Call it like a function, treat output as <em>untrusted text</em>.</p>
+</blockquote>
+<hr>
+<h3><code>/api/chat</code></h3>
+<p>A <strong>conversation-oriented</strong> endpoint.</p>
+<ul>
+<li>Accepts structured messages with roles</li>
+<li>Maintains conversational context</li>
+<li>More tokens, more cost, more variance</li>
+</ul>
+<p><strong>Use when:</strong>
+- You need memory of prior turns
+- You want assistant-style responses
+- You are building a UI chat experience</p>
+<hr>
+<h3>Streaming</h3>
+<p>Receiving tokens as they are generated.</p>
+<ul>
+<li>Faster <em>perceived</em> response</li>
+<li>More complex handling</li>
+<li>Harder to retry cleanly</li>
+</ul>
+<p><strong>Rule of thumb:</strong>  </p>
+<blockquote>
+<p>Stream for UX, not for agents.</p>
+</blockquote>
+<hr>
+<h2>CONTEXT &amp; TOKENS</h2>
+<h3>Token</h3>
+<p>A chunk of text the model processes (not words).</p>
+<ul>
+<li>“hello” ≠ 1 token</li>
+<li>punctuation, spaces, emojis all count</li>
+</ul>
+<hr>
+<h3>Context Window (<code>num_ctx</code>)</h3>
+<p>Maximum number of tokens the model can <em>see at once</em>.</p>
+<p>Includes:
+- prompt
+- system instructions
+- conversation history
+- retrieved documents (RAG)
+- tool outputs</p>
+<p><strong>Too small:</strong> model forgets things<br>
+<strong>Too large:</strong> slow, RAM-heavy, can freeze local machines</p>
+<hr>
+<h3>Truncation</h3>
+<p>When older tokens are silently dropped to fit the context window.</p>
+<p><strong>Danger:</strong>  </p>
+<blockquote>
+<p>The model doesn’t tell you what it forgot.</p>
+</blockquote>
+<hr>
+<h2>GENERATION CONTROLS (THE KNOBS)</h2>
+<h3><code>num_predict</code></h3>
+<p>Maximum number of tokens the model is allowed to generate.</p>
+<ul>
+<li>Hard stop</li>
+<li>Prevents runaway responses</li>
+<li>Protects latency and memory</li>
+</ul>
+<hr>
+<h3>Temperature</h3>
+<p>Controls randomness.</p>
+<ul>
+<li><code>0.0 – 0.2</code> → deterministic, boring, safe</li>
+<li><code>0.3 – 0.6</code> → balanced</li>
+<li><code>0.7+</code> → creative, risky, vibes</li>
+</ul>
+<p><strong>Never use high temperature for decisions.</strong></p>
+<hr>
+<h3><code>top_p</code> (Nucleus Sampling)</h3>
+<p>Probability cutoff for token selection.</p>
+<ul>
+<li>Lower = safer, more focused</li>
+<li>Higher = more diverse, more nonsense</li>
+</ul>
+<p>Often used <strong>instead of</strong> temperature, not with it.</p>
+<hr>
+<h3><code>top_k</code></h3>
+<p>Limits sampling to the top <em>K</em> most likely tokens.</p>
+<ul>
+<li>Smaller = stricter</li>
+<li>Larger = looser</li>
+</ul>
+<p>Less commonly used now than <code>top_p</code>.</p>
+<hr>
+<h3>Repeat Penalty</h3>
+<p>Discourages repeating the same tokens.</p>
+<ul>
+<li>Prevents loops</li>
+<li>Prevents “As an AI language model…” spam</li>
+</ul>
+<hr>
+<h3>Mirostat</h3>
+<p>An adaptive sampling algorithm.</p>
+<ul>
+<li>Tries to maintain consistent “surprise”</li>
+<li>Reduces tuning guesswork</li>
+<li>More stable long generations</li>
+</ul>
+<p>Good for chat, rarely needed for agents.</p>
+<hr>
+<h2>MODEL &amp; ENGINE REALITY</h2>
+<h3>Model</h3>
+<p>The neural network + weights.</p>
+<p>Examples:
+- LLaMA
+- Qwen
+- Mistral
+- Gemma</p>
+<p>Models <strong>do not</strong> define APIs. Engines do.</p>
+<hr>
+<h3>Engine / Runtime</h3>
+<p>The software that runs the model.</p>
+<p>Examples:
+- Ollama
+- llama.cpp
+- vLLM
+- OpenAI servers</p>
+<p>This is where:
+- <code>num_ctx</code> limits live
+- performance constraints come from
+- crashes originate</p>
+<hr>
+<h3>Quantization</h3>
+<p>Reducing model precision to save memory.</p>
+<ul>
+<li><code>Q4</code> / <code>Q5</code> / <code>Q8</code></li>
+<li>Smaller = faster, dumber</li>
+<li>Larger = slower, smarter</li>
+</ul>
+<p>Local reality:  </p>
+<blockquote>
+<p>Quantization is why your laptop can run models at all.</p>
+</blockquote>
+<hr>
+<h3>VRAM / RAM Pressure</h3>
+<p>Local models compete with your OS.</p>
+<p>Symptoms:
+- UI freezes
+- mouse lag
+- fans screaming
+- kernel panic (worst case)</p>
+<p><strong>This is not a bug. It’s physics.</strong></p>
+<hr>
+<h2>AGENT &amp; SYSTEM DESIGN</h2>
+<h3>Determinism</h3>
+<p>Same input → same output (or close enough).</p>
+<p>LLMs are <strong>not deterministic by default</strong>.</p>
+<p>You must enforce it via:
+- low temperature
+- constrained prompts
+- validation
+- retries</p>
+<hr>
+<h3>Retry Logic</h3>
+<p>Calling the model again when output is invalid.</p>
+<p>Common strategies:
+- fixed retries
+- escalating strictness
+- majority voting</p>
+<hr>
+<h3>Majority Voting</h3>
+<p>Run the same prompt multiple times, pick the consensus.</p>
+<p>Useful for:
+- classification
+- extraction
+- weak signals</p>
+<p>Costs more tokens, buys confidence.</p>
+<hr>
+<h3>Abstention / <code>NONE</code></h3>
+<p>Allowing the model to say:</p>
+<blockquote>
+<p>“I don’t know” or “No action required”</p>
+</blockquote>
+<p>Critical for safety and trust.</p>
+<hr>
+<h3>Router</h3>
+<p>A deterministic step that decides <strong>what happens next</strong>.</p>
+<p>Examples:
+- which tool to run
+- which model to call
+- whether to call an LLM at all</p>
+<p><strong>Routers should be boring.</strong></p>
+<hr>
+<h3>Policy Layer</h3>
+<p>Rules that override model intent.</p>
+<ul>
+<li>“Even if the model says yes, we say no”</li>
+<li>Safety, cost, legality, scope control</li>
+</ul>
+<p>This layer should <strong>not</strong> be AI.</p>
+<hr>
+<h3>Tool Use</h3>
+<p>Letting the model request actions:
+- database queries
+- API calls
+- scripts</p>
+<p>The model suggests.<br>
+<strong>Your code decides.</strong></p>
+<hr>
+<h2>COMMON TRAPS</h2>
+<h3>“LLMs are just functions”</h3>
+<p>False.</p>
+<p>They are:
+- probabilistic
+- stateful
+- failure-prone</p>
+<p>Treat them like <strong>unreliable narrators</strong>.</p>
+<hr>
+<h3>“The model will behave if I prompt it well”</h3>
+<p>Also false.</p>
+<p>Prompting helps.<br>
+<strong>Architecture matters more.</strong></p>
+<hr>
+<h3>“Bigger model = better system”</h3>
+<p>No.</p>
+<ul>
+<li>Wrong defaults beat big models</li>
+<li>Determinism beats creativity</li>
+<li>Guardrails beat vibes</li>
+</ul>
+<hr>
+<h2>FINAL MENTAL MODEL</h2>
+<p>Think in layers:</p>
+<ol>
+<li><strong>Transport</strong> – how you talk to the model  </li>
+<li><strong>Inference</strong> – how tokens are generated  </li>
+<li><strong>Control</strong> – how your system stays sane  </li>
+</ol>
+<p>If you understand those three,<br>
+you are no longer guessing.</p>
+<hr>
+<p><em>This glossary will grow. Real systems always do.</em></p>

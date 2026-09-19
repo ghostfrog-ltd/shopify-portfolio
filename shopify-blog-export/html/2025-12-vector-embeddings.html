@@ -1,0 +1,51 @@
+<p>Most developers skip embeddings because they “sound maths-y”.</p>
+<p>Embeddings are <em>literally</em> the thing that makes AI useful beyond chat.<br>
+They power:</p>
+<ul>
+<li>RAG  </li>
+<li>semantic search  </li>
+<li>ranking  </li>
+<li>deduplication  </li>
+<li>memory  </li>
+<li>document QA  </li>
+<li>clustering  </li>
+<li>anomaly detection  </li>
+</ul>
+<p>If LLMs are the brain, <strong>embeddings are the eyes and ears</strong>.</p>
+<h2>🧠 What embeddings actually <em>are</em></h2>
+<p>An embedding is just:</p>
+<blockquote>
+<p>a list of numbers describing meaning.</p>
+</blockquote>
+<p>A sentence goes into a model → you get a vector like:</p>
+<pre><code>[0.123, -0.441, 0.982, ...]
+</code></pre>
+<p>Two vectors pointing in similar directions = similar meaning.</p>
+<h2>📐 Cosine similarity</h2>
+<p>Cosine similarity is just:</p>
+<blockquote>
+<p>how close the angle is between two vectors.</p>
+</blockquote>
+<p>1.0 = identical<br>
+0.0 = unrelated<br>
+-1.0 = opposite</p>
+<h2>🔍 Why this matters</h2>
+<p>Embeddings turn messy text into <strong>queryable math</strong>.</p>
+<p>Suddenly, you can:</p>
+<ul>
+<li>find similar errors  </li>
+<li>match CVs to jobs  </li>
+<li>cluster products  </li>
+<li>detect duplicates  </li>
+<li>build memory systems  </li>
+<li>power semantic search  </li>
+</ul>
+<h2>🏗️ How to use embeddings</h2>
+<ol>
+<li>Pick a model  </li>
+<li>Store vectors (pgvector, LanceDB, etc.)  </li>
+<li>Query by cosine similarity  </li>
+<li>Feed matches back to an LLM  </li>
+</ol>
+<h2>🐸 GhostFrog example</h2>
+<p>Embeddings will help cluster products, group listings, detect patterns, and eventually build flipping memory.</p>
