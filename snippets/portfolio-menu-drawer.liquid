@@ -12,10 +12,10 @@
   assign cta_label = settings.drawer_cta_label | default: 'Start a conversation'
   assign cta_link = settings.drawer_cta_link
   if cta_link == blank
-    assign cta_link = routes.root_url | append: '#contact'
+    assign cta_link = '/pages/get-in-touch'
   endif
 
-  assign email_link = settings.drawer_email_link | default: '/pages/contact'
+  assign email_link = settings.drawer_email_link | default: '/pages/get-in-touch'
   assign github_link = settings.drawer_github_link | default: 'https://github.com/ghostfrog-ltd'
   assign linkedin_link = settings.drawer_linkedin_link | default: 'https://www.linkedin.com'
   assign copyright_name = settings.drawer_copyright_name | default: 'GhostFrog'
@@ -66,7 +66,7 @@
         </a>
       </li>
       <li style="--menu-drawer-animation-index: 7;" class="menu-drawer__animated-element">
-        <a href="{{ routes.root_url }}#contact">
+        <a href="/pages/get-in-touch">
           <span class="portfolio-menu-drawer__nav-icon">{% render 'portfolio-menu-icon', icon: 'contact' %}</span>
           <span>Contact</span>
         </a>

@@ -1,0 +1,140 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "portfolio_services_page": {
+      "type": "portfolio-services-page",
+      "blocks": {
+        "service_store": {
+          "type": "service",
+          "settings": {
+            "icon": "store",
+            "heading": "Shopify Store Builds",
+            "text": "Custom, conversion-focused stores designed to grow with your brand.",
+            "link": "/pages/get-in-touch"
+          }
+        },
+        "service_development": {
+          "type": "service",
+          "settings": {
+            "icon": "code",
+            "heading": "Custom Development",
+            "text": "Tailored features, custom themes and headless builds when you need more.",
+            "link": "/pages/get-in-touch"
+          }
+        },
+        "service_integrations": {
+          "type": "service",
+          "settings": {
+            "icon": "database",
+            "heading": "Integrations & Automation",
+            "text": "Connect your tools, streamline your operations, and save time.",
+            "link": "/pages/get-in-touch"
+          }
+        },
+        "service_migrations": {
+          "type": "service",
+          "settings": {
+            "icon": "migration",
+            "heading": "Platform Migrations",
+            "text": "Seamless migrations from Magento, WooCommerce and others to Shopify.",
+            "link": "/pages/get-in-touch"
+          }
+        },
+        "service_growth": {
+          "type": "service",
+          "settings": {
+            "icon": "growth",
+            "heading": "Growth & Optimisation",
+            "text": "Improve performance, increase conversion and unlock new revenue.",
+            "link": "/pages/get-in-touch"
+          }
+        },
+        "service_support": {
+          "type": "service",
+          "settings": {
+            "icon": "support",
+            "heading": "Ongoing Support",
+            "text": "Reliable, expert support to keep your store running and evolving.",
+            "link": "/pages/get-in-touch"
+          }
+        },
+        "process_discovery": {
+          "type": "process_step",
+          "settings": { "heading": "Discovery", "text": "We learn about your brand, goals and technical needs." }
+        },
+        "process_plan": {
+          "type": "process_step",
+          "settings": { "heading": "Plan", "text": "A clear roadmap, scope and timeline." }
+        },
+        "process_build": {
+          "type": "process_step",
+          "settings": { "heading": "Build", "text": "Design, development and rigorous testing." }
+        },
+        "process_launch": {
+          "type": "process_step",
+          "settings": { "heading": "Launch & Grow", "text": "A smooth launch, then ongoing support to help you scale." }
+        },
+        "stat_conversion": {
+          "type": "stat",
+          "settings": { "value": "+167%", "label": "average conversion increase" }
+        },
+        "stat_satisfaction": {
+          "type": "stat",
+          "settings": { "value": "4.9/5", "label": "client satisfaction rating" }
+        },
+        "stat_focus": {
+          "type": "stat",
+          "settings": { "value": "100%", "label": "Shopify focused" }
+        }
+      },
+      "block_order": [
+        "service_store",
+        "service_development",
+        "service_integrations",
+        "service_migrations",
+        "service_growth",
+        "service_support",
+        "process_discovery",
+        "process_plan",
+        "process_build",
+        "process_launch",
+        "stat_conversion",
+        "stat_satisfaction",
+        "stat_focus"
+      ],
+      "settings": {
+        "hero_eyebrow": "Services",
+        "hero_heading": "Shopify done properly",
+        "hero_text": "<p>High-performance Shopify stores, custom development and integrations for brands that want more.</p>",
+        "hero_primary_label": "Start a project",
+        "hero_primary_link": "/pages/get-in-touch",
+        "hero_secondary_label": "See our work",
+        "hero_secondary_link": "/#projects",
+        "services_eyebrow": "What we do",
+        "services_heading": "Services built for serious brands.",
+        "services_text": "<p>From strategy to scale, we help ambitious brands get the most out of Shopify — with clean design, solid development and ongoing support.</p>",
+        "process_eyebrow": "Our process",
+        "process_heading": "Straightforward. Collaborative. Effective.",
+        "results_eyebrow": "Real results",
+        "results_heading": "Built for brands that go further.",
+        "results_label": "See our work",
+        "results_link": "/#projects",
+        "cta_eyebrow": "Let’s talk",
+        "cta_heading": "Ready to start your project?",
+        "cta_text": "Tell us about your idea and we’ll get back to you shortly.",
+        "cta_label": "Start a project",
+        "cta_link": "/pages/get-in-touch",
+        "cta_note": "No obligation. Just a conversation."
+      }
+    }
+  },
+  "order": ["portfolio_services_page"]
+}
