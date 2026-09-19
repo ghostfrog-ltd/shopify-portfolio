@@ -46,7 +46,7 @@
           "type": "navigation_link",
           "settings": {
             "label": "Contact",
-            "link": "#contact"
+            "link": "/pages/get-in-touch"
           }
         },
         "social_linkedin": {
@@ -72,7 +72,7 @@
           "settings": {
             "icon": "email",
             "label": "Contact GhostFrog",
-            "link": "/pages/contact",
+            "link": "/pages/get-in-touch",
             "open_in_new_tab": false
           }
         }
