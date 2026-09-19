@@ -828,6 +828,82 @@
     },
     {
       "type": "header",
+      "content": "Portfolio side menu"
+    },
+    {
+      "type": "checkbox",
+      "id": "portfolio_drawer_enabled",
+      "label": "Use portfolio side menu",
+      "default": false
+    },
+    {
+      "type": "text",
+      "id": "drawer_brand_name",
+      "label": "Brand name",
+      "default": "ghostfrog",
+      "visible_if": "{{ block.settings.portfolio_drawer_enabled }}"
+    },
+    {
+      "type": "text",
+      "id": "drawer_brand_kicker",
+      "label": "Brand strapline",
+      "default": "Shopify development",
+      "visible_if": "{{ block.settings.portfolio_drawer_enabled }}"
+    },
+    {
+      "type": "text",
+      "id": "drawer_eyebrow",
+      "label": "CTA eyebrow",
+      "default": "Independent Shopify developer",
+      "visible_if": "{{ block.settings.portfolio_drawer_enabled }}"
+    },
+    {
+      "type": "textarea",
+      "id": "drawer_pitch",
+      "label": "CTA text",
+      "default": "Shopify development without the agency overhead.",
+      "visible_if": "{{ block.settings.portfolio_drawer_enabled }}"
+    },
+    {
+      "type": "text",
+      "id": "drawer_cta_label",
+      "label": "CTA label",
+      "default": "Start a conversation",
+      "visible_if": "{{ block.settings.portfolio_drawer_enabled }}"
+    },
+    {
+      "type": "url",
+      "id": "drawer_cta_link",
+      "label": "CTA link",
+      "visible_if": "{{ block.settings.portfolio_drawer_enabled }}"
+    },
+    {
+      "type": "url",
+      "id": "drawer_email_link",
+      "label": "Email/contact link",
+      "visible_if": "{{ block.settings.portfolio_drawer_enabled }}"
+    },
+    {
+      "type": "url",
+      "id": "drawer_github_link",
+      "label": "GitHub link",
+      "visible_if": "{{ block.settings.portfolio_drawer_enabled }}"
+    },
+    {
+      "type": "url",
+      "id": "drawer_linkedin_link",
+      "label": "LinkedIn link",
+      "visible_if": "{{ block.settings.portfolio_drawer_enabled }}"
+    },
+    {
+      "type": "text",
+      "id": "drawer_copyright_name",
+      "label": "Copyright name",
+      "default": "GhostFrog",
+      "visible_if": "{{ block.settings.portfolio_drawer_enabled }}"
+    },
+    {
+      "type": "header",
       "content": "t:content.appearance"
     },
     {

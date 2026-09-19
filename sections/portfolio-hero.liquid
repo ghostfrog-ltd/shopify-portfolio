@@ -1,0 +1,73 @@
+{{ 'portfolio-hero.css' | asset_url | stylesheet_tag }}
+
+{% capture hero_blocks %}
+  {% content_for 'blocks' %}
+{% endcapture %}
+
+<div class="portfolio-hero" id="home">
+  <div class="portfolio-hero__inner">
+    <div class="portfolio-hero__content">
+      {{ hero_blocks }}
+    </div>
+
+    <div class="portfolio-hero__media">
+      <div class="portfolio-hero__device">
+        {% if section.settings.hero_image != blank %}
+          {{
+            section.settings.hero_image
+            | image_url: width: 1800
+            | image_tag:
+              widths: '600, 900, 1200, 1600, 1800',
+              sizes: '(min-width: 1050px) 52vw, (min-width: 750px) 55vw, 100vw',
+              class: 'portfolio-hero__image',
+              loading: 'eager',
+              fetchpriority: 'high',
+              alt: section.settings.image_alt
+          }}
+        {% else %}
+          <img
+            src="{{ 'portfolio-hero-cyclist.webp' | asset_url }}"
+            class="portfolio-hero__image"
+            width="1672"
+            height="941"
+            alt="{{ section.settings.image_alt | escape }}"
+            loading="eager"
+            fetchpriority="high"
+          >
+        {% endif %}
+        <span class="portfolio-hero__screen-shade" aria-hidden="true"></span>
+        <span class="portfolio-hero__screen-copy" aria-hidden="true">
+          <span class="portfolio-hero__screen-brand">VÉLO</span>
+          <span class="portfolio-hero__screen-title">Built for what's next.</span>
+          <span class="portfolio-hero__screen-text">Performance gear for further horizons.</span>
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Portfolio hero",
+  "class": "portfolio-section-wrapper",
+  "blocks": [
+    {
+      "type": "@theme"
+    }
+  ],
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "hero_image",
+      "label": "Hero image"
+    },
+    {
+      "type": "text",
+      "id": "image_alt",
+      "label": "Image alt text",
+      "default": "Cyclist riding through a dramatic mountain landscape"
+    }
+  ],
+  "presets": [{ "name": "Portfolio hero" }]
+}
+{% endschema %}

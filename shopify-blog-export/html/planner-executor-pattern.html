@@ -1,0 +1,35 @@
+<p>The <strong>Planner → Executor</strong> pattern is the backbone of agent systems.</p>
+<p>Here’s the breakdown:</p>
+<h2>🧠 1. Planner (Bob in my case)</h2>
+<p>Responsible for:
+- analysing the goal<br>
+- breaking it down<br>
+- generating a structured plan<br>
+- deciding which tools to use<br>
+- describing expected outputs  </p>
+<p>In English: <em>thinks before acting</em>.</p>
+<h2>🔧 2. Executor (Chad)</h2>
+<p>Responsible for:
+- running tools<br>
+- performing steps<br>
+- modifying files<br>
+- running scripts<br>
+- catching errors<br>
+- reporting results  </p>
+<p>In English: <em>does the work</em>.</p>
+<h2>🔁 3. Two-way feedback loop</h2>
+<p>After executing steps:
+- executor reports results<br>
+- planner revises plan<br>
+- executor keeps running  </p>
+<p>This is what lets an agent recover from errors.</p>
+<h2>🧩 4. Why this works</h2>
+<p>Humans do this instinctively:</p>
+<blockquote>
+<p>"Let me think... ok I’ll do X, then Y, then Z."</p>
+</blockquote>
+<p>LLMs don’t — unless you explicitly build this structure.</p>
+<h2>🚀 5. Why I built Bob + Chad this way</h2>
+<p>Because it mirrors how real engineering teams work:<br>
+<strong>one senior engineer + one junior engineer</strong>.</p>
+<p>And it works unbelievably well.</p>

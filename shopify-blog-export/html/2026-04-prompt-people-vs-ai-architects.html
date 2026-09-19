@@ -1,0 +1,133 @@
+<p>There is a popular narrative in software right now:</p>
+<p>All coders are becoming prompt people.</p>
+<p>It sounds plausible because prompting is now part of the daily workflow. Developers are asking models to write code, explain systems, debug errors, generate tests, and scaffold features.</p>
+<p>But the idea that all coders are simply becoming "Prompt People" is too shallow.</p>
+<p>It confuses a temporary interface with the actual engineering skill.</p>
+<p>Prompting matters, but prompting alone is not the destination. The deeper shift is from writing every line manually to orchestrating systems, constraints, goals, tools, and feedback loops.</p>
+<p>That is a very different job from just asking an AI to "make this better."</p>
+<h2>1. The Last Mile Problem</h2>
+<p>LLMs are probabilistic, not deterministic.</p>
+<p>They are excellent at producing a first draft quickly. They can generate the first 80% of a feature in seconds.</p>
+<p>But the final 20% is where the real engineering work often lives:</p>
+<ul>
+<li>edge cases</li>
+<li>race conditions</li>
+<li>security assumptions</li>
+<li>performance tradeoffs</li>
+<li>state handling</li>
+<li>integration boundaries</li>
+<li>failure behaviour</li>
+</ul>
+<p>If a developer cannot read the code the model produces, they cannot audit it.</p>
+<p>A pure "Prompt Person" is at the mercy of the model's hallucinations.</p>
+<p>A Senior Lead uses the model to move quickly, but keeps the veto power that only comes from understanding the underlying logic.</p>
+<h2>2. Abstraction is Not Replacement</h2>
+<p>Software has seen this story before.</p>
+<ul>
+<li>In the 60s, COBOL was expected to make programming more business-readable.</li>
+<li>In the 90s, visual programming and low-code tools were expected to reduce the need for engineers.</li>
+<li>In the 2020s, prompting is being sold as the next abstraction layer.</li>
+</ul>
+<p>Each abstraction changed the work.</p>
+<p>None of them removed the need for engineering judgement.</p>
+<p>Prompting is another high-level interface. Like Python abstracted away many concerns from C++, prompting abstracts away some concerns from Python.</p>
+<p>But abstraction is not the same as replacement.</p>
+<p>A Python developer still benefits from understanding complexity, memory, network boundaries, and database behaviour. In the same way, an AI-augmented developer still needs to understand architecture, state, constraints, and failure modes.</p>
+<p>The syntax changes.</p>
+<p>The responsibility does not.</p>
+<h2>3. The Junior vs Senior Divide</h2>
+<p>The industry is splitting into two broad groups.</p>
+<h3>The Prompt Person</h3>
+<p>The Prompt Person replaces syntax with natural language but does not build a strong mental model of the system.</p>
+<p>They can generate output, but they struggle to debug complex state machines, judge architecture, or explain the consequences of a change.</p>
+<p>That role is fragile because a better model or a cheaper operator can replace it quickly.</p>
+<h3>The AI-Augmented Architect</h3>
+<p>The AI-Augmented Architect uses agents as execution tools, not as a substitute for thinking.</p>
+<p>They define:</p>
+<ul>
+<li>roles</li>
+<li>constraints</li>
+<li>goals</li>
+<li>decision logs</li>
+<li>acceptance criteria</li>
+<li>system boundaries</li>
+<li>success metrics</li>
+</ul>
+<p>This is not just prompting.</p>
+<p>It is orchestration.</p>
+<h2>The Counter-Perspective</h2>
+<p>If a developer stops understanding code and only provides ideas, they are drifting away from engineering and toward product management.</p>
+<p>There is nothing wrong with product management.</p>
+<p>But it is not the same skill.</p>
+<p>In an agentic system, the code is still the plumbing that connects the model to the real world:</p>
+<ul>
+<li>databases</li>
+<li>APIs</li>
+<li>file systems</li>
+<li>queues</li>
+<li>logs</li>
+<li>state machines</li>
+</ul>
+<p>When that plumbing breaks, repeating the prompt usually does not fix the real problem.</p>
+<p>An engineer looks at the logs, identifies the logic error in the loop, and corrects the blueprint.</p>
+<h2>The Reality Check</h2>
+<p>The most valuable people in the next few years will not be the ones who merely know how to talk to an AI.</p>
+<p>They will be the ones who know what to ask for, what to reject, what to measure, and what the technical consequences of the instruction will be.</p>
+<p>If a developer leans too far into "just having ideas," they lose the ability to tell whether those ideas are feasible, maintainable, secure, or an architectural nightmare.</p>
+<p>The risk is becoming an architect who cannot tell whether the builders are using concrete or cardboard.</p>
+<h2>Where Jitro-Style Tools Point</h2>
+<p>Jitro is a useful example of where AI-assisted engineering appears to be heading.</p>
+<p>The first wave of AI coding tools was about autocomplete.</p>
+<p>The second wave was about agentic tasks.</p>
+<p>The next wave is likely to be closer to KPI-driven development: tools that operate inside persistent workspaces and work toward measurable goals rather than individual prompts.</p>
+<p>Instead of saying:</p>
+<blockquote>
+<p>Write a React component for X.</p>
+</blockquote>
+<p>The developer might set a goal like:</p>
+<ul>
+<li>increase unit test coverage to 90%</li>
+<li>reduce checkout query latency</li>
+<li>improve a failing CI pipeline</li>
+<li>find and fix the highest-risk flaky tests</li>
+</ul>
+<p>The system then explores the codebase, identifies bottlenecks, creates sub-tasks, runs checks, and reports progress asynchronously.</p>
+<p>That is a different relationship with the tool.</p>
+<p>It is less like asking for a snippet and more like supervising an autonomous collaborator.</p>
+<h2>Prompting is a Bottleneck, Not a Destination</h2>
+<p>The "Prompt Person" is a middle layer.</p>
+<p>They translate a human thought into a specific instruction for a machine.</p>
+<p>But as tools become better at understanding goals directly, the value of perfect prompt phrasing will decline.</p>
+<p>The value will move toward:</p>
+<ul>
+<li>defining the right goal</li>
+<li>setting the right constraints</li>
+<li>choosing the right success metric</li>
+<li>spotting bad implementation</li>
+<li>understanding why a change matters</li>
+</ul>
+<p>That is why the future role is not simply "Prompt Person."</p>
+<p>It is Outcome Architect.</p>
+<h2>The Vibe Coding Trap</h2>
+<p>There is a growing pattern of "vibe coding": throwing text at a screen until something appears to work.</p>
+<p>That can be useful for experiments.</p>
+<p>It is dangerous for systems.</p>
+<p>Code that works but is not understood becomes technical debt. The more agentic the workflow becomes, the more important the blueprint becomes:</p>
+<ul>
+<li>decision logs</li>
+<li>constraints</li>
+<li>tests</li>
+<li>state rules</li>
+<li>rollback plans</li>
+<li>observability</li>
+</ul>
+<p>The developer who understands those things remains valuable.</p>
+<p>The developer who only knows how to keep asking the model for another attempt becomes dependent on the model.</p>
+<h2>The Brutal Truth</h2>
+<p>Developers are not all becoming Prompt People.</p>
+<p>They are splitting.</p>
+<p>Some will become operators who ask models for output.</p>
+<p>Others will become product and systems architects who direct agents toward business goals, technical constraints, and measurable outcomes.</p>
+<p>The "Prompt Person" may only be a transition state.</p>
+<p>If the AI eventually writes the prompts for itself, the remaining value is not the prompt.</p>
+<p>The remaining value is judgement.</p>

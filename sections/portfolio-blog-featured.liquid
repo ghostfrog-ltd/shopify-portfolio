@@ -1,0 +1,130 @@
+{{ 'portfolio-blog-featured.css' | asset_url | stylesheet_tag }}
+{% comment %}The newest published article is featured automatically.{% endcomment %}
+
+{% liquid
+  assign featured_article = blog.articles.first
+  if featured_article != blank
+    assign word_count = featured_article.content | strip_html | split: ' ' | size
+    assign read_minutes = word_count | plus: 199 | divided_by: 200
+    if read_minutes < 1
+      assign read_minutes = 1
+    endif
+  endif
+%}
+
+{% if featured_article != blank or request.design_mode %}
+  <section
+    class="portfolio-blog-featured"
+    aria-labelledby="PortfolioBlogFeatured-{{ section.id }}"
+  >
+    <div class="portfolio-blog-featured__inner">
+      <p class="portfolio-blog-featured__eyebrow" id="PortfolioBlogFeatured-{{ section.id }}">
+        {{ section.settings.eyebrow | escape }}
+      </p>
+
+      {% if featured_article != blank %}
+        <article class="portfolio-blog-featured__card">
+          <a
+            class="portfolio-blog-featured__media"
+            href="{{ featured_article.url }}"
+            aria-label="{{ featured_article.title | escape }}"
+          >
+            {% if featured_article.image != blank %}
+              {{
+                featured_article.image
+                | image_url: width: 1800
+                | image_tag:
+                  widths: '480, 720, 960, 1200, 1500, 1800',
+                  sizes: '(min-width: 990px) 55vw, 100vw',
+                  class: 'portfolio-blog-featured__image',
+                  loading: 'lazy',
+                  alt: featured_article.image.alt
+              }}
+            {% else %}
+              <img
+                src="{{ 'portfolio-blog-hero-mountains.webp' | asset_url }}"
+                class="portfolio-blog-featured__image"
+                width="1672"
+                height="941"
+                loading="lazy"
+                alt=""
+              >
+            {% endif %}
+          </a>
+
+          <div class="portfolio-blog-featured__content">
+            {% if featured_article.tags.first != blank %}
+              <p class="portfolio-blog-featured__category">{{ featured_article.tags.first | escape }}</p>
+            {% endif %}
+
+            <h2 class="portfolio-blog-featured__title">
+              <a href="{{ featured_article.url }}">{{ featured_article.title | escape }}</a>
+            </h2>
+
+            <div class="portfolio-blog-featured__excerpt">
+              {% if featured_article.excerpt != blank %}
+                {{ featured_article.excerpt | strip_html | truncatewords: section.settings.excerpt_words }}
+              {% else %}
+                {{ featured_article.content | strip_html | truncatewords: section.settings.excerpt_words }}
+              {% endif %}
+            </div>
+
+            <div class="portfolio-blog-featured__footer">
+              <a class="portfolio-blog-featured__link" href="{{ featured_article.url }}">
+                {{ section.settings.link_label | escape }}
+                <span aria-hidden="true">→</span>
+              </a>
+
+              <p class="portfolio-blog-featured__meta">
+                <time datetime="{{ featured_article.published_at | date: '%Y-%m-%d' }}">
+                  {{ featured_article.published_at | date: '%b %d, %Y' }}
+                </time>
+                <span aria-hidden="true">•</span>
+                <span>{{ read_minutes }} min read</span>
+              </p>
+            </div>
+          </div>
+        </article>
+      {% else %}
+        <div class="portfolio-blog-featured__empty">
+          Publish an article in this blog to populate the featured article automatically.
+        </div>
+      {% endif %}
+    </div>
+  </section>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Featured blog article",
+  "class": "portfolio-blog-featured-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "FEATURED ARTICLE"
+    },
+    {
+      "type": "text",
+      "id": "link_label",
+      "label": "Link label",
+      "default": "Read article"
+    },
+    {
+      "type": "range",
+      "id": "excerpt_words",
+      "label": "Excerpt length",
+      "min": 12,
+      "max": 50,
+      "step": 2,
+      "default": 28
+    }
+  ],
+  "presets": [
+    {
+      "name": "Featured blog article"
+    }
+  ]
+}
+{% endschema %}

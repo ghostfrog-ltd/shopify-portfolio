@@ -1,0 +1,37 @@
+<h2>🔤 1. Everything is tokens</h2>
+<p>LLMs don't see sentences. They see token IDs.<br>
+This is why:</p>
+<ul>
+<li>context length matters  </li>
+<li>long prompts cost more  </li>
+<li>models lose track of earlier text  </li>
+</ul>
+<h2>🧠 2. Attention</h2>
+<p>Attention lets each token inspect every other token and decide relevance.</p>
+<p>Gives you:</p>
+<ul>
+<li>reasoning  </li>
+<li>relationships  </li>
+<li>instruction following  </li>
+</ul>
+<p>Also causes:</p>
+<ul>
+<li>hallucinations (wrong patterns reinforced)</li>
+</ul>
+<h2>🪜 3. Transformer layers</h2>
+<p>Layers refine meaning:</p>
+<ul>
+<li>lower → syntax  </li>
+<li>middle → facts  </li>
+<li>upper → reasoning  </li>
+</ul>
+<h2>🧩 4. Why LLMs hallucinate</h2>
+<p>Because they <strong>predict</strong>, they don’t <strong>verify</strong>.</p>
+<p>Agents fix this with:</p>
+<ul>
+<li>tools  </li>
+<li>retrieval  </li>
+<li>planning loops  </li>
+</ul>
+<h2>📦 5. Why small models often win</h2>
+<p>Tools + retrieval &gt; raw model size.</p>

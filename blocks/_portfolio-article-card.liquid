@@ -1,0 +1,139 @@
+{%- doc -%}
+  Renders a portfolio blog article card.
+
+  @param {object} article - The article to render.
+  @param {string} [fallback_asset] - Theme asset used when the article has no featured image.
+  @param {string} [image_loading] - Native image loading strategy.
+{%- enddoc -%}
+
+{{ 'portfolio-article-card.css' | asset_url | stylesheet_tag }}
+
+{% liquid
+  assign card_settings = block.settings
+  assign word_count = article.content | strip_html | split: ' ' | size
+  assign read_minutes = word_count | plus: 199 | divided_by: 200
+  if read_minutes < 1
+    assign read_minutes = 1
+  endif
+  assign image_loading = image_loading | default: 'lazy'
+%}
+
+<article class="portfolio-article-card" {{ block.shopify_attributes }}>
+  <a
+    class="portfolio-article-card__media"
+    href="{{ article.url }}"
+    aria-label="{{ article.title | escape }}"
+  >
+    {% if article.image != blank %}
+      {{
+        article.image
+        | image_url: width: 1200
+        | image_tag:
+          widths: '360, 540, 720, 960, 1200',
+          sizes: '(min-width: 990px) 31vw, (min-width: 750px) 48vw, 100vw',
+          class: 'portfolio-article-card__image',
+          loading: image_loading,
+          alt: article.image.alt
+      }}
+    {% elsif fallback_asset != blank %}
+      <img
+        src="{{ fallback_asset | asset_url }}"
+        class="portfolio-article-card__image"
+        width="1672"
+        height="941"
+        loading="{{ image_loading }}"
+        alt=""
+      >
+    {% endif %}
+  </a>
+
+  <div class="portfolio-article-card__content">
+    {% if card_settings.show_category and article.tags.first != blank %}
+      <p class="portfolio-article-card__category">{{ article.tags.first | escape }}</p>
+    {% endif %}
+
+    <h3 class="portfolio-article-card__title">
+      <a href="{{ article.url }}">{{ article.title | escape }}</a>
+    </h3>
+
+    {% if card_settings.show_excerpt %}
+      <div class="portfolio-article-card__excerpt">
+        {% if article.excerpt != blank %}
+          {{ article.excerpt | strip_html | truncatewords: card_settings.excerpt_words }}
+        {% else %}
+          {{ article.content | strip_html | truncatewords: card_settings.excerpt_words }}
+        {% endif %}
+      </div>
+    {% endif %}
+
+    <div class="portfolio-article-card__footer">
+      <a class="portfolio-article-card__link" href="{{ article.url }}">
+        {{ card_settings.link_label | escape }}
+        <span aria-hidden="true">→</span>
+      </a>
+
+      {% if card_settings.show_date or card_settings.show_read_time %}
+        <p class="portfolio-article-card__meta">
+          {% if card_settings.show_date %}
+            <time datetime="{{ article.published_at | date: '%Y-%m-%d' }}">
+              {{ article.published_at | date: '%b %d, %Y' }}
+            </time>
+          {% endif %}
+          {% if card_settings.show_date and card_settings.show_read_time %}
+            <span aria-hidden="true">•</span>
+          {% endif %}
+          {% if card_settings.show_read_time %}
+            <span>{{ read_minutes }} min read</span>
+          {% endif %}
+        </p>
+      {% endif %}
+    </div>
+  </div>
+</article>
+
+{% schema %}
+{
+  "name": "Portfolio article card",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_category",
+      "label": "Show first article tag",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_excerpt",
+      "label": "Show excerpt",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "excerpt_words",
+      "label": "Excerpt length",
+      "min": 12,
+      "max": 40,
+      "step": 2,
+      "default": 22
+    },
+    {
+      "type": "text",
+      "id": "link_label",
+      "label": "Link label",
+      "default": "Read article"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_date",
+      "label": "Show publication date",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_read_time",
+      "label": "Show reading time",
+      "default": true
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,55 @@
+/* Portfolio skin for Horizon's existing header structure and behaviour. */
+#header-component {
+  --portfolio-header-background: rgb(7 11 12 / 90%);
+  --portfolio-header-border: rgb(247 248 247 / 12%);
+}
+
+#header-component .header__underlay-closed {
+  background: var(--portfolio-header-background);
+  -webkit-backdrop-filter: blur(8px) saturate(110%);
+  backdrop-filter: blur(8px) saturate(110%);
+}
+
+#header-component .header__row--top {
+  --color: #f7f8f7;
+  --color-rgb: 247 248 247;
+  --color-foreground: #f7f8f7;
+  --color-foreground-rgb: 247 248 247;
+  --color-account-icon: #f7f8f7;
+
+  color: var(--color-foreground);
+}
+
+#header-component .header__row--top:not(.divider--page-width),
+#header-component .header__row--top.divider--page-width .header__columns {
+  border-bottom-width: 1px;
+  border-bottom-color: var(--portfolio-header-border);
+}
+
+#header-component .header__row--top .header-logo {
+  color: #f7f8f7;
+}
+
+@media (hover: hover) {
+  #header-component .header__row--top .header-logo:hover {
+    color: #fff;
+  }
+}
+
+@media screen and (min-width: 750px) {
+  #header-component .header__row--top .header__columns {
+    --padding-block-start: 0;
+    --padding-block-end: 0;
+
+    height: 72px;
+    min-height: 72px;
+  }
+}
+
+@media (prefers-reduced-transparency: reduce) {
+  #header-component .header__underlay-closed {
+    background: #070b0c;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+}

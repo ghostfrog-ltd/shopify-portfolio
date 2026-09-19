@@ -1,0 +1,20 @@
+{{ 'portfolio-projects.css' | asset_url | stylesheet_tag }}
+
+<div class="portfolio-projects" id="projects">
+  <div class="portfolio-projects__inner">
+    {% content_for 'blocks' %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Portfolio projects",
+  "class": "portfolio-section-wrapper",
+  "blocks": [
+    {
+      "type": "@theme"
+    }
+  ],
+  "presets": [{ "name": "Portfolio projects" }]
+}
+{% endschema %}

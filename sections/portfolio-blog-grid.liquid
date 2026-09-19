@@ -1,0 +1,98 @@
+{{ 'portfolio-blog-grid.css' | asset_url | stylesheet_tag }}
+
+{% paginate blog.articles by section.settings.articles_per_page %}
+  {% liquid
+    assign can_render_articles = false
+    if paginate.current_page > 1 or blog.articles.size > 1
+      assign can_render_articles = true
+    endif
+  %}
+
+  {% if can_render_articles or request.design_mode %}
+    <section
+      class="portfolio-blog-grid"
+      aria-label="{{ section.settings.accessible_label | escape }}"
+    >
+      <div class="portfolio-blog-grid__inner">
+        <div class="portfolio-blog-grid__heading">
+          {% content_for 'blocks' %}
+        </div>
+
+        <div class="portfolio-blog-grid__items">
+          {% assign rendered_count = 0 %}
+          {% for article in blog.articles %}
+            {% if paginate.current_page == 1 and forloop.first %}
+              {% continue %}
+            {% endif %}
+
+            {% liquid
+              assign fallback_index = rendered_count | modulo: 3
+              case fallback_index
+                when 0
+                  assign fallback_asset = 'portfolio-hero-cyclist.webp'
+                when 1
+                  assign fallback_asset = 'portfolio-project-order-integration.webp'
+                else
+                  assign fallback_asset = 'portfolio-project-magento-migration.webp'
+              endcase
+              assign rendered_count = rendered_count | plus: 1
+            %}
+
+            <div class="portfolio-blog-grid__item">
+              {% content_for 'block',
+                id: 'static-portfolio-article-card',
+                type: '_portfolio-article-card',
+                article: article,
+                fallback_asset: fallback_asset,
+                image_loading: 'lazy'
+              %}
+            </div>
+          {% endfor %}
+        </div>
+
+        {% if rendered_count == 0 and request.design_mode %}
+          <div class="portfolio-blog-grid__empty">
+            Publish at least two articles to populate the latest-articles grid.
+          </div>
+        {% endif %}
+
+        {% render 'pagination-controls', paginate: paginate %}
+      </div>
+    </section>
+  {% endif %}
+{% endpaginate %}
+
+{% schema %}
+{
+  "name": "Portfolio blog grid",
+  "class": "portfolio-blog-grid-section",
+  "blocks": [
+    {
+      "type": "@theme"
+    }
+  ],
+  "settings": [
+    {
+      "type": "text",
+      "id": "accessible_label",
+      "label": "Accessible section label",
+      "default": "Latest articles"
+    },
+    {
+      "type": "range",
+      "id": "articles_per_page",
+      "label": "Articles per page",
+      "min": 4,
+      "max": 25,
+      "step": 1,
+      "default": 7,
+      "info": "The newest article is featured separately on page one."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Portfolio blog grid"
+    }
+  ]
+}
+{% endschema %}

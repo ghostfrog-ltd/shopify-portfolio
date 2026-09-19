@@ -1,0 +1,168 @@
+<p>If you’ve ever felt like “checkout is where good shopping experiences go to die,” this project is for you.</p>
+<p>We’re going to build a <strong>UCP adapter module for Magento 2</strong> — a clean integration layer that exposes a UCP <strong>Business Profile</strong> and implements the UCP <strong>Checkout Capability</strong> endpoints, all <strong>inside Magento/PHP</strong>, using the <strong>Docker environment I’ve just set up</strong> at:</p>
+<ul>
+<li><code>http://magento.test/</code></li>
+</ul>
+<p>This post is the <em>tutorial / roadmap</em> for what we’re going to make, why it matters, and how we’ll do it step-by-step.</p>
+<hr>
+<h2>What is UCP and why should we care?</h2>
+<p><strong>UCP (Universal Commerce Protocol)</strong> is a standard way for AI shopping agents and clients to talk to commerce systems. Instead of scraping pages or juggling bespoke APIs, a UCP-compatible store can expose a predictable set of endpoints that support:</p>
+<ul>
+<li>creating a checkout session</li>
+<li>updating it (address, shipping selection, buyer details)</li>
+<li>completing checkout (placing the order)</li>
+<li>cancelling</li>
+</ul>
+<p>The key outcome: <strong>less friction, fewer bugs, and a better user experience</strong> — especially when the “shopper” is an AI agent or an assistant-driven flow.</p>
+<hr>
+<h2>What we’re building (MVP)</h2>
+<p>We’ll ship an MVP that’s genuinely useful but not over-scoped.</p>
+<h3>1) A Business Profile at <code>/.well-known/ucp</code></h3>
+<p>This is a JSON document that advertises:</p>
+<ul>
+<li>what UCP capabilities our store supports</li>
+<li>where the checkout REST endpoints live</li>
+<li>version + metadata needed for discovery</li>
+</ul>
+<p>Think of it like: <strong>“Here’s what my store can do, and here’s where to call it.”</strong></p>
+<h3>2) Checkout Capability endpoints (implemented in Magento Web API)</h3>
+<p>We’ll implement the core flows as REST endpoints inside Magento. Internally, they’ll map directly to Magento’s native checkout engine:</p>
+<ul>
+<li><strong>UCP checkout session</strong> → <strong>Magento quote</strong></li>
+<li>“complete” → <strong>place order</strong></li>
+</ul>
+<p>This is the heart of the project: we’re turning Magento into a UCP-compatible backend without introducing extra services.</p>
+<hr>
+<h2>The UX goal: “best shopping experience we can”</h2>
+<p>This project isn’t “just implement some endpoints.”</p>
+<p>We want the flow to feel:</p>
+<ul>
+<li><strong>fast</strong> (no unnecessary calls / recalculations)</li>
+<li><strong>clear</strong> (the response tells the client what’s missing and what’s next)</li>
+<li><strong>resilient</strong> (idempotency, safe retries, consistent session state)</li>
+<li><strong>accurate</strong> (totals always match Magento reality: shipping, tax, discounts)</li>
+<li><strong>extensible</strong> (we can add payments, post-purchase, and order status later)</li>
+</ul>
+<p>So our definition of “done” isn’t “it returns 200 OK” — it’s “it produces a checkout flow you can trust.”</p>
+<hr>
+<h2>Important: local dev is HTTP… but UCP expects HTTPS</h2>
+<p>My local Docker site is currently:</p>
+<ul>
+<li><code>http://magento.test/</code></li>
+</ul>
+<p>That’s fine for building and testing logic, but for UCP compliance and realistic integration testing, we’ll add <strong>local TLS</strong> very early.</p>
+<p><strong>What we’ll do:</strong>
+- Option A (preferred): <code>mkcert</code> + local HTTPS in the Docker reverse proxy
+- Option B: tunnel (ngrok / Cloudflare tunnel) if we need quick external HTTPS</p>
+<p>We’ll do the simplest thing that gets us to <strong>real HTTPS requests</strong> fast.</p>
+<hr>
+<h2>Architecture: keep it simple</h2>
+<p>We’re not building a separate Python gateway.</p>
+<p>Everything will live in a Magento module, roughly like this:</p>
+<h3>Module responsibilities</h3>
+<ul>
+<li><strong>Route</strong> <code>/.well-known/ucp</code> → return Business Profile JSON</li>
+<li><strong>Expose REST endpoints</strong> under Magento Web API (e.g. <code>/rest/V1/ucp/...</code>)</li>
+<li><strong>Maintain a mapping table</strong> between UCP session IDs and Magento quote IDs</li>
+<li><strong>Translate</strong> request payloads into Magento quote updates:</li>
+<li>add/remove items</li>
+<li>set customer email</li>
+<li>set shipping address</li>
+<li>choose shipping method</li>
+<li>totals recollection</li>
+<li><strong>Place the order</strong> safely and return an order reference</li>
+</ul>
+<h3>Data model</h3>
+<p>We’ll likely add a small table like:</p>
+<ul>
+<li><code>pm_ucp_checkout_session</code></li>
+<li><code>session_id</code> (UCP session id)</li>
+<li><code>quote_id</code></li>
+<li><code>status</code> (active/completed/cancelled/expired)</li>
+<li>timestamps</li>
+</ul>
+<p>No over-engineering — just what we need to avoid “where did this quote come from?” chaos.</p>
+<hr>
+<h2>The build plan (what we’ll do next)</h2>
+<h3>Step 1 — Create the module skeleton</h3>
+<ul>
+<li><code>registration.php</code></li>
+<li><code>module.xml</code></li>
+<li><code>etc/di.xml</code></li>
+<li><code>etc/webapi.xml</code></li>
+<li>ACL only if we build admin tooling later</li>
+</ul>
+<h3>Step 2 — Serve <code>/.well-known/ucp</code></h3>
+<p>Two ways:
+- static file in <code>pub/.well-known/ucp</code> (fastest)
+- or a Magento controller + nginx rewrite (more “Magento-native”)</p>
+<p>We’ll probably start static to move fast, then switch to dynamic once the endpoints exist.</p>
+<h3>Step 3 — Implement checkout session creation</h3>
+<p>Endpoint: <code>POST /checkout-sessions</code></p>
+<p>Magento behavior:
+- create a quote
+- add line items (by SKU)
+- collect totals
+- return session payload</p>
+<h3>Step 4 — Implement update + read</h3>
+<p>Endpoints:
+- <code>GET /checkout-sessions/{id}</code>
+- <code>PUT /checkout-sessions/{id}</code></p>
+<p>Magento behavior:
+- update email / buyer details
+- update shipping address
+- recalc shipping rates + totals
+- return what’s still missing (e.g. “shipping method not selected”)</p>
+<h3>Step 5 — Implement complete + cancel</h3>
+<p>Endpoints:
+- <code>POST /checkout-sessions/{id}/complete</code>
+- <code>POST /checkout-sessions/{id}/cancel</code></p>
+<p>Magento behavior:
+- complete: place order using quote management
+- cancel: deactivate quote + mark session cancelled</p>
+<h3>Step 6 — Make it production-grade</h3>
+<p>This is where “best experience” actually happens:
+- idempotency keys for safe retries
+- consistent error shape + clear messages
+- logging with request correlation IDs
+- strict validation (bad SKU, out of stock, invalid shipping method)
+- expiry rules for sessions</p>
+<hr>
+<h2>MVP acceptance criteria (the “we can ship it” checklist)</h2>
+<p>When we’re done with phase 1, we should be able to say:</p>
+<ol>
+<li><code>GET /.well-known/ucp</code> returns a valid Business Profile JSON.</li>
+<li>You can create a UCP checkout session that creates a Magento quote with items.</li>
+<li>You can update session details (email/address) and totals update correctly.</li>
+<li>You can complete the session and Magento places an order successfully.</li>
+<li>You can cancel a session and the quote is safely invalidated.</li>
+<li>Everything works over HTTPS locally (not just HTTP).</li>
+</ol>
+<hr>
+<h2>Why this is worth doing</h2>
+<p>Magento checkout is powerful but messy to integrate into “new” shopping experiences.</p>
+<p>UCP gives us a clean interface layer that:
+- lets assistants/agents drive checkout safely
+- removes fragile, bespoke integration glue
+- improves reliability and consistency</p>
+<p>And because we’re building it <em>as a Magento module</em>, we keep deployment straightforward and avoid extra infrastructure.</p>
+<hr>
+<h2>Next post</h2>
+<p>Next up, we’ll do the first real implementation step:</p>
+<ul>
+<li><strong>Create the Magento 2 module</strong></li>
+<li>Expose the first endpoint</li>
+<li>Wire up quote creation + session persistence</li>
+</ul>
+<p>If you want to follow along locally, make sure your Docker setup can run Magento cleanly on <code>magento.test</code>, and be ready to add local HTTPS early.</p>
+<hr>
+<h2>Notes / repo structure (placeholder)</h2>
+<p>When I publish the code, I’ll include:</p>
+<ul>
+<li><code>/app/code/Vendor/Ucp/</code></li>
+<li>database schema patch for session mapping</li>
+<li>example curl requests to test the endpoints</li>
+<li>a minimal Postman collection</li>
+</ul>
+<p>(We’ll keep it lean and focused.)</p>
+<hr>

@@ -1,0 +1,209 @@
+<article class="portfolio-service-card" {{ block.shopify_attributes }}>
+  <span class="portfolio-service-card__icon" aria-hidden="true">
+    {% case block.settings.icon %}
+      {% when 'development' %}
+        <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M7 25 20.8 11.2M18.5 8.9l3.6-3.6 4.6 4.6-3.6 3.6M6.8 25.2 5 29l3.8-1.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="m21.2 6.2 4.6 4.6" stroke="currentColor" stroke-width="1.6"/>
+          <path d="M20.8 25.4h6.5M24 22.2v6.4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+        </svg>
+      {% when 'integrations' %}
+        <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="m16 3.5 11 6.3v12.4l-11 6.3-11-6.3V9.8l11-6.3Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/>
+          <path d="m5.4 10 10.6 6 10.6-6M16 16v12" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/>
+        </svg>
+      {% when 'migration' %}
+        <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <ellipse cx="16" cy="7" rx="10" ry="4" stroke="currentColor" stroke-width="1.7"/>
+          <path d="M6 7v6c0 2.2 4.5 4 10 4s10-1.8 10-4V7M6 13v6c0 2.2 4.5 4 10 4s10-1.8 10-4v-6M6 19v6c0 2.2 4.5 4 10 4s10-1.8 10-4v-6" stroke="currentColor" stroke-width="1.7"/>
+        </svg>
+      {% when 'engineering' %}
+        <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M4 27V5M4 27h24" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+          <path d="m8 22 5-6 4 3 7-10" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="8" cy="22" r="1.4" fill="currentColor"/><circle cx="13" cy="16" r="1.4" fill="currentColor"/><circle cx="17" cy="19" r="1.4" fill="currentColor"/><circle cx="24" cy="9" r="1.4" fill="currentColor"/>
+        </svg>
+    {% endcase %}
+  </span>
+
+  <div class="portfolio-service-card__body">
+    {% if block.settings.title != blank %}
+      <h3 class="portfolio-service-card__title">{{ block.settings.title | escape }}</h3>
+    {% endif %}
+
+    {% if block.settings.description != blank %}
+      <div class="portfolio-service-card__description rte">{{ block.settings.description }}</div>
+    {% endif %}
+  </div>
+
+  {% if block.settings.link_label != blank %}
+    <a
+      class="portfolio-service-card__link"
+      {% if block.settings.link != blank %}
+        href="{{ block.settings.link }}"
+      {% else %}
+        role="link"
+        aria-disabled="true"
+      {% endif %}
+    >
+      {{ block.settings.link_label | escape }}
+      <span aria-hidden="true">→</span>
+    </a>
+  {% endif %}
+</article>
+
+{% stylesheet %}
+  .portfolio-service-card {
+    display: flex;
+    min-height: 310px;
+    padding: 28px 24px 24px;
+    border: 1px solid #222a28;
+    border-radius: 9px;
+    background: linear-gradient(145deg, #111718 0%, #0d1213 100%);
+    box-shadow: inset 0 1px 0 rgb(255 255 255 / 2.5%);
+    flex-direction: column;
+    transition:
+      border-color 180ms ease,
+      transform 180ms ease;
+  }
+
+  .portfolio-service-card:hover {
+    border-color: #39443f;
+    transform: translateY(-3px);
+  }
+
+  .portfolio-service-card__icon {
+    display: grid;
+    width: 38px;
+    height: 38px;
+    margin-bottom: 26px;
+    place-items: center;
+    color: #d4d9d7;
+  }
+
+  .portfolio-service-card__icon svg {
+    display: block;
+    width: 34px;
+    height: 34px;
+  }
+
+  .portfolio-service-card__body {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .portfolio-service-card__title {
+    margin: 0;
+    color: #f3f5f4;
+    font-size: 1.05rem;
+    font-weight: 650;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+  }
+
+  .portfolio-service-card__description,
+  .portfolio-service-card__description p {
+    margin: 0;
+    color: #aeb5b2;
+    font-size: 0.88rem;
+    line-height: 1.5;
+  }
+
+  .portfolio-service-card__link {
+    display: inline-flex;
+    width: fit-content;
+    margin-top: auto;
+    padding-top: 24px;
+    gap: 8px;
+    align-items: center;
+    color: #e9ecea;
+    font-size: 0.84rem;
+    font-weight: 650;
+    text-decoration: none;
+  }
+
+  .portfolio-service-card__link span {
+    color: #a7ff62;
+    transition: transform 180ms ease;
+  }
+
+  .portfolio-service-card__link:hover span {
+    transform: translateX(4px);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .portfolio-service-card,
+    .portfolio-service-card__link span {
+      transition: none;
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+    .portfolio-service-card {
+      min-height: 280px;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Portfolio service card",
+  "tag": null,
+  "settings": [
+    {
+      "type": "select",
+      "id": "icon",
+      "label": "Icon",
+      "options": [
+        {
+          "value": "development",
+          "label": "Development"
+        },
+        {
+          "value": "integrations",
+          "label": "Integrations"
+        },
+        {
+          "value": "migration",
+          "label": "Migration"
+        },
+        {
+          "value": "engineering",
+          "label": "Engineering"
+        }
+      ],
+      "default": "development"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Shopify Development"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "Description",
+      "default": "<p>Custom themes, section development, Liquid, headless frontends and performance optimisation.</p>"
+    },
+    {
+      "type": "text",
+      "id": "link_label",
+      "label": "Link label",
+      "default": "Learn more"
+    },
+    {
+      "type": "url",
+      "id": "link",
+      "label": "Link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Portfolio service card",
+      "category": "Portfolio"
+    }
+  ]
+}
+{% endschema %}

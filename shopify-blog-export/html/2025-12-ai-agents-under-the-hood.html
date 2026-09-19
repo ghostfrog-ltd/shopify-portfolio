@@ -1,0 +1,53 @@
+<p>Agents aren't magic. They're:</p>
+<ol>
+<li>a planner  </li>
+<li>an executor  </li>
+<li>a memory layer  </li>
+<li>a loop holding it together with duct tape  </li>
+</ol>
+<h2>🤖 What an agent <em>is</em></h2>
+<p>An AI agent is:</p>
+<blockquote>
+<p>an LLM that can call tools, inspect results, decide next actions, and loop until done.</p>
+</blockquote>
+<h2>🛠️ Tools</h2>
+<p>Tools are functions the LLM can call:</p>
+<ul>
+<li>Python  </li>
+<li>APIs  </li>
+<li>SQL  </li>
+<li>file operations  </li>
+</ul>
+<p>LLMs with tools = applications.<br>
+LLMs without tools = chatbots.</p>
+<h2>🔁 The loop</h2>
+<ol>
+<li>LLM decides action  </li>
+<li>Calls tool  </li>
+<li>Gets output  </li>
+<li>Reflects  </li>
+<li>Replans  </li>
+</ol>
+<p>The hard parts: retries, timeouts, bad JSON, hallucinated arguments, infinite loops.</p>
+<h2>🧠 Memory types</h2>
+<ul>
+<li>short-term  </li>
+<li>working memory  </li>
+<li>long-term vector store  </li>
+<li>episodic history  </li>
+<li>procedural rules  </li>
+</ul>
+<h2>🧱 Industry architecture</h2>
+<p>Production agents use:</p>
+<ul>
+<li>planner LLM  </li>
+<li>executor  </li>
+<li>tool registry  </li>
+<li>memory layer  </li>
+<li>safety checks  </li>
+<li>observability / logs  </li>
+</ul>
+<h2>🐸 Bob + Chad</h2>
+<p>Bob = planner.<br>
+Chad = executor.</p>
+<p>Exactly how industry agents work.</p>

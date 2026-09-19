@@ -1,0 +1,59 @@
+{{ 'portfolio-about.css' | asset_url | stylesheet_tag }}
+
+<div class="portfolio-about" id="about">
+  <div class="portfolio-about__inner">
+    <div class="portfolio-about__media">
+      {% if section.settings.image != blank %}
+        {{
+          section.settings.image
+          | image_url: width: 1800
+          | image_tag:
+            widths: '600, 900, 1200, 1600, 1800',
+            sizes: '(min-width: 800px) 46vw, 100vw',
+            class: 'portfolio-about__image',
+            loading: 'lazy',
+            alt: section.settings.image_alt
+        }}
+      {% else %}
+        <img
+          src="{{ 'portfolio-about-mountains.webp' | asset_url }}"
+          class="portfolio-about__image"
+          width="1448"
+          height="1086"
+          loading="lazy"
+          alt="{{ section.settings.image_alt | escape }}"
+        >
+      {% endif %}
+    </div>
+
+    <div class="portfolio-about__content">
+      {% content_for 'blocks' %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Portfolio about",
+  "class": "portfolio-section-wrapper",
+  "blocks": [
+    {
+      "type": "@theme"
+    }
+  ],
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "image_alt",
+      "label": "Image alt text",
+      "default": "Person overlooking a dramatic mountain landscape"
+    }
+  ],
+  "presets": [{ "name": "Portfolio about" }]
+}
+{% endschema %}

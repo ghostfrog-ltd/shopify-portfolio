@@ -9,105 +9,124 @@
  */
 {
   "sections": {
-    "main": {
-      "type": "main-blog",
+    "portfolio_blog_hero": {
+      "type": "portfolio-blog-hero",
       "blocks": {
-        "title": {
-          "type": "text",
-          "name": "t:names.title",
+        "filter_development": {
+          "type": "filter",
           "settings": {
-            "text": "<h1>{{ closest.blog.title }}</h1>",
-            "width": "fit-content",
-            "max_width": "narrow",
-            "alignment": "left",
-            "type_preset": "h2",
-            "font": "var(--font-body--family)",
-            "font_size": "",
-            "line_height": "normal",
-            "letter_spacing": "normal",
-            "case": "none",
-            "wrap": "pretty",
-            "background": false,
-            "background_color": "#00000026",
-            "corner_radius": 0,
-            "padding-block-start": 48,
-            "padding-block-end": 48,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {}
+            "label": "Development",
+            "tag": "Development"
+          }
         },
-        "static-blog-post-card": {
-          "type": "_blog-post-card",
-          "static": true,
+        "filter_integrations": {
+          "type": "filter",
           "settings": {
-            "alignment": "left"
-          },
-          "blocks": {
-            "heading": {
-              "type": "_heading",
-              "name": "t:names.title",
-              "static": true,
-              "settings": {
-                "type_preset": "h4",
-                "font": "var(--font-body--family)",
-                "font_size": "",
-                "line_height": "normal",
-                "letter_spacing": "normal",
-                "case": "none",
-                "wrap": "pretty",
-                "text": "",
-                "read_only": true,
-                "alignment": "left",
-                "show_alignment": false,
-                "padding-block-start": 0,
-                "padding-block-end": 10,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {}
-            },
-            "blog-post-details": {
-              "type": "_blog-post-info-text",
-              "name": "t:names.details",
-              "static": true,
-              "settings": {
-                "show_date": true,
-                "show_author": false,
-                "type_preset": "",
-                "alignment": "left",
-                "show_alignment": false,
-                "padding-block-start": 0,
-                "padding-block-end": 0
-              },
-              "blocks": {}
-            },
-            "image": {
-              "type": "_blog-post-image",
-              "static": true,
-              "settings": {
-                "height": "large",
-                "border": "none",
-                "border_width": 1,
-                "border_opacity": 100,
-                "border_radius": 4
-              },
-              "blocks": {}
-            }
-          },
-          "block_order": []
+            "label": "Integrations",
+            "tag": "Integrations"
+          }
+        },
+        "filter_migrations": {
+          "type": "filter",
+          "settings": {
+            "label": "Migrations",
+            "tag": "Migrations"
+          }
+        },
+        "filter_performance": {
+          "type": "filter",
+          "settings": {
+            "label": "Performance",
+            "tag": "Performance"
+          }
+        },
+        "filter_strategy": {
+          "type": "filter",
+          "settings": {
+            "label": "Strategy",
+            "tag": "Strategy"
+          }
         }
       },
       "block_order": [
-        "title"
+        "filter_development",
+        "filter_integrations",
+        "filter_migrations",
+        "filter_performance",
+        "filter_strategy"
       ],
       "settings": {
-        "padding-block-start": 0,
-        "padding-block-end": 48
+        "eyebrow": "INSIGHTS / BLOG",
+        "heading": "Thoughts on Shopify development, migrations and ecommerce engineering.",
+        "description": "<p>Practical guides, technical deep dives and real-world lessons from building high-performance Shopify stores for ambitious brands.</p>",
+        "note": "Better stores. Brighter horizons.",
+        "show_filters": true,
+        "filter_label": "Filter blog posts",
+        "all_posts_label": "All posts"
+      }
+    },
+    "portfolio_blog_featured": {
+      "type": "portfolio-blog-featured",
+      "settings": {
+        "eyebrow": "FEATURED ARTICLE",
+        "link_label": "Read article",
+        "excerpt_words": 28
+      }
+    },
+    "portfolio_blog_grid": {
+      "type": "portfolio-blog-grid",
+      "blocks": {
+        "latest_heading": {
+          "type": "portfolio-section-heading",
+          "settings": {
+            "eyebrow": "",
+            "heading": "Latest articles",
+            "description": "",
+            "link_label": "All articles",
+            "link": "shopify://blogs/news"
+          },
+          "blocks": {}
+        },
+        "static-portfolio-article-card": {
+          "type": "_portfolio-article-card",
+          "static": true,
+          "settings": {
+            "show_category": true,
+            "show_excerpt": true,
+            "excerpt_words": 22,
+            "link_label": "Read article",
+            "show_date": true,
+            "show_read_time": true
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "latest_heading"
+      ],
+      "settings": {
+        "accessible_label": "Latest articles",
+        "articles_per_page": 7
+      }
+    },
+    "portfolio_blog_newsletter": {
+      "type": "portfolio-newsletter",
+      "settings": {
+        "eyebrow": "STAY IN THE LOOP",
+        "heading": "Get new articles in your inbox.",
+        "description": "<p>No spam. Just practical insights on Shopify development, ecommerce and building better online stores.</p>",
+        "email_label": "Email address",
+        "email_placeholder": "Enter your email address",
+        "button_label": "Subscribe",
+        "success_message": "Thanks for subscribing.",
+        "disclaimer": ""
       }
     }
   },
   "order": [
-    "main"
+    "portfolio_blog_hero",
+    "portfolio_blog_featured",
+    "portfolio_blog_grid",
+    "portfolio_blog_newsletter"
   ]
 }
