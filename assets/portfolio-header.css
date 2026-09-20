@@ -1,20 +1,20 @@
 /* Portfolio skin for Horizon's existing header structure and behaviour. */
-#header-component {
+body.portfolio-template #header-component {
   --portfolio-header-background: rgb(7 11 12 / 90%);
   --portfolio-header-border: rgb(247 248 247 / 12%);
 }
 
-body:has(#header-component[transparent]) .page-wrapper {
+body.portfolio-template .page-wrapper {
   background: #070b0c;
 }
 
-#header-component .header__underlay-closed {
+body.portfolio-template #header-component .header__underlay-closed {
   background: var(--portfolio-header-background);
   -webkit-backdrop-filter: blur(8px) saturate(110%);
   backdrop-filter: blur(8px) saturate(110%);
 }
 
-#header-component .header__row--top {
+body.portfolio-template #header-component .header__row--top {
   --color: #f7f8f7;
   --color-rgb: 247 248 247;
   --color-foreground: #f7f8f7;
@@ -24,31 +24,34 @@ body:has(#header-component[transparent]) .page-wrapper {
   color: var(--color-foreground);
 }
 
-#header-component .header__row--top:not(.divider--page-width),
-#header-component .header__row--top.divider--page-width .header__columns {
+body.portfolio-template #header-component .header__row--top:not(.divider--page-width),
+body.portfolio-template #header-component .header__row--top.divider--page-width .header__columns {
   border-bottom-width: 1px;
   border-bottom-color: var(--portfolio-header-border);
 }
 
-#header-component[transparent]:not([data-sticky-state='active']) .header__row--top:not(.divider--page-width),
-#header-component[transparent]:not([data-sticky-state='active'])
+body.portfolio-template
+  #header-component[transparent]:not([data-sticky-state='active'])
+  .header__row--top:not(.divider--page-width),
+body.portfolio-template
+  #header-component[transparent]:not([data-sticky-state='active'])
   .header__row--top.divider--page-width
   .header__columns {
   border-bottom-color: transparent;
 }
 
-#header-component .header__row--top .header-logo {
+body.portfolio-template #header-component .header__row--top .header-logo {
   color: #f7f8f7;
 }
 
 @media (hover: hover) {
-  #header-component .header__row--top .header-logo:hover {
+  body.portfolio-template #header-component .header__row--top .header-logo:hover {
     color: #fff;
   }
 }
 
 @media screen and (min-width: 750px) {
-  #header-component .header__row--top .header__columns {
+  body.portfolio-template #header-component .header__row--top .header__columns {
     --padding-block-start: 0;
     --padding-block-end: 0;
 
@@ -67,7 +70,7 @@ body:has(#header-component[transparent]) .page-wrapper {
 }
 
 @media (prefers-reduced-transparency: reduce) {
-  #header-component .header__underlay-closed {
+  body.portfolio-template #header-component .header__underlay-closed {
     background: #070b0c;
     -webkit-backdrop-filter: none;
     backdrop-filter: none;
