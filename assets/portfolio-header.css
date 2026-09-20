@@ -4,6 +4,10 @@
   --portfolio-header-border: rgb(247 248 247 / 12%);
 }
 
+body:has(#header-component[transparent]) .page-wrapper {
+  background: #070b0c;
+}
+
 #header-component .header__underlay-closed {
   background: var(--portfolio-header-background);
   -webkit-backdrop-filter: blur(8px) saturate(110%);
@@ -26,6 +30,13 @@
   border-bottom-color: var(--portfolio-header-border);
 }
 
+#header-component[transparent]:not([data-sticky-state='active']) .header__row--top:not(.divider--page-width),
+#header-component[transparent]:not([data-sticky-state='active'])
+  .header__row--top.divider--page-width
+  .header__columns {
+  border-bottom-color: transparent;
+}
+
 #header-component .header__row--top .header-logo {
   color: #f7f8f7;
 }
@@ -41,8 +52,17 @@
     --padding-block-start: 0;
     --padding-block-end: 0;
 
+    width: 100%;
+    max-width: 1400px;
     height: 72px;
     min-height: 72px;
+    margin-inline: auto;
+  }
+}
+
+@media screen and (max-width: 749px) {
+  #header-group > .shopify-section:has(.announcement-bar) {
+    display: none;
   }
 }
 

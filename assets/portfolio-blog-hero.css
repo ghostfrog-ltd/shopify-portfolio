@@ -107,13 +107,13 @@
 
 .portfolio-blog-hero__filter:hover,
 .portfolio-blog-hero__filter:focus-visible {
-  border-color: #a7ff62;
-  color: #a7ff62;
+  border-color: var(--portfolio-accent);
+  color: var(--portfolio-accent);
 }
 
 .portfolio-blog-hero__filter.is-active {
-  border-color: #a7ff62;
-  background: #a7ff62;
+  border-color: var(--portfolio-accent);
+  background: var(--portfolio-accent);
   color: #071008;
 }
 

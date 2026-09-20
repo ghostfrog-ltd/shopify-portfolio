@@ -73,7 +73,7 @@
 
 .portfolio-article-card__title a:hover,
 .portfolio-article-card__title a:focus-visible {
-  color: #a7ff62;
+  color: var(--portfolio-accent);
 }
 
 .portfolio-article-card__excerpt {
@@ -96,7 +96,7 @@
   display: inline-flex;
   gap: 7px;
   align-items: center;
-  color: #a7ff62;
+  color: var(--portfolio-accent);
   font-size: 0.84rem;
   font-weight: 700;
   line-height: 1.2;

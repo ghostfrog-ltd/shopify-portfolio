@@ -7,7 +7,7 @@
   display: grid;
   width: min(calc(100% - 80px), 1400px);
   margin-inline: auto;
-  padding-block: clamp(72px, 8vw, 112px);
+  padding-block: 3rem 48px;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 26px;
 }
@@ -31,7 +31,7 @@
 @media screen and (max-width: 649px) {
   .portfolio-projects__inner {
     width: min(calc(100% - 32px), 620px);
-    padding-block: 72px;
+    padding-block: 3rem 48px;
     grid-template-columns: 1fr;
     gap: 40px;
   }

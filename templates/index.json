@@ -81,9 +81,9 @@
                 "link": "/get-in-touch",
                 "open_in_new_tab": false,
                 "style_class": "button-custom",
-                "custom_button_background": "#A7FF62",
+                "custom_button_background": "#55E7AD",
                 "custom_button_text": "#071008",
-                "custom_button_border": "#A7FF62",
+                "custom_button_border": "#55E7AD",
                 "width": "fit-content",
                 "width_mobile": "fit-content"
               },
@@ -562,9 +562,9 @@
                 "link": "/get-in-touch",
                 "open_in_new_tab": false,
                 "style_class": "button-custom",
-                "custom_button_background": "#A7FF62",
+                "custom_button_background": "#55E7AD",
                 "custom_button_text": "#071008",
-                "custom_button_border": "#A7FF62",
+                "custom_button_border": "#55E7AD",
                 "width": "fit-content",
                 "width_mobile": "fit-content"
               },

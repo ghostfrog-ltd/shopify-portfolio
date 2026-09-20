@@ -1,0 +1,21 @@
+{%- doc -%}
+  Renders a flat-colour article image placeholder using the article title's first character.
+
+  @param {string} title - Article title used for the accessible label and initial.
+  @param {boolean} [compact] - Uses a smaller initial for compact cards.
+{%- enddoc -%}
+
+{% liquid
+  assign placeholder_title = title | strip
+  assign placeholder_initial = placeholder_title | slice: 0, 1 | upcase
+%}
+
+<span
+  class="portfolio-article-placeholder{% if compact %} portfolio-article-placeholder--compact{% endif %}"
+  role="img"
+  aria-label="Image placeholder for {{ placeholder_title | escape }}"
+>
+  <span class="portfolio-article-placeholder__initial" aria-hidden="true">
+    {{- placeholder_initial | escape -}}
+  </span>
+</span>

@@ -114,20 +114,20 @@
 }
 
 .portfolio-newsletter .portfolio-newsletter__input:focus-visible {
-  border-color: #a7ff62;
-  box-shadow: 0 0 0 3px rgb(167 255 98 / 20%);
+  border-color: var(--portfolio-accent);
+  box-shadow: 0 0 0 3px rgb(var(--portfolio-accent-rgb) / 20%);
 }
 
 .portfolio-newsletter__button {
   display: inline-flex;
   min-height: 52px;
   padding: 12px 26px;
-  border: 1px solid #a7ff62;
+  border: 1px solid var(--portfolio-accent);
   border-radius: 999px;
   align-items: center;
   gap: 9px;
   justify-content: center;
-  background: #a7ff62;
+  background: var(--portfolio-accent);
   color: #071008;
   cursor: pointer;
   font: inherit;
@@ -166,7 +166,7 @@
 }
 
 .portfolio-newsletter__success {
-  border-color: rgb(167 255 98 / 60%);
+  border-color: rgb(var(--portfolio-accent-rgb) / 60%);
   color: #d9ffc0;
 }
 

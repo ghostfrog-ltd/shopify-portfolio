@@ -60,8 +60,8 @@
   width: 7px;
   height: 7px;
   border-radius: 50%;
-  background: #7ef246;
-  box-shadow: 0 0 18px rgb(126 242 70 / 55%);
+  background: var(--portfolio-accent);
+  box-shadow: 0 0 18px rgb(var(--portfolio-accent-rgb) / 55%);
 }
 
 .portfolio-contact__hero h1 {
@@ -159,8 +159,8 @@
 }
 
 .portfolio-contact__field:focus-within {
-  border-color: #82ef4c;
-  box-shadow: 0 0 0 1px #82ef4c;
+  border-color: var(--portfolio-accent);
+  box-shadow: 0 0 0 1px var(--portfolio-accent);
 }
 
 .portfolio-contact__field > span {
@@ -236,9 +236,9 @@
   align-items: center;
   justify-content: center;
   gap: 8px;
-  color: #071008;
-  background: #82f049;
-  box-shadow: 0 0 28px rgb(126 242 70 / 12%);
+  color: var(--portfolio-accent-contrast);
+  background: var(--portfolio-accent);
+  box-shadow: 0 0 28px rgb(var(--portfolio-accent-rgb) / 12%);
   font-size: 0.9rem;
   font-weight: 750;
   cursor: pointer;
@@ -246,7 +246,7 @@
 }
 
 .portfolio-contact__submit:hover {
-  background: #9aff67;
+  background: var(--portfolio-accent-hover);
   transform: translateY(-1px);
 }
 
@@ -301,7 +301,7 @@
   border: 1px solid #46504f;
   border-radius: 10px;
   place-items: center;
-  color: #81f148;
+  color: var(--portfolio-accent);
   background: rgb(8 13 13 / 48%);
 }
 
@@ -329,7 +329,7 @@
 .portfolio-contact__detail-value {
   display: inline-block;
   margin: 3px 0 0;
-  color: #82f049;
+  color: var(--portfolio-accent);
   font-size: 0.9rem;
   font-weight: 620;
   line-height: 1.35;
@@ -432,7 +432,7 @@
 .portfolio-contact input:focus-visible,
 .portfolio-contact select:focus-visible,
 .portfolio-contact textarea:focus-visible {
-  outline: 2px solid #86f550;
+  outline: 2px solid var(--portfolio-accent);
   outline-offset: 3px;
 }
 

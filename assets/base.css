@@ -16,6 +16,10 @@ body {
   --hover-transition-duration: 0.25s;
   --hover-transition-timing: ease-out;
   --submenu-animation-speed: 360ms;
+  --portfolio-accent: #55e7ad;
+  --portfolio-accent-rgb: 85 231 173;
+  --portfolio-accent-hover: #78f4c2;
+  --portfolio-accent-contrast: #06100c;
 }
 
 html {
@@ -248,6 +252,10 @@ p:empty {
   flex: 1;
   display: flex;
   flex-direction: column;
+}
+
+.content-for-layout[data-template='index'] {
+  background: #070b0c;
 }
 
 .content-for-layout > .shopify-section:last-child {
@@ -1827,4 +1835,3 @@ main > .shopify-section:first-child .section:not(.disable-section-top-offset) {
     margin-top: calc(var(--header-height) * var(--transparent-header-offset-boolean) * -1);
   }
 }
-

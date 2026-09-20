@@ -57,7 +57,7 @@
 .portfolio-blog-grid .pagination__link:hover,
 .portfolio-blog-grid .pagination__link--current {
   color: #071008;
-  background: #a7ff62;
+  background: var(--portfolio-accent);
 }
 
 @media screen and (max-width: 989px) {
