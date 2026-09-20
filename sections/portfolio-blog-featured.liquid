@@ -1,4 +1,5 @@
 {{ 'portfolio-blog-featured.css' | asset_url | stylesheet_tag }}
+{{ 'portfolio-article-placeholder.css' | asset_url | stylesheet_tag }}
 {% comment %}The newest published article is featured automatically.{% endcomment %}
 
 {% liquid
@@ -41,14 +42,7 @@
                   alt: featured_article.image.alt
               }}
             {% else %}
-              <img
-                src="{{ 'portfolio-blog-hero-mountains.webp' | asset_url }}"
-                class="portfolio-blog-featured__image"
-                width="1672"
-                height="941"
-                loading="lazy"
-                alt=""
-              >
+              {% render 'portfolio-article-placeholder', title: featured_article.title %}
             {% endif %}
           </a>
 

@@ -27,6 +27,9 @@
   elsif section.settings.enable_transparent_header_collection and template.name == 'collection'
     assign transparent = 'always'
     assign transparent_text_color_setting = section.settings.text_color_transparent_collection
+  else
+    assign transparent = 'always'
+    assign transparent_text_color_setting = section.settings.text_color_transparent_home | default: '#F7F8F7'
   endif
 
   if section.settings.enable_sticky_header == 'always'
@@ -1046,6 +1049,12 @@
   /* Transparent header layout. Keep this in sync with snippets/section.liquid's first-section height compensation. */
   body:has(#header-component[transparent]) .content-for-layout > .shopify-section:first-child {
     margin-top: calc(var(--header-group-height) * -1);
+  }
+
+  body:has(#header-component[transparent])
+    .content-for-layout:not([data-template='index'])
+    > .shopify-section:first-child {
+    margin-top: calc((var(--header-group-height) * -1) + 3rem);
   }
 
   body:has(#header-component[transparent]) #header-group > .header-section {

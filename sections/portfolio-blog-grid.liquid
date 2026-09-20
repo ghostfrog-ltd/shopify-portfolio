@@ -25,25 +25,13 @@
               {% continue %}
             {% endif %}
 
-            {% liquid
-              assign fallback_index = rendered_count | modulo: 3
-              case fallback_index
-                when 0
-                  assign fallback_asset = 'portfolio-hero-cyclist.webp'
-                when 1
-                  assign fallback_asset = 'portfolio-project-order-integration.webp'
-                else
-                  assign fallback_asset = 'portfolio-project-magento-migration.webp'
-              endcase
-              assign rendered_count = rendered_count | plus: 1
-            %}
+            {% assign rendered_count = rendered_count | plus: 1 %}
 
             <div class="portfolio-blog-grid__item">
               {% content_for 'block',
                 id: 'static-portfolio-article-card',
                 type: '_portfolio-article-card',
                 article: article,
-                fallback_asset: fallback_asset,
                 image_loading: 'lazy'
               %}
             </div>

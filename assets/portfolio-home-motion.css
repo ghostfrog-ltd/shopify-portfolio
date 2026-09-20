@@ -1,0 +1,78 @@
+main[data-template='index'] {
+  width: 100%;
+  overflow-x: clip;
+}
+
+body:has(main[data-template='index']) {
+  overflow-x: hidden;
+}
+
+@keyframes portfolio-home-hero-copy-in {
+  from {
+    opacity: 0;
+    filter: blur(10px);
+    transform: translate3d(-56px, 86px, 0) scale(0.94);
+  }
+
+  to {
+    opacity: 1;
+    filter: blur(0);
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes portfolio-home-hero-media-in {
+  from {
+    opacity: 0;
+    filter: blur(8px);
+    transform: translate3d(150px, 74px, 0) scale(0.84);
+  }
+
+  to {
+    opacity: 1;
+    filter: blur(0);
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  main[data-template='index'].portfolio-motion-ready .portfolio-hero__content {
+    animation: portfolio-home-hero-copy-in 1100ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  main[data-template='index'].portfolio-motion-ready .portfolio-hero__media {
+    animation: portfolio-home-hero-media-in 1450ms 120ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  main[data-template='index'].portfolio-motion-ready .portfolio-motion-reveal {
+    opacity: var(--portfolio-reveal-opacity, 0.04);
+    transform: translate3d(
+        var(--portfolio-reveal-x, 0),
+        var(--portfolio-reveal-y, 220px),
+        0
+      )
+      scale(var(--portfolio-reveal-scale, 0.9));
+    transform-origin: center top;
+    will-change: opacity, transform;
+  }
+
+  main[data-template='index'] .portfolio-motion-parallax {
+    transform: translate3d(0, var(--portfolio-parallax-y, 0), 0) scale(1.24);
+    will-change: transform;
+  }
+
+  main[data-template='index'] .portfolio-hero__image.portfolio-motion-parallax {
+    transform: translate3d(0, var(--portfolio-parallax-y, 0), 0) scale(1.09);
+  }
+}
+
+@media screen and (max-width: 749px) and (prefers-reduced-motion: no-preference) {
+  main[data-template='index'].portfolio-motion-ready .portfolio-motion-reveal {
+    transform: translate3d(
+        var(--portfolio-reveal-x, 0),
+        var(--portfolio-reveal-y, 130px),
+        0
+      )
+      scale(var(--portfolio-reveal-scale, 0.94));
+  }
+}

@@ -28,13 +28,6 @@
             "link": "/services"
           }
         },
-        "nav_projects": {
-          "type": "navigation_link",
-          "settings": {
-            "label": "Demo Projects",
-            "link": "#projects"
-          }
-        },
         "nav_about": {
           "type": "navigation_link",
           "settings": {
@@ -54,7 +47,7 @@
           "settings": {
             "icon": "linkedin",
             "label": "LinkedIn",
-            "link": "https://www.linkedin.com",
+            "link": "https://www.linkedin.com/in/gary-constable",
             "open_in_new_tab": true
           }
         },
@@ -63,7 +56,7 @@
           "settings": {
             "icon": "github",
             "label": "GitHub",
-            "link": "https://github.com/ghostfrog-ltd",
+            "link": "https://github.com/ghostfrog-ltd/",
             "open_in_new_tab": true
           }
         },
@@ -71,8 +64,8 @@
           "type": "social_link",
           "settings": {
             "icon": "email",
-            "label": "Contact GhostFrog",
-            "link": "/get-in-touch",
+            "label": "Email info@ghostfrog.co.uk",
+            "link": "mailto:info@ghostfrog.co.uk",
             "open_in_new_tab": false
           }
         }
@@ -80,7 +73,6 @@
       "block_order": [
         "nav_home",
         "nav_services",
-        "nav_projects",
         "nav_about",
         "nav_contact",
         "social_linkedin",

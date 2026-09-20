@@ -7,7 +7,7 @@
   display: grid;
   width: min(calc(100% - 80px), 1400px);
   margin-inline: auto;
-  padding-block: clamp(56px, 7vw, 92px) clamp(72px, 8vw, 108px);
+  padding-block: 3rem clamp(72px, 8vw, 108px);
   grid-template-columns: repeat(9, minmax(0, 1fr));
   gap: 24px 14px;
 }

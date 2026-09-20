@@ -93,7 +93,7 @@
 
 .portfolio-blog-featured__title a:hover,
 .portfolio-blog-featured__title a:focus-visible {
-  color: #a7ff62;
+  color: var(--portfolio-accent);
 }
 
 .portfolio-blog-featured__excerpt {
@@ -116,7 +116,7 @@
   display: inline-flex;
   gap: 8px;
   align-items: center;
-  color: #a7ff62;
+  color: var(--portfolio-accent);
   font-size: 0.9rem;
   font-weight: 700;
   text-decoration: none;

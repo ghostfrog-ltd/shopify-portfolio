@@ -1,4 +1,5 @@
 {{ 'portfolio-blog-post.css' | asset_url | stylesheet_tag }}
+{{ 'portfolio-article-placeholder.css' | asset_url | stylesheet_tag }}
 <script src="{{ 'portfolio-blog-post.js' | asset_url }}" defer></script>
 
 {% liquid
@@ -52,16 +53,11 @@
                 alt: hero_alt
             }}
           {% else %}
-            <img
-              src="{{ 'portfolio-blog-hero-mountains.webp' | asset_url }}"
-              alt="Dark mountain landscape"
-              width="1672"
-              height="941"
-              loading="eager"
-              fetchpriority="high"
-            >
+            {% render 'portfolio-article-placeholder', title: article.title %}
           {% endif %}
-          <span class="portfolio-article__hero-note" aria-hidden="true">Build clearer.<br>Go further.</span>
+          {% if article.image %}
+            <span class="portfolio-article__hero-note" aria-hidden="true">Build clearer.<br>Go further.</span>
+          {% endif %}
         </div>
       </div>
     </div>
@@ -171,13 +167,7 @@
                         alt: related_alt
                     }}
                   {% else %}
-                    <img
-                      src="{{ 'portfolio-blog-hero-mountains.webp' | asset_url }}"
-                      alt=""
-                      width="1672"
-                      height="941"
-                      loading="lazy"
-                    >
+                    {% render 'portfolio-article-placeholder', title: related_article.title, compact: true %}
                   {% endif %}
                 </span>
                 <span class="portfolio-article__related-copy">

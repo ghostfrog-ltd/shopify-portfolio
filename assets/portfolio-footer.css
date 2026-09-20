@@ -27,7 +27,7 @@
 }
 
 .portfolio-footer__brand span {
-  color: #a7ff62;
+  color: var(--portfolio-accent);
 }
 
 .portfolio-footer__brand:hover {

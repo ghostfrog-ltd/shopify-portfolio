@@ -8,7 +8,7 @@
   scrollbar-width: none;
   color: #f2f4f1;
   background:
-    radial-gradient(circle at 82% 63%, rgb(116 255 77 / 8%), transparent 28%),
+    radial-gradient(circle at 82% 63%, rgb(var(--portfolio-accent-rgb) / 8%), transparent 28%),
     radial-gradient(circle at 22% 4%, rgb(255 255 255 / 3%), transparent 30%),
     #0a1011;
   border-right: 1px solid #2c3839;
@@ -66,7 +66,7 @@
 
 .portfolio-menu-drawer__wordmark > span {
   margin-right: 0.12em;
-  color: #7df546;
+  color: var(--portfolio-accent);
   font-weight: 600;
 }
 
@@ -104,21 +104,21 @@
 }
 
 .portfolio-menu-drawer__navigation a:hover {
-  color: #93ff55;
-  background: rgb(126 255 71 / 8%);
+  color: var(--portfolio-accent-hover);
+  background: rgb(var(--portfolio-accent-rgb) / 8%);
 }
 
 .portfolio-menu-drawer__navigation a:focus-visible,
 .portfolio-menu-drawer__cta-link:focus-visible,
 .portfolio-menu-drawer__socials a:focus-visible,
 .portfolio-menu-drawer__wordmark:focus-visible {
-  outline: 2px solid #87f64d;
+  outline: 2px solid var(--portfolio-accent);
   outline-offset: 3px;
 }
 
 .portfolio-menu-drawer__navigation a.is-active {
-  color: #83f54a;
-  background: linear-gradient(90deg, rgb(75 203 45 / 14%), rgb(75 203 45 / 8%));
+  color: var(--portfolio-accent);
+  background: linear-gradient(90deg, rgb(var(--portfolio-accent-rgb) / 14%), rgb(var(--portfolio-accent-rgb) / 8%));
 }
 
 .portfolio-menu-drawer__nav-icon {
@@ -169,9 +169,9 @@
   min-height: 3.85rem;
   padding: 0.8rem 1.4rem;
   border-radius: 999px;
-  color: #071008;
-  background: #83f64a;
-  box-shadow: 0 0 28px rgb(127 247 72 / 14%);
+  color: var(--portfolio-accent-contrast);
+  background: var(--portfolio-accent);
+  box-shadow: 0 0 28px rgb(var(--portfolio-accent-rgb) / 14%);
   font-size: 1rem;
   font-weight: 750;
   text-align: center;
@@ -180,8 +180,8 @@
 }
 
 .portfolio-menu-drawer__cta-link:hover {
-  color: #071008;
-  background: #9aff67;
+  color: var(--portfolio-accent-contrast);
+  background: var(--portfolio-accent-hover);
   transform: translateY(-1px);
 }
 
@@ -205,7 +205,7 @@
 }
 
 .portfolio-menu-drawer__socials a:hover {
-  color: #85f64b;
+  color: var(--portfolio-accent);
   transform: translateY(-1px);
 }
 

@@ -1,4 +1,6 @@
 {{ 'portfolio-hero.css' | asset_url | stylesheet_tag }}
+{{ 'portfolio-home-motion.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'portfolio-home-motion.js' | asset_url }}" defer></script>
 
 {% capture hero_blocks %}
   {% content_for 'blocks' %}
@@ -11,37 +13,29 @@
     </div>
 
     <div class="portfolio-hero__media">
-      <div class="portfolio-hero__device">
-        {% if section.settings.hero_image != blank %}
-          {{
-            section.settings.hero_image
-            | image_url: width: 1800
-            | image_tag:
-              widths: '600, 900, 1200, 1600, 1800',
-              sizes: '(min-width: 1050px) 52vw, (min-width: 750px) 55vw, 100vw',
-              class: 'portfolio-hero__image',
-              loading: 'eager',
-              fetchpriority: 'high',
-              alt: section.settings.image_alt
-          }}
-        {% else %}
-          <img
-            src="{{ 'portfolio-hero-cyclist.webp' | asset_url }}"
-            class="portfolio-hero__image"
-            width="1672"
-            height="941"
-            alt="{{ section.settings.image_alt | escape }}"
-            loading="eager"
-            fetchpriority="high"
-          >
-        {% endif %}
-        <span class="portfolio-hero__screen-shade" aria-hidden="true"></span>
-        <span class="portfolio-hero__screen-copy" aria-hidden="true">
-          <span class="portfolio-hero__screen-brand">VÉLO</span>
-          <span class="portfolio-hero__screen-title">Built for what's next.</span>
-          <span class="portfolio-hero__screen-text">Performance gear for further horizons.</span>
-        </span>
-      </div>
+      {% if section.settings.hero_image != blank %}
+        {{
+          section.settings.hero_image
+          | image_url: width: 2000
+          | image_tag:
+            widths: '750, 1100, 1500, 1800, 2000',
+            sizes: '(min-width: 1050px) 66vw, (min-width: 750px) 68vw, 120vw',
+            class: 'portfolio-hero__image',
+            loading: 'eager',
+            fetchpriority: 'high',
+            alt: section.settings.image_alt
+        }}
+      {% else %}
+        <img
+          src="{{ 'portfolio-hero-tablet.webp' | asset_url }}"
+          class="portfolio-hero__image"
+          width="1672"
+          height="941"
+          alt="{{ section.settings.image_alt | escape }}"
+          loading="eager"
+          fetchpriority="high"
+        >
+      {% endif %}
     </div>
   </div>
 </div>

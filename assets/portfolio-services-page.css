@@ -50,7 +50,7 @@
 
 .portfolio-services-page__eyebrow {
   margin: 0 0 16px;
-  color: #55e7ad;
+  color: var(--portfolio-accent);
   font-size: 0.7rem;
   font-weight: 680;
   letter-spacing: 0.22em;
@@ -69,7 +69,7 @@
 }
 
 .portfolio-services-page__hero h1 > span {
-  color: #53e7ad;
+  color: var(--portfolio-accent);
 }
 
 .portfolio-services-page__lead {
@@ -100,8 +100,8 @@
   align-items: center;
   justify-content: center;
   gap: 8px;
-  color: #06100c;
-  background: #55e7ad;
+  color: var(--portfolio-accent-contrast);
+  background: var(--portfolio-accent);
   font-size: 0.88rem;
   font-weight: 750;
   line-height: 1.2;
@@ -110,8 +110,8 @@
 }
 
 .portfolio-services-page__button:hover {
-  color: #06100c;
-  background: #78f4c2;
+  color: var(--portfolio-accent-contrast);
+  background: var(--portfolio-accent-hover);
   transform: translateY(-1px);
 }
 
@@ -127,7 +127,7 @@
 }
 
 .portfolio-services-page__text-link > span {
-  color: #55e7ad;
+  color: var(--portfolio-accent);
   font-size: 1.65rem;
   line-height: 0.5;
   text-decoration: none;
@@ -190,7 +190,7 @@
 
 .portfolio-services-page__service:hover {
   color: #f0f3f1;
-  border-color: #55e7ad;
+  border-color: var(--portfolio-accent);
   transform: translateY(-2px);
 }
 
@@ -198,11 +198,11 @@
   display: grid;
   width: 46px;
   height: 46px;
-  border: 1px solid #29aa76;
+  border: 1px solid rgb(var(--portfolio-accent-rgb) / 65%);
   border-radius: 10px;
   place-items: center;
-  color: #55e7ad;
-  background: rgb(31 128 90 / 8%);
+  color: var(--portfolio-accent);
+  background: rgb(var(--portfolio-accent-rgb) / 8%);
 }
 
 .portfolio-services-page__service-icon svg {
@@ -266,10 +266,10 @@
   width: 45px;
   height: 45px;
   flex: 0 0 45px;
-  border: 2px solid #55e7ad;
+  border: 2px solid var(--portfolio-accent);
   border-radius: 50%;
   place-items: center;
-  color: #55e7ad;
+  color: var(--portfolio-accent);
   font-size: 0.8rem;
   font-weight: 690;
 }
@@ -365,7 +365,7 @@
 
 .portfolio-services-page__stat strong {
   display: block;
-  color: #55e7ad;
+  color: var(--portfolio-accent);
   font-size: clamp(1.65rem, 2.5vw, 2.35rem);
   font-weight: 700;
   line-height: 1.1;
@@ -415,7 +415,7 @@
 }
 
 .portfolio-services-page a:focus-visible {
-  outline: 2px solid #6ff0ba;
+  outline: 2px solid var(--portfolio-accent);
   outline-offset: 4px;
 }
 

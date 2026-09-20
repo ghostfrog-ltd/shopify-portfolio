@@ -2,11 +2,11 @@
   Renders a portfolio blog article card.
 
   @param {object} article - The article to render.
-  @param {string} [fallback_asset] - Theme asset used when the article has no featured image.
   @param {string} [image_loading] - Native image loading strategy.
 {%- enddoc -%}
 
 {{ 'portfolio-article-card.css' | asset_url | stylesheet_tag }}
+{{ 'portfolio-article-placeholder.css' | asset_url | stylesheet_tag }}
 
 {% liquid
   assign card_settings = block.settings
@@ -35,15 +35,8 @@
           loading: image_loading,
           alt: article.image.alt
       }}
-    {% elsif fallback_asset != blank %}
-      <img
-        src="{{ fallback_asset | asset_url }}"
-        class="portfolio-article-card__image"
-        width="1672"
-        height="941"
-        loading="{{ image_loading }}"
-        alt=""
-      >
+    {% else %}
+      {% render 'portfolio-article-placeholder', title: article.title, compact: true %}
     {% endif %}
   </a>
 
