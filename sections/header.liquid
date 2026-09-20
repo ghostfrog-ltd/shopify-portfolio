@@ -27,7 +27,13 @@
   elsif section.settings.enable_transparent_header_collection and template.name == 'collection'
     assign transparent = 'always'
     assign transparent_text_color_setting = section.settings.text_color_transparent_collection
-  else
+  elsif template.name == 'blog' or template.name == 'article'
+    assign transparent = 'always'
+    assign transparent_text_color_setting = section.settings.text_color_transparent_home | default: '#F7F8F7'
+  elsif template.name == 'page' and template.suffix == 'contact'
+    assign transparent = 'always'
+    assign transparent_text_color_setting = section.settings.text_color_transparent_home | default: '#F7F8F7'
+  elsif template.name == 'page' and template.suffix == 'services'
     assign transparent = 'always'
     assign transparent_text_color_setting = section.settings.text_color_transparent_home | default: '#F7F8F7'
   endif
