@@ -68,10 +68,10 @@
   margin: 10px 0 18px;
   color: var(--article-text);
   font-family: var(--font-heading--family);
-  font-size: clamp(40px, 4.9vw, 68px);
+  font-size: var(--gf-page-h1);
   font-weight: 720;
   letter-spacing: -0.055em;
-  line-height: 0.98;
+  line-height: 1.05;
   text-wrap: balance;
 }
 
@@ -89,7 +89,7 @@
   max-width: 660px;
   margin: 0;
   color: #c6cfcb;
-  font-size: 17px;
+  font-size: var(--gf-large-body);
   line-height: 1.55;
 }
 
@@ -201,12 +201,12 @@
 
 .portfolio-article__content h2 {
   margin: 45px 0 14px;
-  font-size: clamp(27px, 3vw, 38px);
+  font-size: var(--gf-h2);
 }
 
 .portfolio-article__content h3 {
   margin: 35px 0 12px;
-  font-size: clamp(22px, 2.3vw, 29px);
+  font-size: var(--gf-h3);
 }
 
 .portfolio-article__content p,
@@ -233,7 +233,7 @@
   padding: 5px 0 5px 26px;
   border-left: 4px solid var(--article-green);
   color: var(--article-text);
-  font-size: 22px;
+  font-size: var(--gf-blockquote);
   font-style: italic;
   line-height: 1.45;
 }
@@ -548,7 +548,7 @@
   margin: 8px 0 6px;
   color: #fff;
   font-family: var(--font-heading--family);
-  font-size: clamp(30px, 4vw, 46px);
+  font-size: var(--gf-h2);
   letter-spacing: -0.045em;
   line-height: 1;
 }
@@ -622,11 +622,11 @@
   }
 
   .portfolio-article__hero-copy h1 {
-    font-size: clamp(39px, 12vw, 56px);
+    font-size: var(--gf-page-h1);
   }
 
   .portfolio-article__summary {
-    font-size: 15px;
+    font-size: var(--gf-large-body);
   }
 
   .portfolio-article__hero-media,
@@ -643,11 +643,11 @@
   }
 
   .portfolio-article__content {
-    font-size: 15px;
+    font-size: var(--gf-body);
   }
 
   .portfolio-article__content blockquote {
-    font-size: 19px;
+    font-size: var(--gf-blockquote);
   }
 
   .portfolio-article__sidebar,

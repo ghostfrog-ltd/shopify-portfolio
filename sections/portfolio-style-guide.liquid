@@ -1,0 +1,267 @@
+{{ 'portfolio-style-guide.css' | asset_url | stylesheet_tag }}
+
+<section class="gf-style-guide" aria-labelledby="StyleGuideHeading-{{ section.id }}">
+  <header class="gf-style-guide__hero">
+    <div class="gf-style-guide__hero-media" aria-hidden="true">
+      {% if section.settings.hero_image != blank %}
+        {{
+          section.settings.hero_image
+          | image_url: width: 2200
+          | image_tag:
+            widths: '750, 1100, 1500, 1900, 2200',
+            sizes: '100vw',
+            class: 'gf-style-guide__hero-image',
+            loading: 'eager',
+            fetchpriority: 'high',
+            alt: ''
+        }}
+      {% else %}
+        <img
+          src="{{ 'portfolio-about-mountains.webp' | asset_url }}"
+          class="gf-style-guide__hero-image"
+          width="1448"
+          height="1086"
+          loading="eager"
+          fetchpriority="high"
+          alt=""
+        >
+      {% endif %}
+    </div>
+    <div class="gf-style-guide__hero-overlay" aria-hidden="true"></div>
+
+    <div class="gf-style-guide__hero-inner gf-page-width">
+      <div class="gf-style-guide__hero-copy">
+        <p class="gf-eyebrow">{{ section.settings.eyebrow | escape }}</p>
+        <h1 class="gf-hero-heading" id="StyleGuideHeading-{{ section.id }}">{{ section.settings.heading | escape }}</h1>
+        <div class="gf-style-guide__hero-intro rte">{{ section.settings.intro }}</div>
+        <div class="gf-style-guide__actions">
+          <a class="gf-button" href="{{ section.settings.primary_link | default: '/get-in-touch' }}">
+            {{ section.settings.primary_label | escape }} <span aria-hidden="true">&rarr;</span>
+          </a>
+          <a class="gf-button gf-button--secondary" href="{{ section.settings.secondary_link | default: '/#projects' }}">
+            {{ section.settings.secondary_label | escape }}
+          </a>
+        </div>
+      </div>
+
+      {% if section.settings.hero_note != blank %}
+        <p class="gf-style-guide__hero-note">{{ section.settings.hero_note | newline_to_br }}</p>
+      {% endif %}
+    </div>
+  </header>
+
+  <div class="gf-style-guide__content gf-page-width">
+    <div class="gf-style-guide__main">
+      <section class="gf-style-guide__type-sample" aria-labelledby="TypeSampleHeading-{{ section.id }}">
+        <h2 class="gf-page-heading" id="TypeSampleHeading-{{ section.id }}">H1 — Page title</h2>
+        <p>This is how a main page heading looks. It should be clear, bold, and set the tone for the content that follows. GhostFrog builds high-performance Shopify stores for ambitious brands.</p>
+
+        <hr>
+
+        <h2 class="gf-h2">H2 — Section heading</h2>
+        <p>Use H2 headings to break content into clear sections. We specialise in Shopify development, migrations, integrations and custom ecommerce solutions that help brands grow.</p>
+
+        <h3 class="gf-h3">H3 — Sub section heading</h3>
+        <p>H3 headings are great for grouping related content or features.</p>
+
+        <h4 class="gf-h4">H4 — Minor heading</h4>
+        <p>Use H4 headings for smaller sections, labels or supporting content.</p>
+
+        <p>This is a regular paragraph of text. You can make text <strong>bold</strong>, <em>italic</em>, or add an <a href="/services">inline link like this</a> to highlight important information. Great ecommerce experiences are built on a combination of strategy, design and solid engineering.</p>
+      </section>
+
+      <div class="gf-style-guide__reference-grid">
+        <section class="gf-style-guide__lists" aria-labelledby="ListsHeading-{{ section.id }}">
+          <h2 id="ListsHeading-{{ section.id }}">Lists</h2>
+          <h3>Unordered list</h3>
+          <ul>
+            <li>Theme development &amp; customisation</li>
+            <li>Shopify app integrations</li>
+            <li>Migration from other platforms</li>
+            <li>Performance optimisation</li>
+            <li>Ongoing support &amp; maintenance</li>
+          </ul>
+
+          <h3>Ordered list</h3>
+          <ol>
+            <li>Discover and plan</li>
+            <li>Design and develop</li>
+            <li>Test and optimise</li>
+            <li>Launch and grow</li>
+          </ol>
+
+          <h3>Checklist</h3>
+          <ul class="gf-style-guide__checklist">
+            <li>Strategy and requirements</li>
+            <li>Design and UX</li>
+            <li>Development and testing</li>
+            <li>Launch and training</li>
+          </ul>
+        </section>
+
+        <section class="gf-style-guide__components" aria-labelledby="ComponentsHeading-{{ section.id }}">
+          <h2 class="visually-hidden" id="ComponentsHeading-{{ section.id }}">Content components</h2>
+          <h3>Blockquote</h3>
+          <blockquote>
+            <p>“Great ecommerce isn’t just about technology — it’s about removing friction, creating opportunity, and helping people get to what’s next.”</p>
+            <cite>— The GhostFrog Team</cite>
+          </blockquote>
+
+          <h3>Buttons</h3>
+          <div class="gf-style-guide__button-row">
+            <a class="gf-button" href="/get-in-touch">Primary button <span aria-hidden="true">&rarr;</span></a>
+            <a class="gf-button gf-button--secondary" href="/services">Secondary button</a>
+          </div>
+
+          <h3>Table</h3>
+          <div class="gf-style-guide__table-wrap">
+            <table>
+              <caption class="visually-hidden">Example GhostFrog services, timelines and starting prices</caption>
+              <thead><tr><th scope="col">Service</th><th scope="col">Typical timeline</th><th scope="col">Starting from</th></tr></thead>
+              <tbody>
+                <tr><td>Shopify theme build</td><td>2–6 weeks</td><td>£5,000</td></tr>
+                <tr><td>Migration to Shopify</td><td>4–12 weeks</td><td>£8,000</td></tr>
+                <tr><td>Custom app development</td><td>4–12 weeks</td><td>£10,000+</td></tr>
+                <tr><td>Ongoing support</td><td>Monthly</td><td>£500+</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="gf-style-guide__panels" aria-labelledby="PanelsHeading-{{ section.id }}">
+          <h2 class="visually-hidden" id="PanelsHeading-{{ section.id }}">Information panels and code</h2>
+          <h3>Callout / Info panel</h3>
+          <aside class="gf-style-guide__callout gf-style-guide__callout--info">
+            <span class="gf-style-guide__callout-icon" aria-hidden="true">i</span>
+            <div><strong>Good to know</strong><p>This is an info callout. Use it for helpful tips, additional context or important information for your customers.</p></div>
+          </aside>
+
+          <h3>Warning / Note panel</h3>
+          <aside class="gf-style-guide__callout gf-style-guide__callout--warning">
+            <span class="gf-style-guide__warning-icon" aria-hidden="true">!</span>
+            <div><strong>Heads up</strong><p>This is a warning or note panel. Use it to highlight important details, limitations or things to be aware of.</p></div>
+          </aside>
+
+          <h3>Code block</h3>
+          <div class="gf-style-guide__code">
+            <div class="gf-style-guide__code-dots" aria-hidden="true"><i></i><i></i><i></i></div>
+            <pre><code><span>// Initialise Shopify theme</span>
+const theme = new <b>GhostFrogTheme</b>({
+  performance: <em>true</em>,
+  accessibility: <em>true</em>,
+  seo: <em>true</em>,
+});</code></pre>
+          </div>
+        </section>
+      </div>
+
+      <div class="gf-style-guide__lower-grid">
+        <div>
+          <figure class="gf-style-guide__figure">
+            {% if section.settings.content_image != blank %}
+              {{
+                section.settings.content_image
+                | image_url: width: 1400
+                | image_tag:
+                  widths: '500, 750, 1000, 1400',
+                  sizes: '(min-width: 900px) 42vw, 100vw',
+                  loading: 'lazy',
+                  alt: section.settings.content_image.alt
+              }}
+            {% else %}
+              <img src="{{ 'portfolio-cta-mountains.webp' | asset_url }}" width="1672" height="941" loading="lazy" alt="Mountain landscape beneath dramatic clouds">
+            {% endif %}
+            <figcaption>{{ section.settings.image_caption | escape }}</figcaption>
+          </figure>
+
+          <section class="gf-style-guide__faq" aria-labelledby="FaqHeading-{{ section.id }}">
+            <h2 id="FaqHeading-{{ section.id }}">FAQ</h2>
+            <details><summary>How long does a Shopify project take?</summary><p>Most projects take between two and twelve weeks depending on their scope and complexity.</p></details>
+            <details><summary>Do you work with existing Shopify stores?</summary><p>Yes. We improve, extend and maintain existing Shopify stores as well as building new ones.</p></details>
+            <details><summary>Can you help with migrations from other platforms?</summary><p>Yes. We plan and deliver migrations from Magento, WooCommerce and other ecommerce platforms.</p></details>
+            <details><summary>Do you offer ongoing support?</summary><p>Yes. Flexible ongoing development and support retainers are available.</p></details>
+          </section>
+        </div>
+
+        <section class="gf-style-guide__two-column" aria-labelledby="TwoColumnHeading-{{ section.id }}">
+          <h2 id="TwoColumnHeading-{{ section.id }}">Two column content</h2>
+          <div class="gf-style-guide__two-column-grid">
+            <article>
+              <h3>Built for what’s next.</h3>
+              <p>We combine strategic thinking with expert development to create Shopify stores that perform, convert and scale. From headless builds to complex integrations, we make ecommerce work harder for your business.</p>
+              <a class="gf-button gf-button--secondary" href="/services">Learn more <span aria-hidden="true">&rarr;</span></a>
+            </article>
+            <article>
+              <h3>Flexible and scalable.</h3>
+              <p>Our Shopify solutions are designed to grow with you. Whether you’re a start-up or an established global brand, we build with performance, flexibility and long-term success in mind.</p>
+              <a href="/services">Explore our services <span aria-hidden="true">&rarr;</span></a>
+            </article>
+          </div>
+
+          <div class="gf-style-guide__trusted">
+            <h3>Trusted by ambitious brands</h3>
+            <div class="gf-style-guide__stats">
+              <div><span aria-hidden="true">☷</span><strong>50+</strong><small>Projects delivered</small></div>
+              <div><span aria-hidden="true">★</span><strong>100%</strong><small>Client satisfaction</small></div>
+              <div><span aria-hidden="true">ϟ</span><strong>3x</strong><small>Average conversion uplift</small></div>
+              <div><span aria-hidden="true">◎</span><strong>Global</strong><small>Clients worldwide</small></div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <aside class="gf-style-guide__service-card" aria-labelledby="ServiceCardHeading-{{ section.id }}">
+      <h2 id="ServiceCardHeading-{{ section.id }}">Build. Migrate. Grow.</h2>
+      <p>Shopify development without the agency overhead. We help ambitious brands launch, scale and push what’s possible on Shopify.</p>
+      <ul>
+        <li><span aria-hidden="true">ϟ</span> Custom development</li>
+        <li><span aria-hidden="true">▱</span> Migrations &amp; replatforming</li>
+        <li><span aria-hidden="true">⚙</span> Apps &amp; integrations</li>
+      </ul>
+      <a class="gf-button" href="/get-in-touch">Discuss your project <span aria-hidden="true">&rarr;</span></a>
+    </aside>
+  </div>
+
+  <section class="gf-style-guide__cta" aria-labelledby="StyleGuideCtaHeading-{{ section.id }}">
+    <div class="gf-style-guide__cta-media" aria-hidden="true"></div>
+    <div class="gf-style-guide__cta-overlay" aria-hidden="true"></div>
+    <div class="gf-style-guide__cta-inner gf-page-width">
+      <div>
+        <p class="gf-eyebrow">{{ section.settings.cta_eyebrow | escape }}</p>
+        <h2 id="StyleGuideCtaHeading-{{ section.id }}">{{ section.settings.cta_heading | escape }}</h2>
+        <p>{{ section.settings.cta_text | escape }}</p>
+      </div>
+      <a class="gf-button" href="{{ section.settings.cta_link | default: '/get-in-touch' }}">{{ section.settings.cta_label | escape }} <span aria-hidden="true">&rarr;</span></a>
+    </div>
+  </section>
+</section>
+
+{% schema %}
+{
+  "name": "Portfolio style guide",
+  "class": "portfolio-section-wrapper",
+  "settings": [
+    { "type": "header", "content": "Hero" },
+    { "type": "image_picker", "id": "hero_image", "label": "Hero image" },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Style guide" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "A page built to handle real content." },
+    { "type": "richtext", "id": "intro", "label": "Introduction", "default": "<p>This template styles rich content beautifully — from simple text to complex layouts — so you can tell your story, share knowledge, and showcase your expertise on Shopify.</p>" },
+    { "type": "text", "id": "primary_label", "label": "Primary button label", "default": "Start a project" },
+    { "type": "url", "id": "primary_link", "label": "Primary button link" },
+    { "type": "text", "id": "secondary_label", "label": "Secondary button label", "default": "View our work" },
+    { "type": "url", "id": "secondary_link", "label": "Secondary button link" },
+    { "type": "textarea", "id": "hero_note", "label": "Hero side note", "default": "Better\nshops\nhigher\nplaces" },
+    { "type": "header", "content": "Content image" },
+    { "type": "image_picker", "id": "content_image", "label": "Content image" },
+    { "type": "text", "id": "image_caption", "label": "Image caption", "default": "Fig. 1 — A calmer, faster, more capable ecommerce future." },
+    { "type": "header", "content": "Call to action" },
+    { "type": "text", "id": "cta_eyebrow", "label": "Eyebrow", "default": "Ready to build something remarkable?" },
+    { "type": "text", "id": "cta_heading", "label": "Heading", "default": "Let’s create what’s next." },
+    { "type": "text", "id": "cta_text", "label": "Text", "default": "High-performance Shopify development for ambitious brands." },
+    { "type": "text", "id": "cta_label", "label": "Button label", "default": "Start a conversation" },
+    { "type": "url", "id": "cta_link", "label": "Button link" }
+  ],
+  "presets": [{ "name": "Portfolio style guide" }]
+}
+{% endschema %}

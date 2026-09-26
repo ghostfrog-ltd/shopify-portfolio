@@ -6,6 +6,8 @@
     assign is_portfolio_template = true
   elsif template.name == 'page' and template.suffix == 'services'
     assign is_portfolio_template = true
+  elsif template.name == 'page' and template.suffix == 'style-guide'
+    assign is_portfolio_template = true
   endif
 %}
 
@@ -29,6 +31,7 @@
 
     {%- render 'meta-tags' -%}
     {%- render 'stylesheets' -%}
+    {{ 'portfolio-foundations.css' | asset_url | stylesheet_tag }}
     {%- render 'card-hover-effect-styles' -%}
     {%- render 'fonts' -%}
     {%- render 'scripts' -%}

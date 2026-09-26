@@ -18,7 +18,7 @@
 }
 
 .portfolio-tech-stack__inner .portfolio-section-heading__title {
-  font-size: clamp(2rem, 3vw, 2.85rem);
+  font-size: var(--gf-h2);
 }
 
 @media screen and (max-width: 999px) {

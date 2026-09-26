@@ -55,11 +55,19 @@
 }
 
 .portfolio-cta__content .h2 > * {
-  line-height: 1.02;
+  font-size: var(--gf-h2) !important;
+  line-height: 1.1;
 }
 
 .portfolio-cta__content .paragraph {
   color: #d1d6d3;
+  font-size: var(--gf-body);
+  line-height: 1.6;
+}
+
+.portfolio-cta__content .paragraph > * {
+  font-size: inherit;
+  line-height: inherit;
 }
 
 .portfolio-cta__content .group-block {

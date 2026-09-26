@@ -17,8 +17,8 @@
           "settings": {
             "icon": "email",
             "heading": "Email",
-            "link_label": "hello@ghostfrog.co",
-            "link": "mailto:hello@ghostfrog.co",
+            "link_label": "info@ghostfrog.co.uk",
+            "link": "mailto:info@ghostfrog.co.uk",
             "meta": "Usually replies within 1 business day"
           }
         },
@@ -48,7 +48,7 @@
             "icon": "calendar",
             "heading": "Book a call",
             "link_label": "Book a 15 min call →",
-            "link": "mailto:hello@ghostfrog.co?subject=Book%20a%2015-minute%20call",
+            "link": "mailto:info@ghostfrog.co.uk?subject=Book%20a%2015-minute%20call",
             "meta": "Prefer to chat? Pick a time that works for you."
           }
         },
@@ -61,7 +61,6 @@
       },
       "block_order": [
         "detail_email",
-        "detail_phone",
         "detail_location",
         "detail_call",
         "next_1",

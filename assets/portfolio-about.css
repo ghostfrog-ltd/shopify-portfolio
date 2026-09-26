@@ -45,11 +45,19 @@
 }
 
 .portfolio-about__content .h2 > * {
-  line-height: 1.04;
+  font-size: var(--gf-h2) !important;
+  line-height: 1.1;
 }
 
 .portfolio-about__content .paragraph {
   color: #bac0bd;
+  font-size: var(--gf-body);
+  line-height: 1.6;
+}
+
+.portfolio-about__content .paragraph > * {
+  font-size: inherit;
+  line-height: inherit;
 }
 
 .portfolio-about__content .group-block {

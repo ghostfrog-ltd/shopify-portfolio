@@ -36,6 +36,9 @@
   elsif template.name == 'page' and template.suffix == 'services'
     assign transparent = 'always'
     assign transparent_text_color_setting = section.settings.text_color_transparent_home | default: '#F7F8F7'
+  elsif template.name == 'page' and template.suffix == 'style-guide'
+    assign transparent = 'always'
+    assign transparent_text_color_setting = section.settings.text_color_transparent_home | default: '#F7F8F7'
   endif
 
   if section.settings.enable_sticky_header == 'always'
