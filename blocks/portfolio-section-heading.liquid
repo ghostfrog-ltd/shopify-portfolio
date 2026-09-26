@@ -45,9 +45,9 @@
   .portfolio-section-heading__eyebrow {
     margin: 0 0 14px;
     color: #aeb5b2;
-    font-size: 0.7rem;
+    font-size: clamp(11px, 0.8vw, 12px);
     font-weight: 650;
-    letter-spacing: 0.28em;
+    letter-spacing: 0.17em;
     line-height: 1;
     text-transform: uppercase;
   }
@@ -56,10 +56,10 @@
     max-width: 18ch;
     margin: 0;
     color: #f7f8f7;
-    font-size: clamp(2rem, 3.25vw, 3.25rem);
+    font-size: var(--gf-h2);
     font-weight: 700;
     letter-spacing: -0.04em;
-    line-height: 1.02;
+    line-height: 1.1;
     text-wrap: balance;
   }
 
@@ -74,8 +74,8 @@
   .portfolio-section-heading__description p {
     margin: 0;
     color: #b9bfbc;
-    font-size: 0.94rem;
-    line-height: 1.55;
+    font-size: var(--gf-body);
+    line-height: 1.6;
   }
 
   .portfolio-section-heading__link {
@@ -110,7 +110,7 @@
 
     .portfolio-section-heading__title {
       max-width: 14ch;
-      font-size: clamp(2rem, 10vw, 2.75rem);
+      font-size: var(--gf-h2);
     }
   }
 {% endstylesheet %}

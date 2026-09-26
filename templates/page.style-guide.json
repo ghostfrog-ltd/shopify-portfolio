@@ -1,0 +1,24 @@
+{
+  "sections": {
+    "portfolio_style_guide": {
+      "type": "portfolio-style-guide",
+      "settings": {
+        "eyebrow": "Style guide",
+        "heading": "A page built to handle real content.",
+        "intro": "<p>This template styles rich content beautifully — from simple text to complex layouts — so you can tell your story, share knowledge, and showcase your expertise on Shopify.</p>",
+        "primary_label": "Start a project",
+        "primary_link": "/get-in-touch",
+        "secondary_label": "View our work",
+        "secondary_link": "/#projects",
+        "hero_note": "Better\nshops\nhigher\nplaces",
+        "image_caption": "Fig. 1 — A calmer, faster, more capable ecommerce future.",
+        "cta_eyebrow": "Ready to build something remarkable?",
+        "cta_heading": "Let’s create what’s next.",
+        "cta_text": "High-performance Shopify development for ambitious brands.",
+        "cta_label": "Start a conversation",
+        "cta_link": "/get-in-touch"
+      }
+    }
+  },
+  "order": ["portfolio_style_guide"]
+}

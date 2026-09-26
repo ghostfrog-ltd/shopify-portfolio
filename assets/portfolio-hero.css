@@ -45,11 +45,19 @@
 }
 
 .portfolio-hero__content .h1 > * {
-  line-height: 0.98;
+  font-size: var(--gf-hero-h1) !important;
+  line-height: 1.02;
 }
 
 .portfolio-hero__content .paragraph {
   color: #c7ccca;
+  font-size: var(--gf-hero-intro);
+  line-height: 1.5;
+}
+
+.portfolio-hero__content .paragraph > * {
+  font-size: inherit;
+  line-height: inherit;
 }
 
 .portfolio-hero__content .group-block {
@@ -138,10 +146,6 @@
   .portfolio-hero__content {
     max-width: none;
     gap: 18px;
-  }
-
-  .portfolio-hero__content .h1 > * {
-    line-height: 1.02;
   }
 
   .portfolio-hero__media {

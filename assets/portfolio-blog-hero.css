@@ -59,11 +59,11 @@
   margin: 0;
   color: #f7f8f7;
   font-family: var(--font-heading--family);
-  font-size: clamp(2.65rem, 5vw, 4.7rem);
+  font-size: var(--gf-page-h1);
   font-style: var(--font-heading--style);
   font-weight: 720;
   letter-spacing: -0.045em;
-  line-height: 0.98;
+  line-height: 1.05;
   text-wrap: balance;
 }
 
@@ -71,7 +71,7 @@
   max-width: 640px;
   margin-top: 22px;
   color: #c9cfcc;
-  font-size: clamp(1rem, 1.25vw, 1.125rem);
+  font-size: var(--gf-large-body);
   line-height: 1.55;
 }
 
@@ -187,13 +187,10 @@
     width: 100%;
   }
 
-  .portfolio-blog-hero__heading {
-    max-width: 16ch;
-    font-size: clamp(2.35rem, 11vw, 3.4rem);
-  }
+  .portfolio-blog-hero__heading { max-width: 16ch; }
 
   .portfolio-blog-hero__description {
-    font-size: 1rem;
+    font-size: var(--gf-large-body);
   }
 
   .portfolio-blog-hero__filters {

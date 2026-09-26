@@ -69,17 +69,17 @@
   margin: 0;
   color: #f7f8f7;
   font-family: var(--font-heading--family);
-  font-size: clamp(3.3rem, 6vw, 5.35rem);
+  font-size: var(--gf-hero-h1);
   font-weight: 720;
   letter-spacing: -0.06em;
-  line-height: 0.96;
+  line-height: 1.02;
 }
 
 .portfolio-contact__intro {
   max-width: 570px;
   margin-top: 28px;
   color: #d0d5d2;
-  font-size: 1.05rem;
+  font-size: var(--gf-large-body);
   line-height: 1.55;
 }
 
@@ -122,7 +122,7 @@
   margin: 0;
   color: #f4f6f4;
   font-family: var(--font-heading--family);
-  font-size: clamp(1.65rem, 2.4vw, 2rem);
+  font-size: var(--gf-h3);
   font-weight: 680;
   letter-spacing: -0.035em;
   line-height: 1.1;
@@ -485,12 +485,12 @@
   }
 
   .portfolio-contact__hero h1 {
-    font-size: clamp(3rem, 14vw, 4.3rem);
+    font-size: var(--gf-hero-h1);
   }
 
   .portfolio-contact__intro {
     margin-top: 22px;
-    font-size: 0.98rem;
+    font-size: var(--gf-large-body);
   }
 
   .portfolio-contact__panel {
