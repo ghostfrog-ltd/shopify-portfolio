@@ -1,0 +1,195 @@
+.services-collection {
+  color: var(--gf-text);
+  background:
+    radial-gradient(circle at 78% 18%, rgb(var(--portfolio-accent-rgb) / 7%), transparent 28%),
+    #070b0c;
+  padding-block: clamp(56px, 8vw, 104px);
+}
+
+.services-collection__header {
+  display: grid;
+  grid-template-columns: minmax(0, 0.95fr) minmax(300px, 0.7fr);
+  gap: clamp(28px, 6vw, 84px);
+  align-items: end;
+  margin-bottom: clamp(36px, 6vw, 70px);
+}
+
+.services-collection__header h1 {
+  max-width: 12ch;
+  margin: 12px 0 0;
+  color: var(--gf-text);
+  font-family: var(--gf-font-sans);
+  font-size: var(--gf-hero-h1);
+  font-weight: 720;
+  letter-spacing: -0.052em;
+  line-height: 1.03;
+}
+
+.services-collection__intro {
+  color: var(--gf-text-muted);
+  font-size: var(--gf-large-body);
+  line-height: 1.6;
+}
+
+.services-collection__intro p {
+  margin: 0;
+}
+
+.services-collection__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.services-collection__card {
+  position: relative;
+  display: flex;
+  min-height: 360px;
+  padding: 24px;
+  border: 1px solid rgb(247 248 247 / 14%);
+  border-radius: 8px;
+  background: linear-gradient(145deg, rgb(19 26 25 / 88%), rgb(8 13 13 / 74%));
+  flex-direction: column;
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 4%);
+}
+
+.services-collection__card-link {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.services-collection__card-copy,
+.services-collection__purchase,
+.services-collection__details {
+  position: relative;
+  z-index: 2;
+}
+
+.services-collection__type {
+  margin: 0 0 18px;
+  color: var(--portfolio-accent);
+  font-size: 11px;
+  font-weight: 720;
+  letter-spacing: 0.15em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.services-collection__card h2 {
+  margin: 0;
+  color: var(--gf-text);
+  font-size: var(--gf-card-heading);
+  font-weight: 690;
+  letter-spacing: -0.02em;
+  line-height: 1.22;
+}
+
+.services-collection__card-copy > p:last-child {
+  margin: 12px 0 0;
+  color: var(--gf-text-muted);
+  font-size: var(--gf-small);
+  line-height: 1.58;
+}
+
+.services-collection__purchase {
+  display: grid;
+  margin-top: auto;
+  padding-top: 26px;
+  gap: 18px;
+}
+
+.services-collection__purchase strong {
+  display: block;
+  color: var(--gf-text);
+  font-size: 20px;
+  font-weight: 760;
+  line-height: 1.2;
+}
+
+.services-collection__purchase span {
+  display: block;
+  margin-top: 4px;
+  color: #95a29d;
+  font-size: 12px;
+  line-height: 1.35;
+}
+
+.services-collection product-form-component {
+  display: block;
+}
+
+.services-collection__button {
+  border-color: var(--portfolio-accent);
+  color: var(--portfolio-accent-contrast);
+  background: var(--portfolio-accent);
+  font-weight: 760;
+}
+
+.services-collection__button:hover {
+  color: var(--portfolio-accent-contrast);
+  background: var(--portfolio-accent-hover);
+}
+
+.services-collection__details {
+  display: inline-flex;
+  width: fit-content;
+  margin-top: 18px;
+  gap: 9px;
+  color: var(--portfolio-accent);
+  font-size: 14px;
+  font-weight: 740;
+  line-height: 1.2;
+  text-decoration: none;
+}
+
+.services-collection__details:hover {
+  color: var(--portfolio-accent-hover);
+}
+
+.services-collection__empty {
+  padding: 28px;
+  border: 1px solid var(--gf-line);
+  border-radius: 8px;
+  background: #0d1313;
+}
+
+.services-collection__empty h2 {
+  margin: 0;
+  color: var(--gf-text);
+  font-size: var(--gf-h3);
+}
+
+.services-collection__empty p {
+  margin: 8px 0 0;
+  color: var(--gf-text-muted);
+}
+
+.services-collection__pagination {
+  margin-top: 36px;
+}
+
+@media screen and (max-width: 989px) {
+  .services-collection__header {
+    grid-template-columns: 1fr;
+  }
+
+  .services-collection__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media screen and (max-width: 749px) {
+  .services-collection {
+    padding-block: 48px 72px;
+  }
+
+  .services-collection__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .services-collection__card {
+    min-height: 320px;
+    padding: 20px;
+  }
+}

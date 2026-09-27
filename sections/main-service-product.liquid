@@ -1,0 +1,141 @@
+{{ 'main-service-product.css' | asset_url | stylesheet_tag }}
+{% render 'buy-buttons-styles' %}
+{% render 'add-to-cart-button-styles' %}
+
+{% liquid
+  assign current_variant = product.selected_or_first_available_variant
+  assign can_add_to_cart = current_variant.available
+  assign cta_label = product.metafields.custom.service_cta.value | default: section.settings.cta_label
+  assign intro = product.metafields.custom.short_introduction
+  assign whats_included = product.metafields.custom.whats_included
+  assign good_for = product.metafields.custom.good_for
+  assign turnaround = product.metafields.custom.turnaround
+  assign scope_notes = product.metafields.custom.scope_notes
+  assign faq = product.metafields.custom.faq
+%}
+
+<section class="service-product" aria-labelledby="ServiceProductHeading-{{ section.id }}">
+  <div class="service-product__inner gf-page-width">
+    <div class="service-product__summary">
+      <p class="gf-eyebrow">{{ section.settings.eyebrow | escape }}</p>
+      <h1 id="ServiceProductHeading-{{ section.id }}">{{ product.title | escape }}</h1>
+
+      <div class="service-product__price">
+        {{ current_variant.price | money }}
+      </div>
+
+      <div class="service-product__intro rte">
+        {% if intro != blank %}
+          {{ intro | metafield_tag }}
+        {% else %}
+          {{ product.description }}
+        {% endif %}
+      </div>
+
+      <product-form-component
+        data-section-id="{{ section.id }}"
+        data-product-id="{{ product.id }}"
+        data-product-url="{{ product.url }}"
+        on:submit="/handleSubmit"
+        data-quantity-default="1"
+        data-quantity-error-max="{{ 'products.product.quantity_error_max' | t }}"
+      >
+        <div class="visually-hidden" aria-live="assertive" role="status" aria-atomic="true" ref="liveRegion"></div>
+        {% form 'product', product, id: 'ServiceProductForm', data-type: 'add-to-cart-form' %}
+          <input type="hidden" name="id" ref="variantId" value="{{ current_variant.id }}">
+          <input type="hidden" name="quantity" value="1">
+          <div class="product-form-buttons product-form-buttons--stacked" ref="productFormButtons">
+            <span class="product-form-text__error hidden" ref="addToCartTextError">
+              <span class="svg-wrapper">{{- 'icon-error.svg' | inline_asset_content -}}</span>
+            </span>
+            {% render 'add-to-cart-button',
+              can_add_to_cart: can_add_to_cart,
+              add_to_cart_text: cta_label,
+              product: product,
+              show_icon: false,
+              class: 'service-product__submit add-to-cart-button',
+              data_testid: 'service-add-to-cart'
+            %}
+          </div>
+        {% endform %}
+      </product-form-component>
+
+      {% if section.settings.checkout_note != blank %}
+        <p class="service-product__checkout-note">{{ section.settings.checkout_note | escape }}</p>
+      {% endif %}
+    </div>
+
+    <div class="service-product__details">
+      {% if whats_included != blank %}
+        <section class="service-product__panel">
+          <h2>{{ section.settings.included_heading | escape }}</h2>
+          <div class="rte">{{ whats_included | metafield_tag }}</div>
+        </section>
+      {% endif %}
+
+      {% if good_for != blank %}
+        <section class="service-product__panel">
+          <h2>{{ section.settings.good_for_heading | escape }}</h2>
+          <div class="rte">{{ good_for | metafield_tag }}</div>
+        </section>
+      {% endif %}
+
+      {% if turnaround != blank %}
+        <section class="service-product__panel service-product__panel--accent">
+          <h2>{{ section.settings.turnaround_heading | escape }}</h2>
+          <div class="rte">{{ turnaround | metafield_tag }}</div>
+        </section>
+      {% endif %}
+
+      {% if scope_notes != blank %}
+        <section class="service-product__panel">
+          <h2>{{ section.settings.scope_heading | escape }}</h2>
+          <div class="rte">{{ scope_notes | metafield_tag }}</div>
+        </section>
+      {% endif %}
+
+      {% if faq != blank %}
+        <section class="service-product__panel service-product__panel--wide">
+          <h2>{{ section.settings.faq_heading | escape }}</h2>
+          <div class="rte">{{ faq | metafield_tag }}</div>
+        </section>
+      {% endif %}
+    </div>
+
+    <aside class="service-product__contact">
+      <div>
+        <p class="gf-eyebrow">{{ section.settings.contact_eyebrow | escape }}</p>
+        <h2>{{ section.settings.contact_heading | escape }}</h2>
+        <p>{{ section.settings.contact_text | escape }}</p>
+      </div>
+      {% if section.settings.contact_link != blank %}
+        <a class="gf-button gf-button--secondary" href="{{ section.settings.contact_link }}">
+          {{ section.settings.contact_label | escape }} <span aria-hidden="true">&rarr;</span>
+        </a>
+      {% endif %}
+    </aside>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Main service product",
+  "class": "portfolio-section-wrapper",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Buy-now Shopify service" },
+    { "type": "text", "id": "cta_label", "label": "Add to cart label", "default": "Book this service" },
+    { "type": "text", "id": "checkout_note", "label": "Checkout note", "default": "Quantity is fixed at one. After checkout, I’ll follow up for the details needed to start." },
+    { "type": "text", "id": "included_heading", "label": "Included heading", "default": "What's included" },
+    { "type": "text", "id": "good_for_heading", "label": "Good for heading", "default": "Good for" },
+    { "type": "text", "id": "turnaround_heading", "label": "Turnaround heading", "default": "Turnaround" },
+    { "type": "text", "id": "scope_heading", "label": "Scope heading", "default": "Scope notes" },
+    { "type": "text", "id": "faq_heading", "label": "FAQ heading", "default": "FAQ" },
+    { "type": "header", "content": "Contact CTA" },
+    { "type": "text", "id": "contact_eyebrow", "label": "Eyebrow", "default": "Need to check fit?" },
+    { "type": "text", "id": "contact_heading", "label": "Heading", "default": "Not sure if this is the right service?" },
+    { "type": "text", "id": "contact_text", "label": "Text", "default": "Send a short note before buying and I’ll confirm the best route." },
+    { "type": "text", "id": "contact_label", "label": "Button label", "default": "Ask a question" },
+    { "type": "url", "id": "contact_link", "label": "Button link" }
+  ]
+}
+{% endschema %}

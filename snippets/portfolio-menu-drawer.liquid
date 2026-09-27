@@ -48,18 +48,24 @@
         </a>
       </li>
       <li style="--menu-drawer-animation-index: 4;" class="menu-drawer__animated-element">
+        <a href="{{ routes.collections_url }}/services"{% if request.page_type == 'collection' and collection.handle == 'services' %} class="is-active" aria-current="page"{% endif %}>
+          <span class="portfolio-menu-drawer__nav-icon">{% render 'portfolio-menu-icon', icon: 'shop' %}</span>
+          <span>Shop</span>
+        </a>
+      </li>
+      <li style="--menu-drawer-animation-index: 5;" class="menu-drawer__animated-element">
         <a href="{{ blog_url }}"{% if request.page_type == 'blog' or request.page_type == 'article' %} class="is-active" aria-current="page"{% endif %}>
           <span class="portfolio-menu-drawer__nav-icon">{% render 'portfolio-menu-icon', icon: 'blog' %}</span>
           <span>Blog</span>
         </a>
       </li>
-      <li style="--menu-drawer-animation-index: 5;" class="menu-drawer__animated-element">
+      <li style="--menu-drawer-animation-index: 6;" class="menu-drawer__animated-element">
         <a href="{{ routes.root_url }}#about">
           <span class="portfolio-menu-drawer__nav-icon">{% render 'portfolio-menu-icon', icon: 'about' %}</span>
           <span>About</span>
         </a>
       </li>
-      <li style="--menu-drawer-animation-index: 6;" class="menu-drawer__animated-element">
+      <li style="--menu-drawer-animation-index: 7;" class="menu-drawer__animated-element">
         <a href="/get-in-touch">
           <span class="portfolio-menu-drawer__nav-icon">{% render 'portfolio-menu-icon', icon: 'contact' %}</span>
           <span>Contact</span>
@@ -70,7 +76,7 @@
 
   <div
     class="portfolio-menu-drawer__cta menu-drawer__animated-element"
-    style="--menu-drawer-animation-index: 7;"
+    style="--menu-drawer-animation-index: 8;"
   >
     <p class="portfolio-menu-drawer__eyebrow">{{ eyebrow | escape }}</p>
     <p class="portfolio-menu-drawer__pitch">{{ pitch | escape }}</p>
@@ -82,7 +88,7 @@
 
   <div
     class="portfolio-menu-drawer__footer menu-drawer__animated-element"
-    style="--menu-drawer-animation-index: 8;"
+    style="--menu-drawer-animation-index: 9;"
   >
     <div class="portfolio-menu-drawer__socials" aria-label="Social links">
       <a href="{{ email_link }}" aria-label="Contact {{ copyright_name | escape }}">

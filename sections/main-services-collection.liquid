@@ -1,0 +1,117 @@
+{{ 'main-services-collection.css' | asset_url | stylesheet_tag }}
+{% render 'buy-buttons-styles' %}
+{% render 'add-to-cart-button-styles' %}
+
+<section class="services-collection" aria-labelledby="ServicesCollectionHeading-{{ section.id }}">
+  <div class="services-collection__inner gf-page-width">
+    <header class="services-collection__header">
+      <div>
+        <p class="gf-eyebrow">{{ section.settings.eyebrow | escape }}</p>
+        <h1 id="ServicesCollectionHeading-{{ section.id }}">{{ collection.title | escape }}</h1>
+      </div>
+      {% if collection.description != blank %}
+        <div class="services-collection__intro rte">{{ collection.description }}</div>
+      {% elsif section.settings.intro != blank %}
+        <div class="services-collection__intro rte">{{ section.settings.intro }}</div>
+      {% endif %}
+    </header>
+
+    {% paginate collection.products by section.settings.products_per_page %}
+      {% if collection.products_count > 0 %}
+        <div class="services-collection__grid">
+          {% for product in collection.products %}
+            {% liquid
+              assign current_variant = product.selected_or_first_available_variant
+              assign can_add_to_cart = current_variant.available
+              assign cta_label = product.metafields.custom.service_cta.value | default: section.settings.default_cta_label
+              assign card_note = product.metafields.custom.turnaround | metafield_text
+              assign product_form_id = 'ServicesCollectionProductForm-' | append: section.id | append: '-' | append: product.id
+              if card_note == blank
+                assign card_note = product.metafields.custom.scope_notes | metafield_text
+              endif
+            %}
+
+            <article class="services-collection__card" id="{{ section.id }}-{{ product.id }}">
+              <a class="services-collection__card-link" href="{{ product.url }}" aria-label="{{ product.title | escape }}"></a>
+
+              <div class="services-collection__card-copy">
+                <p class="services-collection__type">{{ product.type | default: section.settings.default_product_type | escape }}</p>
+                <h2>{{ product.title | escape }}</h2>
+                {% if product.description != blank %}
+                  <p>{{ product.description | strip_html | truncate: 210 }}</p>
+                {% endif %}
+              </div>
+
+              <div class="services-collection__purchase">
+                <div>
+                  <strong>{{ current_variant.price | money }}</strong>
+                  {% if card_note != blank %}<span>{{ card_note | strip_html | truncate: 80 }}</span>{% endif %}
+                </div>
+
+                <product-form-component
+                  data-section-id="{{ section.id }}"
+                  data-product-id="{{ product.id }}"
+                  data-product-url="{{ product.url }}"
+                  on:submit="/handleSubmit"
+                  data-quantity-default="1"
+                  data-quantity-error-max="{{ 'products.product.quantity_error_max' | t }}"
+                >
+                  <div class="visually-hidden" aria-live="assertive" role="status" aria-atomic="true" ref="liveRegion"></div>
+                  {% form 'product', product, id: product_form_id, data-type: 'add-to-cart-form' %}
+                    <input type="hidden" name="id" ref="variantId" value="{{ current_variant.id }}">
+                    <input type="hidden" name="quantity" value="1">
+                    <div class="product-form-buttons product-form-buttons--stacked" ref="productFormButtons">
+                      <span class="product-form-text__error hidden" ref="addToCartTextError">
+                        <span class="svg-wrapper">{{- 'icon-error.svg' | inline_asset_content -}}</span>
+                      </span>
+                      {% render 'add-to-cart-button',
+                        can_add_to_cart: can_add_to_cart,
+                        add_to_cart_text: cta_label,
+                        product: product,
+                        show_icon: false,
+                        class: 'services-collection__button add-to-cart-button',
+                        data_testid: 'service-collection-add-to-cart'
+                      %}
+                    </div>
+                  {% endform %}
+                </product-form-component>
+              </div>
+
+              <a class="services-collection__details" href="{{ product.url }}">
+                {{ section.settings.details_label | escape }} <span aria-hidden="true">&rarr;</span>
+              </a>
+            </article>
+          {% endfor %}
+        </div>
+
+        {% if paginate.pages > 1 %}
+          <div class="services-collection__pagination">
+            {{ paginate | default_pagination }}
+          </div>
+        {% endif %}
+      {% else %}
+        <div class="services-collection__empty">
+          <h2>{{ section.settings.empty_heading | escape }}</h2>
+          <p>{{ section.settings.empty_text | escape }}</p>
+        </div>
+      {% endif %}
+    {% endpaginate %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Main services collection",
+  "class": "portfolio-section-wrapper",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Shop" },
+    { "type": "richtext", "id": "intro", "label": "Fallback intro", "default": "<p>Fixed-scope Shopify services you can purchase directly.</p>" },
+    { "type": "text", "id": "default_product_type", "label": "Fallback product type", "default": "Service" },
+    { "type": "text", "id": "default_cta_label", "label": "Default buy button label", "default": "Add service to cart" },
+    { "type": "text", "id": "details_label", "label": "Details link label", "default": "View details" },
+    { "type": "range", "id": "products_per_page", "label": "Products per page", "min": 4, "max": 24, "step": 4, "default": 12 },
+    { "type": "text", "id": "empty_heading", "label": "Empty heading", "default": "No services are live yet" },
+    { "type": "text", "id": "empty_text", "label": "Empty text", "default": "Add service products to this collection in Shopify admin." }
+  ]
+}
+{% endschema %}
