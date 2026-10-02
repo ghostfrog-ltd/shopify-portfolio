@@ -2,44 +2,58 @@
   position: relative;
   z-index: 3;
   margin-top: 0;
-  background: #070b0c;
-  box-shadow: 0 -2px 0 #070b0c;
-  color: #d9dddb;
+  border-top: 1px solid rgb(243 245 241 / 14%);
+  border-bottom: 1px solid rgb(243 245 241 / 14%);
+  background: #09100f;
+  color: #f3f5f1;
 }
 
 .portfolio-trust-strip__inner {
   display: grid;
-  width: min(calc(100% - 80px), 1400px);
-  min-height: 104px;
+  width: min(calc(100% - 80px), 1430px);
   margin-inline: auto;
+  padding-block: 72px 40px;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: clamp(24px, 4vw, 72px);
+  gap: 0;
   align-items: center;
 }
 
 .portfolio-trust-item {
+  position: relative;
   display: flex;
   min-width: 0;
-  gap: 13px;
+  padding-inline: clamp(22px, 3vw, 42px);
+  gap: 16px;
   align-items: center;
   font-size: 0.875rem;
-  font-weight: 500;
+  font-weight: 650;
   line-height: 1.3;
+}
+
+.portfolio-trust-item:not(:last-child)::after {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  width: 1px;
+  height: 34px;
+  background: rgb(243 245 241 / 18%);
+  content: '';
+  transform: translateY(-50%);
 }
 
 .portfolio-trust-item__icon {
   display: grid;
-  width: 40px;
-  height: 40px;
-  flex: 0 0 40px;
+  width: 34px;
+  height: 34px;
+  flex: 0 0 34px;
   place-items: center;
-  color: #c5cbc8;
+  color: #91a484;
 }
 
 .portfolio-trust-item__icon svg {
   display: block;
-  width: 35px;
-  height: 35px;
+  width: 30px;
+  height: 30px;
 }
 
 .portfolio-trust-item__label {
@@ -48,9 +62,14 @@
 
 @media screen and (max-width: 899px) {
   .portfolio-trust-strip__inner {
-    padding-block: 24px;
+    width: min(calc(100% - 48px), 720px);
+    padding-block: 54px 34px;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    row-gap: 22px;
+    row-gap: 28px;
+  }
+
+  .portfolio-trust-item:nth-child(2n)::after {
+    display: none;
   }
 }
 
@@ -58,17 +77,15 @@
   .portfolio-trust-strip__inner {
     width: min(calc(100% - 32px), 620px);
     grid-template-columns: 1fr;
-    gap: 18px;
+    padding-block: 54px 34px;
+    row-gap: 20px;
   }
 
-  .portfolio-trust-item__icon {
-    width: 34px;
-    height: 34px;
-    flex-basis: 34px;
+  .portfolio-trust-item {
+    padding-inline: 0;
   }
 
-  .portfolio-trust-item__icon svg {
-    width: 30px;
-    height: 30px;
+  .portfolio-trust-item::after {
+    display: none;
   }
 }

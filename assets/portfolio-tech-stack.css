@@ -1,13 +1,13 @@
 .portfolio-tech-stack {
   background: #070b0c;
-  color: #f7f8f7;
+  color: #f3f5f1;
 }
 
 .portfolio-tech-stack__inner {
   display: grid;
-  width: min(calc(100% - 80px), 1400px);
+  width: min(calc(100% - 80px), 1430px);
   margin-inline: auto;
-  padding-block: 3rem clamp(72px, 8vw, 108px);
+  padding-block: 42px 62px;
   grid-template-columns: repeat(9, minmax(0, 1fr));
   gap: 24px 14px;
 }

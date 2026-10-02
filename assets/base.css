@@ -16,10 +16,10 @@ body {
   --hover-transition-duration: 0.25s;
   --hover-transition-timing: ease-out;
   --submenu-animation-speed: 360ms;
-  --portfolio-accent: #55e7ad;
-  --portfolio-accent-rgb: 85 231 173;
-  --portfolio-accent-hover: #78f4c2;
-  --portfolio-accent-contrast: #06100c;
+  --portfolio-accent: #586b4d;
+  --portfolio-accent-rgb: 88 107 77;
+  --portfolio-accent-hover: #4c5f42;
+  --portfolio-accent-contrast: #fffaf1;
 }
 
 html {

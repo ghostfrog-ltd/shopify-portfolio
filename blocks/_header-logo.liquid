@@ -40,6 +40,15 @@
   "
   {{ block.shopify_attributes }}
 >
+  <img
+    src="{{ 'portfolio-logo.png' | asset_url }}"
+    class="portfolio-header-logo__image"
+    width="1740"
+    height="360"
+    alt="{{ shop.name | escape }}"
+    loading="eager"
+  >
+
   {% liquid
     assign logo_width = settings.logo_height | times: settings.logo.aspect_ratio | ceil
     assign logo_width_mobile = settings.logo_height_mobile | times: settings.logo.aspect_ratio | ceil
@@ -137,6 +146,39 @@
 
   .header-logo__transparent-header-image-container {
     display: var(--header-logo-inverse-display, none);
+  }
+
+  .portfolio-header-logo__image {
+    display: none;
+    max-width: none;
+    width: auto;
+    height: clamp(34px, 3vw, 42px);
+  }
+
+  body.portfolio-template .portfolio-header-logo__image {
+    display: block;
+  }
+
+  body.portfolio-template .header-logo {
+    width: clamp(140px, 14vw, 180px);
+    min-width: 0;
+    overflow: visible;
+    justify-self: center;
+  }
+
+  body.portfolio-template .header-logo > span {
+    display: none;
+  }
+
+  @media screen and (max-width: 749px) {
+    body.portfolio-template .header-logo {
+      width: min(170px, 44vw);
+      overflow: hidden;
+    }
+
+    .portfolio-header-logo__image {
+      height: 34px;
+    }
   }
 {% endstylesheet %}
 

@@ -19,6 +19,7 @@
   assign left = ''
   assign center = ''
   assign right = ''
+  assign blog_url = blogs.news.url | default: '/blogs/news'
 
   if first != blank
     assign left = 'first '
@@ -78,6 +79,16 @@
               {{ logo }}
             {% when 'menu' %}
               {{ menu }}
+              {% if row == 'top' %}
+                <nav class="portfolio-desktop-nav" aria-label="{{ 'accessibility.header_navigation_label' | t }}">
+                  <a href="{{ routes.root_url }}">Home</a>
+                  <a href="/services">Services</a>
+                  <a href="{{ routes.collections_url }}/services">Shop</a>
+                  <a href="{{ blog_url }}">Blog</a>
+                  <a href="{{ routes.root_url }}#about">About</a>
+                  <a href="/get-in-touch">Contact</a>
+                </nav>
+              {% endif %}
             {% when 'localization' %}
               {{ localization }}
             {% when 'search' %}
@@ -86,6 +97,12 @@
               {{ drawer_search }}
             {% when 'actions' %}
               {{ actions }}
+              {% if row == 'top' %}
+                <a class="portfolio-header-cta" href="/get-in-touch">
+                  Let’s talk
+                  <span aria-hidden="true">→</span>
+                </a>
+              {% endif %}
           {% endcase %}
         {% endunless %}
       {% endfor %}

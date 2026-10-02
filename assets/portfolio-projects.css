@@ -1,13 +1,13 @@
 .portfolio-projects {
   background: #070b0c;
-  color: #f7f8f7;
+  color: #f3f5f1;
 }
 
 .portfolio-projects__inner {
   display: grid;
-  width: min(calc(100% - 80px), 1400px);
+  width: min(calc(100% - 80px), 1430px);
   margin-inline: auto;
-  padding-block: 3rem 48px;
+  padding-block: 48px 36px;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 26px;
 }
@@ -31,7 +31,7 @@
 @media screen and (max-width: 649px) {
   .portfolio-projects__inner {
     width: min(calc(100% - 32px), 620px);
-    padding-block: 3rem 48px;
+    padding-block: 42px 34px;
     grid-template-columns: 1fr;
     gap: 40px;
   }
