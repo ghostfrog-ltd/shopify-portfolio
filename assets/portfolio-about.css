@@ -1,18 +1,24 @@
 .portfolio-about {
   background: #070b0c;
-  color: #f7f8f7;
+  color: #f3f5f1;
 }
 
 .portfolio-about__inner {
   display: grid;
-  min-height: 520px;
+  width: min(calc(100% - 80px), 1430px);
+  min-height: 440px;
+  margin-inline: auto;
+  padding-block: 18px 64px;
   grid-template-columns: minmax(0, 46%) minmax(0, 54%);
+  gap: clamp(44px, 5vw, 74px);
+  align-items: center;
 }
 
 .portfolio-about__media {
   position: relative;
-  min-height: 520px;
+  min-height: 360px;
   overflow: hidden;
+  border-radius: 8px;
 }
 
 .portfolio-about__image {
@@ -26,7 +32,7 @@
 .portfolio-about__media::after {
   position: absolute;
   inset: 0;
-  background: linear-gradient(90deg, transparent 70%, #070b0c 100%);
+  background: linear-gradient(90deg, transparent 70%, rgb(7 11 12 / 30%) 100%);
   content: '';
   pointer-events: none;
 }
@@ -34,23 +40,25 @@
 .portfolio-about__content {
   display: flex;
   max-width: 760px;
-  padding: clamp(56px, 7vw, 108px) clamp(40px, 7vw, 112px);
+  padding: 0;
   flex-direction: column;
   justify-content: center;
   gap: 18px;
 }
 
 .portfolio-about__content .h2 {
+  color: #f3f5f1 !important;
   letter-spacing: -0.04em;
 }
 
 .portfolio-about__content .h2 > * {
+  color: inherit !important;
   font-size: var(--gf-h2) !important;
   line-height: 1.1;
 }
 
 .portfolio-about__content .paragraph {
-  color: #bac0bd;
+  color: #b8c1bc !important;
   font-size: var(--gf-body);
   line-height: 1.6;
 }
@@ -71,18 +79,33 @@
   font-weight: 700;
 }
 
+.portfolio-about__content .group-block-content > .button-custom {
+  --button-background-color: var(--portfolio-accent) !important;
+  --button-color: #fffaf1 !important;
+  --button-border-color: var(--portfolio-accent) !important;
+}
+
+.portfolio-about__content .group-block-content .text-block {
+  color: #b8c1bc !important;
+}
+
 @media screen and (max-width: 799px) {
   .portfolio-about__inner {
+    width: 100%;
     min-height: auto;
+    padding-block: 0 54px;
     grid-template-columns: 1fr;
+    gap: 34px;
   }
 
   .portfolio-about__media {
+    width: min(calc(100% - 32px), 620px);
     min-height: 420px;
+    margin-inline: auto;
   }
 
   .portfolio-about__media::after {
-    background: linear-gradient(180deg, transparent 72%, #070b0c 100%);
+    background: linear-gradient(180deg, transparent 72%, rgb(7 11 12 / 36%) 100%);
   }
 
   .portfolio-about__content {

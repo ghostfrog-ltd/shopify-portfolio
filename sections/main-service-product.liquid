@@ -16,90 +16,92 @@
 
 <section class="service-product" aria-labelledby="ServiceProductHeading-{{ section.id }}">
   <div class="service-product__inner gf-page-width">
-    <div class="service-product__summary">
-      <p class="gf-eyebrow">{{ section.settings.eyebrow | escape }}</p>
-      <h1 id="ServiceProductHeading-{{ section.id }}">{{ product.title | escape }}</h1>
+    <div class="service-product__main">
+      <div class="service-product__summary">
+        <p class="gf-eyebrow">{{ section.settings.eyebrow | escape }}</p>
+        <h1 id="ServiceProductHeading-{{ section.id }}">{{ product.title | escape }}</h1>
 
-      <div class="service-product__price">
-        {{ current_variant.price | money }}
-      </div>
+        <div class="service-product__price">
+          {{ current_variant.price | money }}
+        </div>
 
-      <div class="service-product__intro rte">
-        {% if intro != blank %}
-          {{ intro | metafield_tag }}
-        {% else %}
-          {{ product.description }}
+        <div class="service-product__intro rte">
+          {% if intro != blank %}
+            {{ intro | metafield_tag }}
+          {% else %}
+            {{ product.description }}
+          {% endif %}
+        </div>
+
+        <product-form-component
+          data-section-id="{{ section.id }}"
+          data-product-id="{{ product.id }}"
+          data-product-url="{{ product.url }}"
+          on:submit="/handleSubmit"
+          data-quantity-default="1"
+          data-quantity-error-max="{{ 'products.product.quantity_error_max' | t }}"
+        >
+          <div class="visually-hidden" aria-live="assertive" role="status" aria-atomic="true" ref="liveRegion"></div>
+          {% form 'product', product, id: 'ServiceProductForm', data-type: 'add-to-cart-form' %}
+            <input type="hidden" name="id" ref="variantId" value="{{ current_variant.id }}">
+            <input type="hidden" name="quantity" value="1">
+            <div class="product-form-buttons product-form-buttons--stacked" ref="productFormButtons">
+              <span class="product-form-text__error hidden" ref="addToCartTextError">
+                <span class="svg-wrapper">{{- 'icon-error.svg' | inline_asset_content -}}</span>
+              </span>
+              {% render 'add-to-cart-button',
+                can_add_to_cart: can_add_to_cart,
+                add_to_cart_text: cta_label,
+                product: product,
+                show_icon: false,
+                class: 'service-product__submit add-to-cart-button',
+                data_testid: 'service-add-to-cart'
+              %}
+            </div>
+          {% endform %}
+        </product-form-component>
+
+        {% if section.settings.checkout_note != blank %}
+          <p class="service-product__checkout-note">{{ section.settings.checkout_note | escape }}</p>
         {% endif %}
       </div>
 
-      <product-form-component
-        data-section-id="{{ section.id }}"
-        data-product-id="{{ product.id }}"
-        data-product-url="{{ product.url }}"
-        on:submit="/handleSubmit"
-        data-quantity-default="1"
-        data-quantity-error-max="{{ 'products.product.quantity_error_max' | t }}"
-      >
-        <div class="visually-hidden" aria-live="assertive" role="status" aria-atomic="true" ref="liveRegion"></div>
-        {% form 'product', product, id: 'ServiceProductForm', data-type: 'add-to-cart-form' %}
-          <input type="hidden" name="id" ref="variantId" value="{{ current_variant.id }}">
-          <input type="hidden" name="quantity" value="1">
-          <div class="product-form-buttons product-form-buttons--stacked" ref="productFormButtons">
-            <span class="product-form-text__error hidden" ref="addToCartTextError">
-              <span class="svg-wrapper">{{- 'icon-error.svg' | inline_asset_content -}}</span>
-            </span>
-            {% render 'add-to-cart-button',
-              can_add_to_cart: can_add_to_cart,
-              add_to_cart_text: cta_label,
-              product: product,
-              show_icon: false,
-              class: 'service-product__submit add-to-cart-button',
-              data_testid: 'service-add-to-cart'
-            %}
-          </div>
-        {% endform %}
-      </product-form-component>
+      <div class="service-product__details">
+        {% if whats_included != blank %}
+          <section class="service-product__panel">
+            <h2>{{ section.settings.included_heading | escape }}</h2>
+            <div class="rte">{{ whats_included | metafield_tag }}</div>
+          </section>
+        {% endif %}
 
-      {% if section.settings.checkout_note != blank %}
-        <p class="service-product__checkout-note">{{ section.settings.checkout_note | escape }}</p>
-      {% endif %}
-    </div>
+        {% if good_for != blank %}
+          <section class="service-product__panel">
+            <h2>{{ section.settings.good_for_heading | escape }}</h2>
+            <div class="rte">{{ good_for | metafield_tag }}</div>
+          </section>
+        {% endif %}
 
-    <div class="service-product__details">
-      {% if whats_included != blank %}
-        <section class="service-product__panel">
-          <h2>{{ section.settings.included_heading | escape }}</h2>
-          <div class="rte">{{ whats_included | metafield_tag }}</div>
-        </section>
-      {% endif %}
+        {% if turnaround != blank %}
+          <section class="service-product__panel service-product__panel--accent">
+            <h2>{{ section.settings.turnaround_heading | escape }}</h2>
+            <div class="rte">{{ turnaround | metafield_tag }}</div>
+          </section>
+        {% endif %}
 
-      {% if good_for != blank %}
-        <section class="service-product__panel">
-          <h2>{{ section.settings.good_for_heading | escape }}</h2>
-          <div class="rte">{{ good_for | metafield_tag }}</div>
-        </section>
-      {% endif %}
+        {% if scope_notes != blank %}
+          <section class="service-product__panel">
+            <h2>{{ section.settings.scope_heading | escape }}</h2>
+            <div class="rte">{{ scope_notes | metafield_tag }}</div>
+          </section>
+        {% endif %}
 
-      {% if turnaround != blank %}
-        <section class="service-product__panel service-product__panel--accent">
-          <h2>{{ section.settings.turnaround_heading | escape }}</h2>
-          <div class="rte">{{ turnaround | metafield_tag }}</div>
-        </section>
-      {% endif %}
-
-      {% if scope_notes != blank %}
-        <section class="service-product__panel">
-          <h2>{{ section.settings.scope_heading | escape }}</h2>
-          <div class="rte">{{ scope_notes | metafield_tag }}</div>
-        </section>
-      {% endif %}
-
-      {% if faq != blank %}
-        <section class="service-product__panel service-product__panel--wide">
-          <h2>{{ section.settings.faq_heading | escape }}</h2>
-          <div class="rte">{{ faq | metafield_tag }}</div>
-        </section>
-      {% endif %}
+        {% if faq != blank %}
+          <section class="service-product__panel service-product__panel--wide">
+            <h2>{{ section.settings.faq_heading | escape }}</h2>
+            <div class="rte">{{ faq | metafield_tag }}</div>
+          </section>
+        {% endif %}
+      </div>
     </div>
 
     <aside class="service-product__contact">

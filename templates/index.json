@@ -15,7 +15,7 @@
         "hero_eyebrow": {
           "type": "text",
           "settings": {
-            "text": "<p>FREELANCE SHOPIFY DEVELOPER</p>",
+            "text": "<p>INDEPENDENT SHOPIFY DEVELOPER</p>",
             "width": "100%",
             "max_width": "none",
             "alignment": "left",
@@ -26,7 +26,7 @@
             "letter_spacing": "loose",
             "case": "uppercase",
             "wrap": "pretty",
-            "text_color": "#B8BFBC",
+            "text_color": "#91A484",
             "padding-block-end": 2
           },
           "blocks": {}
@@ -34,24 +34,24 @@
         "hero_heading": {
           "type": "text",
           "settings": {
-            "text": "<h1>Shopify development without the agency overhead.</h1>",
+            "text": "<h1>Shopify development <strong>without the agency overhead.</strong></h1>",
             "width": "100%",
             "max_width": "none",
             "alignment": "left",
             "type_preset": "h1",
-            "text_color": "#F7F8F7"
+            "text_color": "#F3F5F1"
           },
           "blocks": {}
         },
         "hero_copy": {
           "type": "text",
           "settings": {
-            "text": "<p>I build, customise and integrate Shopify stores for businesses that need more than a page builder. Themes. Apps. Integrations. Migrations. Weird ecommerce problems.</p>",
+            "text": "<p>I build, customise and integrate high-performance Shopify stores for ambitious brands. No bloat. Just results.</p>",
             "width": "100%",
             "max_width": "normal",
             "alignment": "left",
             "type_preset": "paragraph",
-            "text_color": "#C7CCCA"
+            "text_color": "#D8DCDA"
           },
           "blocks": {}
         },
@@ -77,13 +77,13 @@
             "hero_primary_button": {
               "type": "button",
               "settings": {
-                "label": "Tell me about your project →",
+                "label": "Start a project →",
                 "link": "/get-in-touch",
                 "open_in_new_tab": false,
                 "style_class": "button-custom",
-                "custom_button_background": "#55E7AD",
-                "custom_button_text": "#071008",
-                "custom_button_border": "#55E7AD",
+                "custom_button_background": "#586B4D",
+                "custom_button_text": "#FFFAF1",
+                "custom_button_border": "#586B4D",
                 "width": "fit-content",
                 "width_mobile": "fit-content"
               },
@@ -92,13 +92,13 @@
             "hero_secondary_button": {
               "type": "button",
               "settings": {
-                "label": "View demo work",
+                "label": "See our work",
                 "link": "#projects",
                 "open_in_new_tab": false,
                 "style_class": "button-custom",
                 "custom_button_background": "#00000000",
-                "custom_button_text": "#F7F8F7",
-                "custom_button_border": "#7B8480",
+                "custom_button_text": "#111513",
+                "custom_button_border": "#111513",
                 "width": "fit-content",
                 "width_mobile": "fit-content"
               },
@@ -118,7 +118,7 @@
         "hero_actions"
       ],
       "settings": {
-        "image_alt": "Cyclist riding through a dramatic mountain landscape"
+        "image_alt": "Green frog on a dark leaf in a rainforest"
       }
     },
     "portfolio_trust_strip": {
@@ -128,7 +128,7 @@
           "type": "portfolio-trust-item",
           "settings": {
             "icon": "shopify",
-            "label": "Shopify specialist"
+            "label": "Results focused"
           },
           "blocks": {}
         },
@@ -136,7 +136,7 @@
           "type": "portfolio-trust-item",
           "settings": {
             "icon": "code",
-            "label": "Clean, scalable code"
+            "label": "Flexible & collaborative"
           },
           "blocks": {}
         },
@@ -144,7 +144,7 @@
           "type": "portfolio-trust-item",
           "settings": {
             "icon": "delivery",
-            "label": "Fast, reliable delivery"
+            "label": "No agency overhead"
           },
           "blocks": {}
         },
@@ -152,7 +152,7 @@
           "type": "portfolio-trust-item",
           "settings": {
             "icon": "chat",
-            "label": "Direct communication"
+            "label": "Long-term partner"
           },
           "blocks": {}
         }
@@ -171,9 +171,9 @@
         "services_heading": {
           "type": "portfolio-section-heading",
           "settings": {
-            "eyebrow": "SERVICES",
-            "heading": "What I can help you with",
-            "description": "<p>From custom themes to complex integrations, I provide end-to-end Shopify development tailored to your goals.</p>",
+            "eyebrow": "WHAT I CAN HELP YOU WITH",
+            "heading": "Shopify solutions for growing brands.",
+            "description": "<p>From custom builds to complex integrations, I help ambitious brands get the most out of Shopify — with clean design, solid development and ongoing support.</p>",
             "link_label": "View all services",
             "link": "/services"
           },
@@ -183,8 +183,8 @@
           "type": "portfolio-service-card",
           "settings": {
             "icon": "development",
-            "title": "Shopify Development",
-            "description": "<p>Custom themes, section development, Liquid, headless frontends and performance optimisation.</p>",
+            "title": "Custom Store Builds",
+            "description": "<p>Conversion-focused Shopify stores designed around your brand.</p>",
             "link_label": "Learn more",
             "link": "/services"
           },
@@ -194,8 +194,8 @@
           "type": "portfolio-service-card",
           "settings": {
             "icon": "integrations",
-            "title": "Apps & Integrations",
-            "description": "<p>Custom Shopify apps, Admin API, GraphQL, webhooks and third-party system integrations.</p>",
+            "title": "Theme Development",
+            "description": "<p>Custom features, tailored themes and headless builds.</p>",
             "link_label": "Learn more",
             "link": "/services"
           },
@@ -205,8 +205,8 @@
           "type": "portfolio-service-card",
           "settings": {
             "icon": "migration",
-            "title": "Magento → Shopify",
-            "description": "<p>Product, customer and order migration, data mapping, redirects and custom business logic.</p>",
+            "title": "Integrations & Automation",
+            "description": "<p>Connect your tools and streamline your operations.</p>",
             "link_label": "Learn more",
             "link": "/services"
           },
@@ -216,8 +216,8 @@
           "type": "portfolio-service-card",
           "settings": {
             "icon": "engineering",
-            "title": "Ecommerce Engineering",
-            "description": "<p>Complex requirements, subscriptions, custom pricing rules, checkout customisations and ongoing support.</p>",
+            "title": "Growth & Optimisation",
+            "description": "<p>Improve performance, increase conversion and unlock new revenue.</p>",
             "link_label": "Learn more",
             "link": "/services"
           },
@@ -239,10 +239,10 @@
         "projects_heading": {
           "type": "portfolio-section-heading",
           "settings": {
-            "eyebrow": "DEMO PROJECTS",
-            "heading": "Real builds. No fluff.",
+            "eyebrow": "FEATURED WORK",
+            "heading": "Real brands. Real results.",
             "description": "<p>A few example projects to show what’s possible. These are demo/concept builds, but they reflect the quality and scope of work I can deliver.</p>",
-            "link_label": "View all demos",
+            "link_label": "View all projects",
             "link": "#projects"
           },
           "blocks": {}
@@ -385,7 +385,7 @@
             "letter_spacing": "loose",
             "case": "uppercase",
             "wrap": "pretty",
-            "text_color": "#B8BFBC"
+            "text_color": "#5F645C"
           },
           "blocks": {}
         },
@@ -397,7 +397,7 @@
             "max_width": "none",
             "alignment": "left",
             "type_preset": "h2",
-            "text_color": "#F7F8F7"
+            "text_color": "#111513"
           },
           "blocks": {}
         },
@@ -409,7 +409,7 @@
             "max_width": "normal",
             "alignment": "left",
             "type_preset": "paragraph",
-            "text_color": "#BAC0BD"
+            "text_color": "#424941"
           },
           "blocks": {}
         },
@@ -421,7 +421,7 @@
             "max_width": "normal",
             "alignment": "left",
             "type_preset": "paragraph",
-            "text_color": "#BAC0BD"
+            "text_color": "#424941"
           },
           "blocks": {}
         },
@@ -451,9 +451,9 @@
                 "link": "/get-in-touch",
                 "open_in_new_tab": false,
                 "style_class": "button-custom",
-                "custom_button_background": "#F7F8F7",
-                "custom_button_text": "#071008",
-                "custom_button_border": "#F7F8F7",
+                "custom_button_background": "#586B4D",
+                "custom_button_text": "#FFFAF1",
+                "custom_button_border": "#586B4D",
                 "width": "fit-content",
                 "width_mobile": "fit-content"
               },
@@ -472,7 +472,7 @@
                 "letter_spacing": "normal",
                 "case": "none",
                 "wrap": "pretty",
-                "text_color": "#B8BFBC"
+                "text_color": "#4F554D"
               },
               "blocks": {}
             }
@@ -488,7 +488,7 @@
         "about_actions"
       ],
       "settings": {
-        "image_alt": "Person overlooking a dramatic mountain landscape"
+        "image_alt": "Close-up of a green frog on a dark wet leaf"
       }
     },
     "portfolio_cta": {
@@ -497,7 +497,7 @@
         "cta_eyebrow": {
           "type": "text",
           "settings": {
-            "text": "<p>READY TO BUILD?</p>",
+            "text": "<p>LET’S BUILD TOGETHER</p>",
             "width": "100%",
             "max_width": "none",
             "alignment": "left",
@@ -515,24 +515,24 @@
         "cta_heading": {
           "type": "text",
           "settings": {
-            "text": "<h2>Got a Shopify problem?</h2>",
+            "text": "<h2>Ready to bring your Shopify project to life?</h2>",
             "width": "100%",
             "max_width": "none",
             "alignment": "left",
             "type_preset": "h2",
-            "text_color": "#F7F8F7"
+            "text_color": "#F3F5F1"
           },
           "blocks": {}
         },
         "cta_copy": {
           "type": "text",
           "settings": {
-            "text": "<p>Tell me what you’re trying to build, fix or migrate.<br>I’ll tell you whether I can help.</p>",
+            "text": "<p>Tell me about your idea and I’ll get back to you shortly.</p>",
             "width": "100%",
             "max_width": "normal",
             "alignment": "left",
             "type_preset": "paragraph",
-            "text_color": "#D1D6D3"
+            "text_color": "#D8DCDA"
           },
           "blocks": {}
         },
@@ -558,13 +558,13 @@
             "cta_primary_button": {
               "type": "button",
               "settings": {
-                "label": "Start a conversation →",
+                "label": "Start a project →",
                 "link": "/get-in-touch",
                 "open_in_new_tab": false,
                 "style_class": "button-custom",
-                "custom_button_background": "#55E7AD",
-                "custom_button_text": "#071008",
-                "custom_button_border": "#55E7AD",
+                "custom_button_background": "#586B4D",
+                "custom_button_text": "#FFFAF1",
+                "custom_button_border": "#586B4D",
                 "width": "fit-content",
                 "width_mobile": "fit-content"
               },
@@ -578,8 +578,8 @@
                 "open_in_new_tab": false,
                 "style_class": "button-custom",
                 "custom_button_background": "#00000000",
-                "custom_button_text": "#F7F8F7",
-                "custom_button_border": "#8A928E",
+                "custom_button_text": "#111513",
+                "custom_button_border": "#111513",
                 "width": "fit-content",
                 "width_mobile": "fit-content"
               },

@@ -4,7 +4,14 @@
   <div class="portfolio-footer__inner">
     <div class="portfolio-footer__top">
       <a class="portfolio-footer__brand" href="{{ routes.root_url }}">
-        <span aria-hidden="true">/</span>{{ section.settings.brand_name | escape }}
+        <img
+          src="{{ 'portfolio-logo.png' | asset_url }}"
+          class="portfolio-footer__brand-image"
+          width="1740"
+          height="360"
+          alt="{{ section.settings.brand_name | escape }}"
+          loading="lazy"
+        >
       </a>
 
       <nav class="portfolio-footer__navigation" aria-label="Footer navigation">

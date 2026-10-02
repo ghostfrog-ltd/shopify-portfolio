@@ -18,24 +18,9 @@
     render 'slideshow-styles'
   endif
 
-  if section.settings.enable_transparent_header_home and template.name == 'index'
-    assign transparent = 'always'
-    assign transparent_text_color_setting = section.settings.text_color_transparent_home
-  elsif section.settings.enable_transparent_header_product and template.name == 'product'
-    assign transparent = 'always'
-    assign transparent_text_color_setting = section.settings.text_color_transparent_product
-  elsif section.settings.enable_transparent_header_collection and template.name == 'collection'
+  if section.settings.enable_transparent_header_collection and template.name == 'collection'
     assign transparent = 'always'
     assign transparent_text_color_setting = section.settings.text_color_transparent_collection
-  elsif template.name == 'blog' or template.name == 'article'
-    assign transparent = 'always'
-    assign transparent_text_color_setting = section.settings.text_color_transparent_home | default: '#F7F8F7'
-  elsif template.name == 'page' and template.suffix == 'contact'
-    assign transparent = 'always'
-    assign transparent_text_color_setting = section.settings.text_color_transparent_home | default: '#F7F8F7'
-  elsif template.name == 'page' and template.suffix == 'services'
-    assign transparent = 'always'
-    assign transparent_text_color_setting = section.settings.text_color_transparent_home | default: '#F7F8F7'
   elsif template.name == 'page' and template.suffix == 'style-guide'
     assign transparent = 'always'
     assign transparent_text_color_setting = section.settings.text_color_transparent_home | default: '#F7F8F7'

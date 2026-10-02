@@ -28,7 +28,13 @@
     style="--menu-drawer-animation-index: 1;"
   >
     <a href="{{ routes.root_url }}" class="portfolio-menu-drawer__wordmark focus-inset">
-      <span aria-hidden="true">/</span>{{ brand_name | escape }}
+      <img
+        src="{{ 'portfolio-logo.png' | asset_url }}"
+        width="1740"
+        height="360"
+        alt="{{ brand_name | escape }}"
+        loading="eager"
+      >
     </a>
     <p>{{ brand_kicker | escape }}</p>
   </div>

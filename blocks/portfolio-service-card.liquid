@@ -57,10 +57,12 @@
     display: flex;
     min-height: 310px;
     padding: 28px 24px 24px;
-    border: 1px solid #222a28;
-    border-radius: 9px;
-    background: linear-gradient(145deg, #111718 0%, #0d1213 100%);
-    box-shadow: inset 0 1px 0 rgb(255 255 255 / 2.5%);
+    border: 1px solid rgb(243 245 241 / 16%);
+    border-radius: 8px;
+    background:
+      radial-gradient(circle at 16% 0%, rgb(var(--portfolio-accent-rgb) / 10%), transparent 34%),
+      linear-gradient(145deg, rgb(19 26 25 / 88%), rgb(8 13 13 / 72%));
+    box-shadow: inset 0 1px 0 rgb(255 255 255 / 4%);
     flex-direction: column;
     transition:
       border-color 180ms ease,
@@ -68,7 +70,7 @@
   }
 
   .portfolio-service-card:hover {
-    border-color: #39443f;
+    border-color: rgb(var(--portfolio-accent-rgb) / 52%);
     transform: translateY(-3px);
   }
 
@@ -78,7 +80,7 @@
     height: 38px;
     margin-bottom: 26px;
     place-items: center;
-    color: #d4d9d7;
+    color: #91a484;
   }
 
   .portfolio-service-card__icon svg {
@@ -95,7 +97,7 @@
 
   .portfolio-service-card__title {
     margin: 0;
-    color: #f3f5f4;
+    color: #f3f5f1;
     font-size: var(--gf-card-heading);
     font-weight: 650;
     letter-spacing: -0.02em;
@@ -105,7 +107,7 @@
   .portfolio-service-card__description,
   .portfolio-service-card__description p {
     margin: 0;
-    color: #aeb5b2;
+    color: #b8c1bc;
     font-size: var(--gf-small);
     line-height: 1.5;
   }
@@ -117,14 +119,14 @@
     padding-top: 24px;
     gap: 8px;
     align-items: center;
-    color: #e9ecea;
+    color: #91a484;
     font-size: 0.84rem;
     font-weight: 650;
     text-decoration: none;
   }
 
   .portfolio-service-card__link span {
-    color: var(--portfolio-accent);
+    color: #91a484;
     transition: transform 180ms ease;
   }
 

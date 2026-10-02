@@ -1,7 +1,7 @@
 .portfolio-footer {
-  background: #070b0c;
-  color: #f7f8f7;
-  border-top: 1px solid rgb(247 248 247 / 10%);
+  background: #f8f3eb;
+  color: #111513;
+  border-top: 1px solid rgb(17 21 19 / 8%);
 }
 
 .portfolio-footer__inner {
@@ -18,20 +18,20 @@
 }
 
 .portfolio-footer__brand {
+  display: inline-flex;
   justify-self: start;
-  color: #f7f8f7;
-  font-size: 1.25rem;
-  font-weight: 700;
+  color: #111513;
   line-height: 1;
   text-decoration: none;
+  align-items: center;
 }
 
-.portfolio-footer__brand span {
-  color: var(--portfolio-accent);
+.portfolio-footer__brand-image {
+  width: auto;
+  height: 36px;
 }
-
 .portfolio-footer__brand:hover {
-  color: #fff;
+  color: #111513;
   text-decoration: none;
 }
 
@@ -50,12 +50,17 @@
 }
 
 .portfolio-footer__navigation a {
+  color: #31372f;
   font-size: 0.875rem;
+}
+
+.portfolio-footer__socials a {
+  color: #111513;
 }
 
 .portfolio-footer__navigation a:hover,
 .portfolio-footer__socials a:hover {
-  color: #fff;
+  color: var(--portfolio-accent);
 }
 
 .portfolio-footer__socials {
@@ -83,7 +88,7 @@
   grid-template-columns: 1fr auto;
   gap: 24px;
   margin-top: 38px;
-  color: #aeb5b1;
+  color: #5f645c;
   font-size: 0.75rem;
 }
 
