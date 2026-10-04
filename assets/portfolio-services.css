@@ -1,19 +1,19 @@
 .portfolio-services {
   background: #070b0c;
-  color: #f7f8f7;
+  color: #f3f5f1;
 }
 
 .portfolio-services__inner {
   display: grid;
-  width: min(calc(100% - 80px), 1400px);
+  width: min(calc(100% - 80px), 1430px);
   margin-inline: auto;
-  padding-block: 3rem 48px;
+  padding-block: 72px 40px;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 18px;
 }
 
 .portfolio-services__inner > .portfolio-section-heading {
-  margin-bottom: 20px;
+  margin-bottom: 22px;
   grid-column: 1 / -1;
 }
 
@@ -26,7 +26,7 @@
 @media screen and (max-width: 599px) {
   .portfolio-services__inner {
     width: min(calc(100% - 32px), 620px);
-    padding-block: 3rem 48px;
+    padding-block: 54px 34px;
     grid-template-columns: 1fr;
     gap: 16px;
   }

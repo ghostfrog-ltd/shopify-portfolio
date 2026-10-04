@@ -5,7 +5,7 @@
 <section class="services-collection" aria-labelledby="ServicesCollectionHeading-{{ section.id }}">
   <div class="services-collection__inner gf-page-width">
     <header class="services-collection__header">
-      <div>
+      <div class="services-collection__heading">
         <p class="gf-eyebrow">{{ section.settings.eyebrow | escape }}</p>
         <h1 id="ServicesCollectionHeading-{{ section.id }}">{{ collection.title | escape }}</h1>
       </div>
@@ -15,6 +15,24 @@
         <div class="services-collection__intro rte">{{ section.settings.intro }}</div>
       {% endif %}
     </header>
+
+    <div class="services-collection__guide" aria-label="How service purchases work">
+      <div class="services-collection__guide-item">
+        <span>01</span>
+        <strong>Choose a fixed scope</strong>
+        <p>Each service has a clear outcome, price and next step.</p>
+      </div>
+      <div class="services-collection__guide-item">
+        <span>02</span>
+        <strong>Share access safely</strong>
+        <p>I’ll confirm what I need after checkout, before work starts.</p>
+      </div>
+      <div class="services-collection__guide-item">
+        <span>03</span>
+        <strong>Get direct delivery</strong>
+        <p>No account managers, just practical Shopify engineering.</p>
+      </div>
+    </div>
 
     {% paginate collection.products by section.settings.products_per_page %}
       {% if collection.products_count > 0 %}

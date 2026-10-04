@@ -1,25 +1,69 @@
 /* Portfolio skin for Horizon's existing header structure and behaviour. */
 body.portfolio-template #header-component {
-  --portfolio-header-background: rgb(7 11 12 / 90%);
-  --portfolio-header-border: rgb(247 248 247 / 12%);
+  --portfolio-header-background: rgb(248 243 235 / 88%);
+  --portfolio-header-border: rgb(17 21 19 / 8%);
 }
 
 body.portfolio-template .page-wrapper {
-  background: #070b0c;
+  background: #f8f3eb;
+}
+
+body.portfolio-template .announcement-bar {
+  min-height: 36px;
+  color: #262b25;
+  background: #e8e0d3;
+}
+
+body.portfolio-template #header-group .announcement-bar.section {
+  background: #e8e0d3;
+}
+
+body.portfolio-template .announcement-bar__slides {
+  width: min(100%, 1430px);
+  max-width: none;
+  margin-inline: auto;
+}
+
+body.portfolio-template .announcement-bar__text {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  color: #262b25 !important;
+}
+
+body.portfolio-template .announcement-bar__text::before {
+  display: inline-block;
+  width: 14px;
+  height: 9px;
+  margin-right: 9px;
+  border-radius: 100% 0 100% 0;
+  background: var(--portfolio-accent);
+  content: '';
+  transform: rotate(-22deg);
+}
+
+body.portfolio-template .announcement-bar__text::after {
+  margin-left: auto;
+  color: #111513;
+  content: "Let's build something great \2192";
+  font-weight: 650;
+  white-space: nowrap;
 }
 
 body.portfolio-template #header-component .header__underlay-closed {
   background: var(--portfolio-header-background);
-  -webkit-backdrop-filter: blur(8px) saturate(110%);
-  backdrop-filter: blur(8px) saturate(110%);
+  -webkit-backdrop-filter: blur(12px) saturate(120%);
+  backdrop-filter: blur(12px) saturate(120%);
 }
 
 body.portfolio-template #header-component .header__row--top {
-  --color: #f7f8f7;
-  --color-rgb: 247 248 247;
-  --color-foreground: #f7f8f7;
-  --color-foreground-rgb: 247 248 247;
-  --color-account-icon: #f7f8f7;
+  --color: #111513;
+  --color-rgb: 17 21 19;
+  --color-foreground: #111513;
+  --color-foreground-rgb: 17 21 19;
+  --color-account-icon: #111513;
 
   color: var(--color-foreground);
 }
@@ -41,12 +85,17 @@ body.portfolio-template
 }
 
 body.portfolio-template #header-component .header__row--top .header-logo {
-  color: #f7f8f7;
+  color: #111513;
+}
+
+.portfolio-header-cta,
+.portfolio-desktop-nav {
+  display: none;
 }
 
 @media (hover: hover) {
   body.portfolio-template #header-component .header__row--top .header-logo:hover {
-    color: #fff;
+    color: #111513;
   }
 }
 
@@ -56,10 +105,84 @@ body.portfolio-template #header-component .header__row--top .header-logo {
     --padding-block-end: 0;
 
     width: 100%;
-    max-width: 1400px;
-    height: 72px;
-    min-height: 72px;
+    max-width: 1430px;
+    height: 82px;
+    min-height: 82px;
     margin-inline: auto;
+  }
+
+  body.portfolio-template #header-component .header__drawer,
+  body.portfolio-template #header-component .search-action,
+  body.portfolio-template #header-component header-actions {
+    display: none;
+  }
+
+  body.portfolio-template #header-component .dropdown-localization {
+    display: flex;
+  }
+
+  body.portfolio-template #header-component .header-menu {
+    display: none;
+  }
+
+  body.portfolio-template #header-component .header__columns {
+    --header-left: minmax(180px, 1fr);
+    --header-center: auto;
+    --header-right: minmax(180px, 1fr);
+    align-items: center;
+  }
+
+  body.portfolio-template #header-component .header__column--left {
+    justify-content: flex-start;
+  }
+
+  body.portfolio-template #header-component .header__column--center {
+    justify-content: center;
+  }
+
+  body.portfolio-template #header-component .header__column--right {
+    justify-content: flex-end;
+  }
+
+  body.portfolio-template .portfolio-desktop-nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(30px, 3vw, 48px);
+  }
+
+  body.portfolio-template .portfolio-desktop-nav a {
+    color: #111513;
+    font-size: 0.875rem;
+    font-weight: 500;
+    line-height: 1;
+    text-decoration: none;
+  }
+
+  body.portfolio-template .portfolio-desktop-nav a:hover {
+    color: var(--portfolio-accent);
+  }
+
+  body.portfolio-template .portfolio-header-cta {
+    display: inline-flex;
+    min-height: 52px;
+    padding-inline: 26px;
+    border-radius: 999px;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    color: #fffaf1;
+    background: var(--portfolio-accent);
+    font-size: 0.875rem;
+    font-weight: 700;
+    line-height: 1;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  body.portfolio-template .portfolio-header-cta:hover {
+    color: #fffaf1;
+    background: var(--portfolio-accent-hover);
   }
 }
 
@@ -67,11 +190,62 @@ body.portfolio-template #header-component .header__row--top .header-logo {
   #header-group > .shopify-section:has(.announcement-bar) {
     display: none;
   }
+
+  body.portfolio-template #header-component .header__row--top {
+    display: block;
+    width: 100%;
+  }
+
+  body.portfolio-template #header-component .header__row--top .header__columns {
+    --header-mobile-bookend: 44px;
+
+    grid-template-columns: 44px 44px minmax(0, 1fr) 44px 44px;
+    grid-template-areas: 'leftA leftB center rightA rightB';
+    width: 100%;
+    max-width: none;
+    margin-inline: 0;
+    padding-inline: 0;
+  }
+
+  body.portfolio-template #header-component .header__drawer {
+    grid-column: 1 / 2;
+    grid-row: 1;
+    justify-self: start;
+  }
+
+  body.portfolio-template #header-component .header__icon--menu {
+    justify-content: flex-start;
+  }
+
+  body.portfolio-template #header-component .header-logo {
+    grid-column: 3 / 4;
+    grid-row: 1;
+    justify-self: center;
+  }
+
+  body.portfolio-template #header-component header-actions {
+    grid-column: 4 / 6;
+    grid-row: 1;
+    display: flex;
+    justify-self: end;
+    gap: 4px;
+  }
+
+  body.portfolio-template #header-component .header-actions__action,
+  body.portfolio-template #header-component .account-button {
+    width: 40px;
+    min-width: 40px;
+    padding-inline: 0;
+  }
+
+  body.portfolio-template #header-component .header-actions__action:last-child {
+    justify-content: flex-end;
+  }
 }
 
 @media (prefers-reduced-transparency: reduce) {
   body.portfolio-template #header-component .header__underlay-closed {
-    background: #070b0c;
+    background: #f8f3eb;
     -webkit-backdrop-filter: none;
     backdrop-filter: none;
   }

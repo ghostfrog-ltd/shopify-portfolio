@@ -28,6 +28,13 @@
             "link": "/services"
           }
         },
+        "nav_work": {
+          "type": "navigation_link",
+          "settings": {
+            "label": "Work",
+            "link": "#projects"
+          }
+        },
         "nav_about": {
           "type": "navigation_link",
           "settings": {
@@ -73,6 +80,7 @@
       "block_order": [
         "nav_home",
         "nav_services",
+        "nav_work",
         "nav_about",
         "nav_contact",
         "social_linkedin",

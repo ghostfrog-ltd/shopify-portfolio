@@ -1,6 +1,5 @@
 {{ 'portfolio-hero.css' | asset_url | stylesheet_tag }}
 {{ 'portfolio-home-motion.css' | asset_url | stylesheet_tag }}
-<script src="{{ 'portfolio-home-motion.js' | asset_url }}" defer></script>
 
 {% capture hero_blocks %}
   {% content_for 'blocks' %}
@@ -27,7 +26,7 @@
         }}
       {% else %}
         <img
-          src="{{ 'portfolio-hero-tablet.webp' | asset_url }}"
+          src="{{ 'portfolio-hero-frog-main.png' | asset_url }}"
           class="portfolio-hero__image"
           width="1672"
           height="941"
@@ -59,7 +58,7 @@
       "type": "text",
       "id": "image_alt",
       "label": "Image alt text",
-      "default": "Cyclist riding through a dramatic mountain landscape"
+      "default": "Green frog on a dark leaf in a rainforest"
     }
   ],
   "presets": [{ "name": "Portfolio hero" }]

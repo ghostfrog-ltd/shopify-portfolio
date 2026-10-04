@@ -6,13 +6,13 @@
   overflow-y: auto;
   overscroll-behavior: contain;
   scrollbar-width: none;
-  color: #f2f4f1;
+  color: #111513;
   background:
-    radial-gradient(circle at 82% 63%, rgb(var(--portfolio-accent-rgb) / 8%), transparent 28%),
-    radial-gradient(circle at 22% 4%, rgb(255 255 255 / 3%), transparent 30%),
-    #0a1011;
-  border-right: 1px solid #2c3839;
-  box-shadow: 28px 0 70px rgb(0 0 0 / 45%);
+    radial-gradient(circle at 82% 18%, rgb(255 255 255 / 56%), transparent 28%),
+    radial-gradient(circle at 12% 78%, rgb(var(--portfolio-accent-rgb) / 8%), transparent 30%),
+    #f6f0e6;
+  border-right: 1px solid rgb(17 21 19 / 10%);
+  box-shadow: 28px 0 70px rgb(17 21 19 / 16%);
 }
 
 #header-component[data-portfolio-menu-drawer]
@@ -26,7 +26,7 @@
   min-height: 44px;
   margin: 0 0 0 clamp(1.25rem, 4vw, 2.75rem);
   padding: 0.65rem;
-  color: #dfe4e1;
+  color: #111513;
 }
 
 #header-component[data-portfolio-menu-drawer] .header-drawer[data-portfolio-enabled='true'] .menu-drawer__close-button .svg-wrapper,
@@ -36,8 +36,8 @@
 }
 
 #header-component[data-portfolio-menu-drawer] .header-drawer[data-portfolio-enabled='true'] .menu-drawer__backdrop {
-  background: rgb(0 0 0 / 52%);
-  backdrop-filter: brightness(0.42);
+  background: rgb(17 21 19 / 24%);
+  backdrop-filter: blur(2px);
 }
 
 .portfolio-menu-drawer {
@@ -54,26 +54,19 @@
 
 .portfolio-menu-drawer__wordmark {
   display: inline-flex;
-  align-items: baseline;
-  color: #f6f7f5;
-  font-family: var(--font-heading--family);
-  font-size: clamp(1.9rem, 4vw, 2.25rem);
-  font-weight: 700;
-  letter-spacing: -0.055em;
-  line-height: 1;
+  align-items: center;
   text-decoration: none;
 }
 
-.portfolio-menu-drawer__wordmark > span {
-  margin-right: 0.12em;
-  color: var(--portfolio-accent);
-  font-weight: 600;
+.portfolio-menu-drawer__wordmark img {
+  width: auto;
+  height: clamp(3.4rem, 12vw, 4.8rem);
 }
 
 .portfolio-menu-drawer__brand > p,
 .portfolio-menu-drawer__eyebrow {
   margin: 1rem 0 0;
-  color: #8e9897;
+  color: #687066;
   font-size: 0.72rem;
   font-weight: 650;
   letter-spacing: 0.24em;
@@ -95,7 +88,7 @@
   min-height: 3.65rem;
   padding: 0.75rem 1.35rem;
   border-radius: 0.48rem;
-  color: #e8ece9;
+  color: #111513;
   font-size: 1.05rem;
   font-weight: 560;
   line-height: 1.2;
@@ -104,8 +97,8 @@
 }
 
 .portfolio-menu-drawer__navigation a:hover {
-  color: var(--portfolio-accent-hover);
-  background: rgb(var(--portfolio-accent-rgb) / 8%);
+  color: #24301f;
+  background: rgb(var(--portfolio-accent-rgb) / 10%);
 }
 
 .portfolio-menu-drawer__navigation a:focus-visible,
@@ -117,8 +110,8 @@
 }
 
 .portfolio-menu-drawer__navigation a.is-active {
-  color: var(--portfolio-accent);
-  background: linear-gradient(90deg, rgb(var(--portfolio-accent-rgb) / 14%), rgb(var(--portfolio-accent-rgb) / 8%));
+  color: #2f3c2a;
+  background: linear-gradient(90deg, rgb(var(--portfolio-accent-rgb) / 16%), rgb(var(--portfolio-accent-rgb) / 8%));
 }
 
 .portfolio-menu-drawer__nav-icon {
@@ -144,8 +137,8 @@
 .portfolio-menu-drawer__cta {
   margin-top: clamp(2rem, 5vh, 3rem);
   padding: clamp(1.75rem, 4vh, 2.5rem) 0 clamp(2rem, 4.5vh, 2.75rem);
-  border-top: 1px solid #394344;
-  border-bottom: 1px solid #394344;
+  border-top: 1px solid rgb(17 21 19 / 14%);
+  border-bottom: 1px solid rgb(17 21 19 / 14%);
 }
 
 .portfolio-menu-drawer__cta .portfolio-menu-drawer__eyebrow {
@@ -155,7 +148,7 @@
 .portfolio-menu-drawer__pitch {
   max-width: 22rem;
   margin: 1.25rem 0 1.75rem;
-  color: #d9dedb;
+  color: #30372f;
   font-size: 1rem;
   line-height: 1.55;
 }
@@ -171,7 +164,7 @@
   border-radius: 999px;
   color: var(--portfolio-accent-contrast);
   background: var(--portfolio-accent);
-  box-shadow: 0 0 28px rgb(var(--portfolio-accent-rgb) / 14%);
+  box-shadow: 0 18px 40px rgb(17 21 19 / 10%);
   font-size: 1rem;
   font-weight: 750;
   text-align: center;
@@ -200,7 +193,7 @@
   display: inline-flex;
   width: 1.35rem;
   height: 1.35rem;
-  color: #aeb7b5;
+  color: #424941;
   transition: color 160ms ease, transform 160ms ease;
 }
 
@@ -211,7 +204,7 @@
 
 .portfolio-menu-drawer__footer > p {
   margin: 2rem 0 0;
-  color: #7f8988;
+  color: #687066;
   font-size: 0.74rem;
   line-height: 1.4;
 }
